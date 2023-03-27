@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://btxd2uxtumsid"
+uid="uid://b11fhttq1mdrw"
 path="res://.godot/imported/Magic1.wav-aa7e1a842d7c8642cb3434b65a315d6b.sample"
 
 [deps]
@@ -17,4 +17,8 @@ force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
-edit/normalize=f
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

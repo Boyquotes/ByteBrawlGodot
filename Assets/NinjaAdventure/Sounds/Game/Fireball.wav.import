@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cbwiuxx8etuwi"
+uid="uid://ckb28ncg6bgck"
 path="res://.godot/imported/Fireball.wav-75af3990965206156078679cc6604356.sample"
 
 [deps]
@@ -17,4 +17,8 @@ force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
-edit/normalize=f
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

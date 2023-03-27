@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cxn3ok5q7qv6t"
+uid="uid://vcojuvkf4wp0"
 path="res://.godot/imported/MiniImpact.wav-cef35c91241f7a4cdbc43b3dbe69d6b0.sample"
 
 [deps]
@@ -17,4 +17,8 @@ force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
-edit/normalize=f
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

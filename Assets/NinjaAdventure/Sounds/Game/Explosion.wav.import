@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://wickfenjcsd2"
+uid="uid://d1r6ijr0r3ksc"
 path="res://.godot/imported/Explosion.wav-d93ed964d81e5e9ecec624fd9c8a2d43.sample"
 
 [deps]
@@ -17,4 +17,8 @@ force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
-edit/normalize=fa
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

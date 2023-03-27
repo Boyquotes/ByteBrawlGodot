@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://rkf1ej34dgnm"
+uid="uid://dqqdl1lyvdw62"
 path="res://.godot/imported/GameOver2.wav-72fdfb51eb796b7903a9e4f033578f31.sample"
 
 [deps]
@@ -17,4 +17,8 @@ force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
-edit/normalize=fa
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
