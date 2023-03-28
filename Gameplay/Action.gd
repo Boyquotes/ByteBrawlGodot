@@ -18,9 +18,9 @@ var requirements: Array[Requirement] = []
 func _init():
 	print(to_string())
 
-func canBeCast():
+func canBeCast(player: Node):
 	for requirement in requirements:
-		if not requirement.isSatisfied():
+		if not requirement.isSatisfied(player):
 			return false
 	return true
 
