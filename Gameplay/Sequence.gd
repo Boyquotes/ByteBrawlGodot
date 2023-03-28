@@ -6,7 +6,7 @@ func _init():
 	pass
 
 func _to_string():
-	var str = ""
-	for action in actions:
-		str += action.to_string()
-	return str
+	return \
+"""
+actions: %s
+""" % str(actions)
