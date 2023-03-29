@@ -27,6 +27,7 @@ func _enter_tree():
 	
 
 func _process(delta_time):
+	print(_current_duration)
 	_current_duration += delta_time
 	if _current_duration >= duration:
 		_done(find_parent("current_stance").get_parent())

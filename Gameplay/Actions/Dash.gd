@@ -6,7 +6,7 @@ var velocity: float
 func _init(velocity: float):
 	super._init()
 	
-	self.duration = 0.2
+	self.duration = 0.4
 
 	self.type = EActionType.cast
 	self.velocity = velocity
