@@ -3,7 +3,7 @@ class_name Requirement
 func _init():
 	pass
 	
-func isSatisfied(player: Node) -> bool:
+func is_satisfied(player: Node) -> bool:
 	return false
 
 func _to_string():

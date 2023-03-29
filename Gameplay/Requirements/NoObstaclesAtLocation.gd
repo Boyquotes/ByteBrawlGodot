@@ -10,5 +10,5 @@ func _init(relativeLocation: Vector2):
 	self.relativeLocation = relativeLocation
 	self.collisionShape = collisionShape
 	
-func isSatisfied(player: Node) -> bool:
+func is_satisfied(player: Node) -> bool:
 	return true

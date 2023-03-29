@@ -33,9 +33,9 @@ func _process(delta):
 		done(find_parent("current_stance").get_parent())
 	pass
 
-func canBeCast(entity: Node):
+func can_be_cast(entity: Node):
 	for requirement in requirements:
-		if not requirement.isSatisfied(entity):
+		if not requirement.is_satisfied(player):
 			return false
 	return true
 

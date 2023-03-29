@@ -10,6 +10,12 @@ var current_action_index: int
 func _init():
 	pass
 
+func can_be_cast(player: Node):
+	for action in actions:
+		if not action.can_be_cast(player):
+			return false
+	return true
+
 func _enter_tree():
 	current_action_index = RESET_STATE
 
