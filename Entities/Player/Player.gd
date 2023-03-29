@@ -7,7 +7,7 @@ var stances: Array[Stance] = []
 func _ready():
 	stances = [Stance.new(), Stance.new()]
 	change_stance(0)
-	stances[0].inputs[1].started_sequence.actions.append(ActionDash.new(60.))
+	stances[0].inputs[1].started_sequence.actions.append(ActionDash.new(400.))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta_time):

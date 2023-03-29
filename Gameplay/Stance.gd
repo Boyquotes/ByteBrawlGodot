@@ -19,10 +19,10 @@ func _ready():
 	print("READY")
 
 func _enter_tree():
-	print("ENTER TREE")
+	pass
 	
 func _exit_tree():
-	print("EXIT TREE")
+	pass
 
 func _process(delta):
 	pass
@@ -32,11 +32,13 @@ func _to_string() -> String:
 """inputs : %s""" % str(inputs)
 
 func active_input(index: int):
-	print("ACTIVE_INPUT")
-	if index == -1: return
+	print("active %s" % (inputs[index].get_parent() == self))
+	if index == -1 or inputs[index].get_parent() == self: return
+	print("activate")
 	add_child(inputs[index])
 
 func deactive_input(index: int):
-	print("DEACTIVE_INPUT")
-	if index == -1: return
+	print("deactive %s" % (inputs[index].get_parent() != self))
+	if index == -1 or inputs[index].get_parent() != self: return
+	print("deactivate")
 	inputs[index].stop()

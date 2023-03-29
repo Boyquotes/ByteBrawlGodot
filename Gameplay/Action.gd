@@ -19,7 +19,7 @@ var requirements: Array[Requirement] = []
 var _current_duration: float = 0.
 
 func _init():
-	print(to_string())
+	pass
 
 func _enter_tree():
 	_current_duration = 0.
@@ -38,7 +38,7 @@ func can_be_cast(entity: Node):
 	return true
 
 func activate(entity: Node):
-	print(entity)
+	pass
 
 func _activate(entity: Node):
 	activate(entity)

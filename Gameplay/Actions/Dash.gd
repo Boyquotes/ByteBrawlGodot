@@ -6,7 +6,7 @@ var velocity: float
 func _init(velocity: float):
 	super._init()
 	
-	self.duration = 0.2
+	self.duration = 0.4
 
 	self.type = EActionType.cast
 	self.velocity = velocity
@@ -21,7 +21,6 @@ func activate(player: Node):
 func done(player: Node):
 	(player as CharacterBody2D).velocity = Vector2.ZERO
 	(player.get_node("movement") as Move).block_movement = false
-	print("haha")
 
 func cancel(player: Node):
 	done(player)
