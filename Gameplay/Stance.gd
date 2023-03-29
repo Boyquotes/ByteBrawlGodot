@@ -1,16 +1,19 @@
 class_name Stance
-extends Node2D
+extends Node
 
 var is_active: bool = false
 
 var inputs: Array[ActionInput] = []
 
 func _input(event):
-	if event.is_pressed():
-		print("INPUT")
+	var input = PlayerInput.get_input_type(event)
+	if not input: return
+	if input.type == PlayerInput.EInputType.PRESS: active_input(input.key)
+	if input.type == PlayerInput.EInputType.RELEASE: deactive_input(input.key)
 
 func _init():
-	print("INIT")
+	for input in PlayerInput.PLAYER_INPUT.size():
+		inputs.append(ActionInput.new())
 
 func _ready():
 	print("READY")
@@ -27,3 +30,11 @@ func _process(delta):
 func _to_string() -> String:
 	return \
 """inputs : %s""" % str(inputs)
+
+func active_input(index: int):
+	if index == -1: return
+	add_child(inputs[index])
+
+func deactive_input(index: int):
+	if index == -1: return
+	inputs[index].stop()
