@@ -24,6 +24,15 @@ func canBeCast(player: Node):
 			return false
 	return true
 
+func activate(player: Node):
+	pass
+
+func cancel(player: Node):
+	pass
+
+func get_variables_to_set() -> Array[String]:
+	return []
+
 func _to_string() -> String:
 	return """type : %s
 duration : %.3f
