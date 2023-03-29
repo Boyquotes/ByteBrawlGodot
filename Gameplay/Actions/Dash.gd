@@ -21,7 +21,6 @@ func activate(player: Node):
 func done(player: Node):
 	(player as CharacterBody2D).velocity = Vector2.ZERO
 	(player.get_node("movement") as Move).block_movement = false
-	print("haha")
 
 func cancel(player: Node):
 	done(player)

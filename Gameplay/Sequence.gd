@@ -21,7 +21,6 @@ func _enter_tree():
 
 func _process(delta):
 	if get_child_count() == 0:
-		print("ACTION PROCESSED")
 		current_action_index += 1
 		if not add_action():
 			remove_from_parent()

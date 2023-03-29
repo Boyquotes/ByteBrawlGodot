@@ -18,37 +18,32 @@ func _init():
 	pass
 
 func _ready():
-	print("ACTION READY")
+	pass
 
 func _enter_tree():
 	add_child(self.started_sequence)
 	self.current_state = ESequenceState.START
-	print("STARTED_SEQUENCE")
 
 func _process(delta):
-	print(get_child_count())
 	if self.current_state == ESequenceState.START:
 		if get_child_count() != 0: return
 		self.current_state = ESequenceState.PRESSED
 	if self.current_state == ESequenceState.PRESSED:
 		if get_child_count() != 0: return
 		add_child(pressed_sequence)
-		print("PRESSED_SEQUENCE")
 	elif self.current_state == ESequenceState.RELEASE:
 		if get_child_count() != 0: return
 		add_child(released_sequence)
 		self.current_state = ESequenceState.DONE
-		print("RELEASE_SEQUENCE")
 	elif self.current_state == ESequenceState.DONE:
 		if get_child_count() != 0: return
 		remove_from_parent()
 
 func _exit_tree():
 	self.current_state = ESequenceState.INIT
-	print("ACTION EXIT TREE")
 
 func stop():
-	if self.current_state != ESequenceState.START:
+	if self.current_state == ESequenceState.PRESSED:
 		end_sequence()
 	self.current_state = ESequenceState.RELEASE
 
