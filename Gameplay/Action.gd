@@ -23,15 +23,13 @@ func _init():
 
 func _enter_tree():
 	_current_duration = 0.
-	activate(find_parent("current_stance").get_parent())
-	pass
+	_activate(find_parent("current_stance").get_parent())
 	
 
-func _process(delta):
-	_current_duration += delta
+func _process(delta_time):
+	_current_duration += delta_time
 	if _current_duration >= duration:
-		done(find_parent("current_stance").get_parent())
-	pass
+		_done(find_parent("current_stance").get_parent())
 
 func can_be_cast(entity: Node):
 	for requirement in requirements:
@@ -41,11 +39,16 @@ func can_be_cast(entity: Node):
 
 func activate(entity: Node):
 	print(entity)
-	pass
+
+func _activate(entity: Node):
+	activate(entity)
 
 func done(entity: Node):
-	remove_from_parent()
 	pass
+
+func _done(entity: Node):
+	done(entity)
+	remove_from_parent()
 
 func cancel(entity: Node):
 	pass

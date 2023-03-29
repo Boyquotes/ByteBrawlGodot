@@ -1,6 +1,8 @@
-extends Node2D
+class_name Move
+extends Node
 
-@export var speed : float = 64.0
+@export var speed: float = 64.0
+var block_movement: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,5 +13,6 @@ func _ready():
 func _physics_process(delta_time):
 	var parent = get_parent()
 	
-	parent.velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down") * speed
+	if not block_movement:
+		parent.velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down") * speed
 	parent.move_and_slide()
