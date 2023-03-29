@@ -12,7 +12,7 @@ func _init(distance: float):
 	self.distance = distance
 
 func activate(player: Node):
-	if not canBeCast(player):
+	if not can_be_cast(player):
 		return
 	
 	(player as CharacterBody2D).velocity = PlayerInput.get_direction() * distance

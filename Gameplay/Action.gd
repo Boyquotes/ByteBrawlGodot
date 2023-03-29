@@ -35,7 +35,7 @@ func _process(delta):
 
 func can_be_cast(entity: Node):
 	for requirement in requirements:
-		if not requirement.is_satisfied(player):
+		if not requirement.is_satisfied(entity):
 			return false
 	return true
 
