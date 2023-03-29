@@ -1,0 +1,328 @@
+[gd_scene format=3 uid="uid://uus56i1k24cl"]
+
+[node name="InputActionCreationMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Separator" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Separator"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="InputSelector" type="VBoxContainer" parent="Separator/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Separator/ScrollContainer/InputSelector"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+
+[node name="Button2" type="Button" parent="Separator/ScrollContainer/InputSelector"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+
+[node name="Button3" type="Button" parent="Separator/ScrollContainer/InputSelector"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+
+[node name="Separator" type="VBoxContainer" parent="Separator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MainScreen" type="HBoxContainer" parent="Separator/Separator"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SequenceSelector" type="VBoxContainer" parent="Separator/Separator/MainScreen"]
+layout_mode = 2
+
+[node name="StartSequence" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+custom_minimum_size = Vector2(30, 2.08165e-12)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PressedSequence2" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+custom_minimum_size = Vector2(10, 2.08165e-12)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ReleasedSequence2" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+custom_minimum_size = Vector2(10, 2.08165e-12)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Separator/Separator/MainScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ActionList" type="GridContainer" parent="Separator/Separator/MainScreen/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="Action" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Action2" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action2"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action2/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action2/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action2/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Action3" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action3"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action3/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action3/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action3/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Action4" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action4"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action4/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action4/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action4/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Action5" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action5"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action5/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action5/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action5/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Action6" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action6"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action6/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action6/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action6/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Action7" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action7"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action7/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action7/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action7/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Action8" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action8"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action8/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action8/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action8/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Action9" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action9"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action9/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action9/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action9/ListParameters"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[node name="ActionSelector" type="VBoxContainer" parent="Separator/Separator"]
+layout_mode = 2
+
+[node name="ActionList" type="ScrollContainer" parent="Separator/Separator/ActionSelector"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 0
+
+[node name="Box" type="HBoxContainer" parent="Separator/Separator/ActionSelector/ActionList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
