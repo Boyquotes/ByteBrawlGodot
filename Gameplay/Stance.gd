@@ -32,9 +32,11 @@ func _to_string() -> String:
 """inputs : %s""" % str(inputs)
 
 func active_input(index: int):
+	print("ACTIVE_INPUT")
 	if index == -1: return
 	add_child(inputs[index])
 
 func deactive_input(index: int):
+	print("DEACTIVE_INPUT")
 	if index == -1: return
 	inputs[index].stop()

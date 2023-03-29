@@ -1,4 +1,5 @@
 class_name Action
+extends Node
 
 enum EActionType
 {
@@ -15,23 +16,45 @@ var cancelable: bool = false
 var blockable: bool = false
 var requirements: Array[Requirement] = []
 
+var _current_duration: float = 0.
+
 func _init():
 	print(to_string())
 
-func canBeCast(player: Node):
+func _enter_tree():
+	_current_duration = 0.
+	activate(find_parent("current_stance").get_parent())
+	pass
+	
+
+func _process(delta):
+	_current_duration += delta
+	if _current_duration >= duration:
+		done(find_parent("current_stance").get_parent())
+	pass
+
+func canBeCast(entity: Node):
 	for requirement in requirements:
-		if not requirement.isSatisfied(player):
+		if not requirement.isSatisfied(entity):
 			return false
 	return true
 
-func activate(player: Node):
+func activate(entity: Node):
+	print(entity)
 	pass
 
-func cancel(player: Node):
+func done(entity: Node):
+	remove_from_parent()
+	pass
+
+func cancel(entity: Node):
 	pass
 
 func get_variables_to_set() -> Array[String]:
 	return []
+
+func remove_from_parent():
+	get_parent().remove_child(self)
 
 func _to_string() -> String:
 	return """type : %s
