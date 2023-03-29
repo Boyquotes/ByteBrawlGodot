@@ -3,11 +3,9 @@ extends Node2D
 
 var stances: Array[Stance] = []
 
-var current_stance_index = 0
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	stances = [Stance.new()]
+	stances = [Stance.new(), Stance.new()]
 	change_stance(0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +16,11 @@ func _physics_process(delta_time):
 	pass
 
 func change_stance(index: int):
-	current_stance_index = index
-	for stance_index in stances.size():
-		stances[stance_index].is_active = stance_index == index
-		
+	var selected_stance = stances[index]
+	var current_stance = get_node("current_stance") if has_node("current_stance") else null
+	if not selected_stance or current_stance == selected_stance: return
+	if current_stance:
+		current_stance.name = "stance"
+		remove_child(current_stance)
+	selected_stance.name = "current_stance"
+	add_child(selected_stance)

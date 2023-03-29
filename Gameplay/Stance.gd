@@ -1,18 +1,28 @@
 class_name Stance
+extends Node2D
 
 var is_active: bool = false
 
-var map_inputs: Dictionary = {
-	"input_1": 0,
-	"input_2": 1,
-	"input_3": 2,
-	"input_4": 3,
-}
-
 var inputs: Array[ActionInput] = []
 
+func _input(event):
+	if event.is_pressed():
+		print("INPUT")
+
 func _init():
-	for key in map_inputs: inputs.append(ActionInput.new())
+	print("INIT")
+
+func _ready():
+	print("READY")
+
+func _enter_tree():
+	print("ENTER TREE")
+	
+func _exit_tree():
+	print("EXIT TREE")
+
+func _process(delta):
+	pass
 
 func _to_string() -> String:
 	return \
