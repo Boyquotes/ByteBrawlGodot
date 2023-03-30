@@ -8,6 +8,7 @@ func _init(distance: float = 400.0):
 	
 	self.duration = 0.2
 	self.allowed_stance = [Sequence.EType.Start, Sequence.EType.Release]
+	self.block_movement = true
 	self.type = EType.cast
 	self.distance = distance
 
@@ -15,15 +16,9 @@ func _init(distance: float = 400.0):
 # LOGIC
 func activate():
 	(_owner as CharacterBody2D).velocity = (_owner as CharacterBody2D).velocity.normalized() * distance
-	var movement_node = _owner.get_node("movement")
-	if movement_node:
-		(movement_node as Move).block_movement(true)
 
 func done():
 	(_owner as CharacterBody2D).velocity = Vector2.ZERO
-	var movement_node = _owner.get_node("movement")
-	if movement_node:
-		(movement_node as Move).block_movement(false)
 
 func cancel():
 	done()
