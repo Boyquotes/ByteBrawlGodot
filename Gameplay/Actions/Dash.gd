@@ -1,21 +1,21 @@
 class_name ActionDash
 extends Action
 
-var velocity: float
+var dash_velocity: float
 
-func _init(velocity: float):
+func _init(dash_velocity: float):
 	super._init()
 	
-	self.duration = 0.4
+	self.duration = 0.2
 
 	self.type = EActionType.cast
-	self.velocity = velocity
+	self.dash_velocity = dash_velocity
 
 func activate(player: Node):
 	if not can_be_cast(player):
 		return
 	
-	(player as CharacterBody2D).velocity = PlayerInput.get_direction() * velocity
+	(player as CharacterBody2D).velocity = PlayerInput.get_direction() * dash_velocity
 	(player.get_node("movement") as Move).block_movement = true
 
 func done(player: Node):

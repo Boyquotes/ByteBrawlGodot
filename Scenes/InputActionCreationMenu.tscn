@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://uus56i1k24cl"]
+[gd_scene load_steps=6 format=3 uid="uid://uus56i1k24cl"]
+
+[ext_resource type="Script" path="res://UI/InputSelector.gd" id="1_tx2ev"]
+[ext_resource type="Script" path="res://UI/ActionSelector.gd" id="2_2ncmf"]
+[ext_resource type="ButtonGroup" uid="uid://cw3v46c301u7m" path="res://UI/SequenceButtonGroup.tres" id="2_b2nds"]
+[ext_resource type="Script" path="res://UI/ActionList.gd" id="2_ulxsr"]
+[ext_resource type="Script" path="res://UI/SequenceButton.gd" id="3_8je12"]
 
 [node name="InputActionCreationMenu" type="Control"]
 layout_mode = 3
@@ -24,24 +30,7 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Button" type="Button" parent="Separator/ScrollContainer/InputSelector"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "1"
-
-[node name="Button2" type="Button" parent="Separator/ScrollContainer/InputSelector"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "1"
-
-[node name="Button3" type="Button" parent="Separator/ScrollContainer/InputSelector"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "1"
+script = ExtResource("1_tx2ev")
 
 [node name="Separator" type="VBoxContainer" parent="Separator"]
 layout_mode = 2
@@ -54,20 +43,36 @@ size_flags_vertical = 3
 [node name="SequenceSelector" type="VBoxContainer" parent="Separator/Separator/MainScreen"]
 layout_mode = 2
 
-[node name="StartSequence" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+[node name="StartedSequence" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+editor_description = "started_sequence"
 custom_minimum_size = Vector2(30, 2.08165e-12)
 layout_mode = 2
 size_flags_vertical = 3
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_b2nds")
+text = "Start"
+script = ExtResource("3_8je12")
 
-[node name="PressedSequence2" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+[node name="PressedSequence" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+editor_description = "pressed_sequence"
 custom_minimum_size = Vector2(10, 2.08165e-12)
 layout_mode = 2
 size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_b2nds")
+text = "Pressed"
+script = ExtResource("3_8je12")
 
-[node name="ReleasedSequence2" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+[node name="ReleasedSequence" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+editor_description = "released_sequence"
 custom_minimum_size = Vector2(10, 2.08165e-12)
 layout_mode = 2
 size_flags_vertical = 3
+toggle_mode = true
+button_group = ExtResource("2_b2nds")
+text = "Released"
+script = ExtResource("3_8je12")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Separator/Separator/MainScreen"]
 layout_mode = 2
@@ -77,252 +82,14 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 4
+script = ExtResource("2_ulxsr")
 
-[node name="Action" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
+[node name="ScrollContainer" type="ScrollContainer" parent="Separator/Separator"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Action2" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action2"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action2/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action2/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action2/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Action3" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action3"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action3/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action3/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action3/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Action4" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action4"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action4/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action4/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action4/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Action5" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action5"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action5/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action5/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action5/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Action6" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action6"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action6/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action6/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action6/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Action7" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action7"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action7/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action7/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action7/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Action8" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action8"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action8/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action8/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action8/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Action9" type="ScrollContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList"]
-custom_minimum_size = Vector2(2.08165e-12, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="ListParameters" type="VBoxContainer" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action9"]
-custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Parameter1" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action9/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter2" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action9/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="Parameter3" type="TextEdit" parent="Separator/Separator/MainScreen/ScrollContainer/ActionList/Action9/ListParameters"]
-custom_minimum_size = Vector2(20, 50)
-layout_mode = 2
-
-[node name="ActionSelector" type="VBoxContainer" parent="Separator/Separator"]
-layout_mode = 2
-
-[node name="ActionList" type="ScrollContainer" parent="Separator/Separator/ActionSelector"]
-layout_mode = 2
-size_flags_vertical = 3
 vertical_scroll_mode = 0
 
-[node name="Box" type="HBoxContainer" parent="Separator/Separator/ActionSelector/ActionList"]
+[node name="ActionSelector" type="HBoxContainer" parent="Separator/Separator/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Button" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-
-[node name="Button3" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-
-[node name="Button4" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-
-[node name="Button5" type="Button" parent="Separator/Separator/ActionSelector/ActionList/Box"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
+script = ExtResource("2_2ncmf")

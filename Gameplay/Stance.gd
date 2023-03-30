@@ -3,7 +3,7 @@ extends Node
 
 var is_active: bool = false
 
-var inputs: Array[ActionInput] = []
+var inputs: Dictionary = {}
 
 func _input(event):
 	var input = PlayerInput.get_input_type(event)
@@ -12,8 +12,8 @@ func _input(event):
 	if input.type == PlayerInput.EInputType.RELEASE: deactive_input(input.key)
 
 func _init():
-	for input in PlayerInput.PLAYER_INPUT.size():
-		inputs.append(ActionInput.new())
+	for input_name in PlayerInput.PLAYER_INPUT:
+		inputs[input_name] = ActionInput.new()
 
 func _ready():
 	print("READY")
@@ -31,14 +31,14 @@ func _to_string() -> String:
 	return \
 """inputs : %s""" % str(inputs)
 
-func active_input(index: int):
-	print("active %s" % (inputs[index].get_parent() == self))
-	if index == -1 or inputs[index].get_parent() == self: return
+func active_input(input_name: String):
+	print("active %s" % (inputs[input_name].get_parent() == self))
+	if input_name not in inputs or inputs[input_name].get_parent() == self: return
 	print("activate")
-	add_child(inputs[index])
+	add_child(inputs[input_name])
 
-func deactive_input(index: int):
-	print("deactive %s" % (inputs[index].get_parent() != self))
-	if index == -1 or inputs[index].get_parent() != self: return
+func deactive_input(input_name: String):
+	print("deactive %s" % (inputs[input_name].get_parent() != self))
+	if input_name not in inputs or inputs[input_name].get_parent() != self: return
 	print("deactivate")
-	inputs[index].stop()
+	inputs[input_name].stop()
