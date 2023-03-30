@@ -1,18 +1,23 @@
 class_name Move
 extends Node
 
+# PUBLIC
 @export var speed: float = 64.0
-var block_movement: bool = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# PRIVATE
+var movement_blocked: bool = false
+
+
+# LIFECYCLE
 func _physics_process(delta_time):
 	var parent = get_parent()
 	
-	if not block_movement:
+	if not movement_blocked:
 		parent.velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down") * speed
 	parent.move_and_slide()
+
+
+# LOGIC
+func block_movement(value: bool = true):
+	self.movement_blocked = value
