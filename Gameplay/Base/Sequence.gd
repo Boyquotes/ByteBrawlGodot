@@ -34,9 +34,9 @@ func add_action() -> bool:
 	add_child(actions[self.current_action_index])
 	return true
 
-func can_be_cast(player: Node):
+func can_be_cast():
 	for action in actions:
-		if not action.can_be_cast(player):
+		if not action.can_be_cast():
 			return false
 	return true
 

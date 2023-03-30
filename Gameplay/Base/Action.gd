@@ -9,7 +9,8 @@ enum EActionType
 	generateMateria,
 	cast,
 	throw,
-	changeStateTarget
+	changeStateTarget,
+	changeStance
 }
 
 
@@ -20,55 +21,61 @@ var cancelable: bool = false
 var blockable: bool = false
 var requirements: Array[Requirement] = []
 
-
 # PRIVATE
 var _current_duration: float = 0.
-
+var _owner: Node
 
 # LIFECYCLE
+func _ready():
+	_owner = find_parent("gameplay").get_parent()
+
+
 func _enter_tree():
 	_current_duration = 0.
-	_activate(find_parent("stance").get_parent())
+	_activate()
 	
 
 func _process(delta_time):
 	_current_duration += delta_time
 	if _current_duration >= duration:
-		_done(find_parent("stance").get_parent())
+		_done()
 
 
 # LOGIC
-func _activate(entity: Node):
-	activate(entity)
+func _activate():
+	if  _owner and can_be_cast():
+		activate()
 
-func _done(entity: Node):
-	done(entity)
+func _done():
+	if _owner:
+		done()
 	remove_from_parent()
 
-func _cancel(entity: Node):
-	cancel(entity)
+func _cancel():
+	if _owner:
+		cancel()
 
 
 # INTERFACE
-func activate(entity: Node):
+func activate():
 	pass
 
-func done(entity: Node):
+func done():
 	pass
 
-func cancel(entity: Node):
+func cancel():
 	pass
 
 
-func can_be_cast(entity: Node):
+func can_be_cast():
 	for requirement in requirements:
-		if not requirement.is_satisfied(entity):
+		if not requirement.is_satisfied(_owner):
 			return false
 	return true
 
 
 # UI HELPER
-func get_variables_to_set() -> Array[String]:
+func get_variables_to_set() -> Array[ActionParameterField]:
 	return []
 
 

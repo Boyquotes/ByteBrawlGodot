@@ -1,33 +1,36 @@
 class_name ActionDash
 extends Action
 
-var velocity: float
+var distance: float
 
-func _init(velocity: float):
+func _init(distance: float = 400.0):
 	super._init()
 	
 	self.duration = 0.2
 
 	self.type = EActionType.cast
-	self.velocity = velocity
+	self.distance = distance
 
 
 # LOGIC
-func activate(player: Node):
-	if not can_be_cast(player):
-		return
-	
-	(player as CharacterBody2D).velocity = PlayerInput.get_direction() * velocity
-	(player.get_node("movement") as Move).block_movement(true)
+func activate():
+	(_owner as CharacterBody2D).velocity = (_owner as CharacterBody2D).velocity.normalized() * distance
+	var movement_node = _owner.get_node("movement")
+	if movement_node:
+		(movement_node as Move).block_movement(true)
 
-func done(player: Node):
-	(player as CharacterBody2D).velocity = Vector2.ZERO
-	(player.get_node("movement") as Move).block_movement(false)
+func done():
+	(_owner as CharacterBody2D).velocity = Vector2.ZERO
+	var movement_node = _owner.get_node("movement")
+	if movement_node:
+		(movement_node as Move).block_movement(false)
 
-func cancel(player: Node):
-	done(player)
+func cancel():
+	done()
 
 
 # UI HELPER
-func get_variables_to_set() -> Array[String]:
-	return ["distance"]
+func get_variables_to_set() -> Array[ActionParameterField]:
+	return [
+		FloatParameterField.new("velocity", ActionParameterField.EFieldType.Range, 100., 800.)
+	]
