@@ -1,0 +1,38 @@
+{
+	"stances": {
+		"normal": {
+			"inputs": {
+				"input_1": {
+					"started_sequence": [
+						{
+							"name": "Dash",
+							"parameters": [
+								{
+									"name": "velocity",
+									"type": "float",
+									"value": 0.4
+								}
+							],
+						}
+					],
+					"pressed_sequence": [],
+					"released_sequence": [],
+					"canceled_sequence": []
+				},
+				"input_2": {
+					"started_sequence": [],
+					"pressed_sequence": [],
+					"released_sequence": [],
+					"canceled_sequence": []
+				},
+				"input_3": {
+					"started_sequence": [],
+					"pressed_sequence": [],
+					"released_sequence": [],
+					"canceled_sequence": []
+				}
+			}
+		},
+		"scoping": {}
+	}
+}

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh6y8qyv2ovtr"]
+
+[ext_resource type="Script" path="res://UI/ActionUI.gd" id="1_7c80b"]
+[ext_resource type="Script" path="res://UI/ListParameters.gd" id="2_h2gcy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7kxp"]
+bg_color = Color(1, 0, 0, 1)
+border_width_bottom = 2
+border_color = Color(0.392157, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6mfi"]
+bg_color = Color(0.901961, 0, 0, 1)
+border_width_bottom = 2
+border_color = Color(0.392157, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nlyi"]
+bg_color = Color(0.784314, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ActionUI" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_7c80b")
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="LineEdit" parent="Header"]
+custom_minimum_size = Vector2(2.08165e-12, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+editable = false
+
+[node name="Cancel" type="Button" parent="Header"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_a7kxp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t6mfi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4nlyi")
+
+[node name="ScrollContainerListParameters" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 50)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ListParameters" type="VBoxContainer" parent="ScrollContainerListParameters"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_h2gcy")
+
+[connection signal="pressed" from="Header/Cancel" to="." method="_on_cancel_pressed"]

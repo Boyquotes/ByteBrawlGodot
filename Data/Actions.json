@@ -1,0 +1,22 @@
+[
+	{
+		"name": "Dash",
+		"parameters": [
+			{
+				"name": "dash_velocity",
+				"type": "float",
+				"value": 4.0
+			}
+		]
+	},
+	{
+		"name": "Dash2",
+		"parameters": [
+			{
+				"name": "dash_velocity",
+				"type": "float",
+				"value": 5.0
+			}
+		]
+	},
+]

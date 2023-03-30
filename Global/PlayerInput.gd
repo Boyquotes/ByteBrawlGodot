@@ -19,8 +19,10 @@ static func get_direction():
 
 static func get_input_type(event: InputEvent) -> InputType:
 	for input in PLAYER_INPUT.size():
-		if event.is_action_pressed(PLAYER_INPUT[input]): return InputType.new(EInputType.Press, input)
-		if event.is_action_released(PLAYER_INPUT[input]): return InputType.new(EInputType.Release, input)
+		if event.is_action_pressed(PLAYER_INPUT[input]):
+			return InputType.new(EInputType.Press, input)
+		if event.is_action_released(PLAYER_INPUT[input]):
+			return InputType.new(EInputType.Release, input)
 	return null
 
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://gdlb4afl2kca"]
+
+[ext_resource type="Script" path="res://UI/InputButton.gd" id="1_ehd4t"]
+
+[node name="InputButton" type="Button"]
+custom_minimum_size = Vector2(100, 100)
+size_flags_horizontal = 3
+toggle_mode = true
+text = "1"
+script = ExtResource("1_ehd4t")

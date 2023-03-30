@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://7ypkjy4rdd1a"]
 
-[ext_resource type="Texture2D" uid="uid://cidgtl2xvgv26" path="res://Assets/NinjaAdventure/Actor/Characters/EggBoy/SeparateAnim/Idle.png" id="1_6urnu"]
+[ext_resource type="Texture2D" uid="uid://b3tnoo5ksj8ua" path="res://Assets/NinjaAdventure/Actor/Characters/EggBoy/SeparateAnim/Idle.png" id="1_6urnu"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_of2fo"]
 [ext_resource type="Script" path="res://Gameplay/Move.gd" id="3_k7330"]
 [ext_resource type="Script" path="res://Gameplay/Base/Gameplay.gd" id="4_8svt5"]
