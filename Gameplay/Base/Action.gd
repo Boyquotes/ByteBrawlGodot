@@ -35,7 +35,6 @@ func _enter_tree():
 		_owner = find_parent("gameplay").get_parent()
 	_current_duration = 0.
 	_activate()
-	
 
 func _process(delta_time):
 	_current_duration += delta_time
