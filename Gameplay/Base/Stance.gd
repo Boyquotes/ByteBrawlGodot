@@ -1,5 +1,5 @@
 class_name Stance
-extends Node
+extends BaseNode
 
 
 # PUBLIC

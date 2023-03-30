@@ -62,10 +62,4 @@ func end_sequence():
 
 # DEBUG
 func _to_string():
-	return \
-"""
-initSequence : %s
-pressedSequence : %s
-releaseSequence : %s
-cancelSequence : %s
-""" % [started_sequence, pressed_sequence, released_sequence, canceled_sequence]
+	return "".join([started_sequence, pressed_sequence, released_sequence, canceled_sequence])

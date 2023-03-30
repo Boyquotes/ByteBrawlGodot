@@ -81,8 +81,4 @@ func get_variables_to_set() -> Array[ActionParameterField]:
 
 # DEBUG
 func _to_string() -> String:
-	return """type : %s
-duration : %.3f
-cancelable : %s
-blockable : %s
-requirements : %s""" % [type, duration, cancelable, blockable, requirements]
+	return """actiontype : %s | duration : %.2f""" % [type, duration]

@@ -43,4 +43,6 @@ func can_be_cast():
 
 # DEBUG
 func _to_string() -> String:
-	return str(actions)
+	if actions.size() >= 0:
+		return str(actions)
+	return ""
