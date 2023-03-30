@@ -22,10 +22,6 @@ func _exit_tree():
 func _process(delta):
 	pass
 
-func _to_string() -> String:
-	return \
-"""inputs : %s""" % str(inputs)
-
 func active_input(index: int):
 	if index == -1 or inputs[index].get_parent() == self: return
 	add_child(inputs[index])
@@ -33,7 +29,6 @@ func active_input(index: int):
 func deactive_input(index: int):
 	if index == -1 or inputs[index].get_parent() != self: return
 	inputs[index].stop()
-
 
 # DEBUG
 func _to_string() -> String:
