@@ -7,8 +7,8 @@ func _init(distance: float = 400.0):
 	super._init()
 	
 	self.duration = 0.2
-
-	self.type = EActionType.cast
+	self.allowed_stance = [Sequence.EType.Start, Sequence.EType.Release]
+	self.type = EType.cast
 	self.distance = distance
 
 

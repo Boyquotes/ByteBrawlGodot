@@ -7,7 +7,9 @@ func _init(stance: Stance):
 	super._init()
 	self.stance = stance
 	self.duration = 0.1
-	self.type = EActionType.changeStance
+	self.end_sequence = true
+	self.allowed_stance = [Sequence.EType.Release]
+	self.type = EType.changeStance
 
 
 func done():

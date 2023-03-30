@@ -26,10 +26,10 @@ var current_state: ESequenceState
 
 # LIFECYCLE
 func _init():
-	self.started_sequence = Sequence.new()
-	self.pressed_sequence = Sequence.new()
-	self.released_sequence = Sequence.new()
-	self.canceled_sequence = Sequence.new()
+	self.started_sequence = Sequence.new(Sequence.EType.Start)
+	self.pressed_sequence = Sequence.new(Sequence.EType.Press)
+	self.released_sequence = Sequence.new(Sequence.EType.Release)
+	self.canceled_sequence = Sequence.new(Sequence.EType.Cancel)
 
 func _enter_tree():
 	add_child(self.started_sequence)

@@ -5,9 +5,17 @@ extends BaseNode
 # UTILS
 const RESET_STATE = -1
 
+enum EType
+{
+	Start,
+	Press,
+	Release,
+	Cancel,
+}
 
 # PUBLIC
 var actions: Array[Action]
+var type: EType
 
 
 # PRIVATE
@@ -15,7 +23,8 @@ var current_action_index: int
 
 
 # LIFECYCLE
-func _init():
+func _init(type: EType):
+	self.type = type
 	pass
 
 func _enter_tree():

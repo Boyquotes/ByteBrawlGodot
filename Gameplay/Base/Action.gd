@@ -3,7 +3,7 @@ extends BaseNode
 
 
 # UTILS
-enum EActionType
+enum EType
 {
 	saveLocation,
 	generateMateria,
@@ -15,11 +15,13 @@ enum EActionType
 
 
 # PUBLIC
-var type: EActionType = EActionType.saveLocation
+var type: EType = EType.saveLocation
 var duration: float = 0.
 var cancelable: bool = false
 var blockable: bool = false
+var end_sequence: bool = false
 var requirements: Array[Requirement] = []
+var allowed_stance: Array[Sequence.EType] = []
 
 # PRIVATE
 var _current_duration: float = 0.
