@@ -26,7 +26,7 @@ func cancel():
 # UI HELPER
 func get_variables_to_set() -> Array[ActionParameterField]:
 	return [
-		FloatParameterField.new("velocity", ActionParameterField.EFieldType.Range, 100., 800.)
+		FloatParameterField.new("distance", ActionParameterField.EFieldType.Range, 100., 800.)
 	]
 
 

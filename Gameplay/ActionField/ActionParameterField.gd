@@ -11,6 +11,8 @@ enum EFieldType
 	Materia,
 	# Stance
 	Stance,
+	# Enum
+	Choice,
 }
 
 var key: String
