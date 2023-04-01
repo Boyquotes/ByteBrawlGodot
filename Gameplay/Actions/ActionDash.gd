@@ -8,6 +8,7 @@ func _init(distance: float = 400.0):
 	self.duration = 0.2
 	self.allowed_stance = [Sequence.EType.Start, Sequence.EType.Release]
 	self.block_movement = true
+	self.block_action = true
 	self.type = EType.cast
 	self.distance = distance
 
