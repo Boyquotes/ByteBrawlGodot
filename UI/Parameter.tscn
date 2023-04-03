@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://buvc6b7ff3ohm"]
+[gd_scene format=3 uid="uid://buvc6b7ff3ohm"]
 
-[ext_resource type="Script" path="res://UI/Input/FieldFloat.gd" id="1_vgul7"]
-
-[node name="Parameter" type="LineEdit"]
+[node name="Parameter" type="HBoxContainer"]
 custom_minimum_size = Vector2(20, 50)
+
+[node name="Name" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+editable = false
 caret_blink = true
 caret_blink_interval = 0.5
-script = ExtResource("1_vgul7")
-
-[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
-[connection signal="text_changed" from="." to="." method="_on_text_changed"]

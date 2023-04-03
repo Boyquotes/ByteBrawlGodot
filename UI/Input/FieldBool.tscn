@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnevmxi0yiwcs"]
+
+[ext_resource type="Script" path="res://UI/Input/FieldBool.gd" id="1_626i6"]
+
+[node name="FieldBool" type="CheckButton"]
+custom_minimum_size = Vector2(20, 50)
+size_flags_vertical = 4
+script = ExtResource("1_626i6")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

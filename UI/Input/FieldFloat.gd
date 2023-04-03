@@ -1,21 +1,19 @@
 class_name FieldFloat
-extends LineEdit
-
-var value: float
-
-func _init():
-	add_user_signal("on_value_changed",  [{"name": "input", "type": FieldFloat}])
+extends Field
 
 func _on_focus_exited():
-	if text == "":
-		text = str(value)
+	if self.text == "":
+		self.text = str(field_value)
 
 func _on_text_changed(new_text: String):
 	if new_text.is_valid_float():
-		value = float(new_text)
-		emit_signal("on_value_changed", self)
+		update_value(float(new_text))
 	elif new_text == "":
-		text = ""
-		placeholder_text = str(value)
+		self.text = ""
+		self.placeholder_text = str(field_value)
 	else:
-		text = str(value)
+		self.text = str(field_value)
+
+func update_value(field_value):
+	self.text = str(field_value)
+	super.update_value(field_value)

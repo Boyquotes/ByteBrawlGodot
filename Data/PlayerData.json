@@ -9,8 +9,17 @@
 							"parameters": [
 								{
 									"name": "velocity",
-									"type": "float",
-									"value": 0.4
+									"type": "enum",
+									"value": "CRABE",
+									"enum_values": [
+										"CUICUI",
+										"FOURCHETTE",
+										"FROMAGE",
+										"CRABE",
+										"DESTRUCTION",
+										"TELEVISION",
+										"ORC"
+									]
 								}
 							],
 						}

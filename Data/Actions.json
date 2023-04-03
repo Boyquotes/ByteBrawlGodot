@@ -6,16 +6,31 @@
 				"name": "dash_velocity",
 				"type": "float",
 				"value": 4.0
-			}
+			},
+			{
+				"name": "test",
+				"type": "bool",
+				"value": false
+			},
 		]
 	},
 	{
-		"name": "Dash2",
+		"name": "DashTP",
 		"parameters": [
 			{
-				"name": "dash_velocity",
+				"name": "distance",
 				"type": "float",
 				"value": 5.0
+			},
+			{
+				"name": "time",
+				"type": "float",
+				"value": 1.0
+			},
+			{
+				"name": "time2",
+				"type": "float",
+				"value": 1.0
 			}
 		]
 	},

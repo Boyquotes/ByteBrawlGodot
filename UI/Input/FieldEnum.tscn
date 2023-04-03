@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvai8t4ta1xwk"]
+
+[ext_resource type="Script" path="res://UI/Input/FieldEnum.gd" id="1_x3l3n"]
+
+[node name="FieldEnum" type="MenuButton"]
+custom_minimum_size = Vector2(20, 50)
+script = ExtResource("1_x3l3n")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://67cn7c0xpnl6"]
+
+[ext_resource type="Script" path="res://UI/Input/FieldInt.gd" id="1_ntwv3"]
+
+[node name="FieldFloat" type="SpinBox"]
+custom_minimum_size = Vector2(20, 50)
+script = ExtResource("1_ntwv3")
