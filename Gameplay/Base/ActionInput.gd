@@ -32,7 +32,6 @@ func _init():
 	self.canceled_sequence = Sequence.new(Sequence.EType.Cancel)
 
 func _enter_tree():
-	print("INIT")
 	add_child(self.started_sequence)
 	self.current_state = ESequenceState.Start
 
@@ -42,14 +41,11 @@ func _process(delta):
 		self.current_state = ESequenceState.Pressed
 
 	if self.current_state == ESequenceState.Pressed:
-		print("PRESSED")
 		add_child(pressed_sequence)
 	elif self.current_state == ESequenceState.Release:
-		print("RELEASE")
 		add_child(released_sequence)
 		self.current_state = ESequenceState.Done
 	elif self.current_state == ESequenceState.Done:
-		print("DONE")
 		remove_from_parent()
 
 
