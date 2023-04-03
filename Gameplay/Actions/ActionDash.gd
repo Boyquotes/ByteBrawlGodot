@@ -8,6 +8,7 @@ func _init(distance: float = 400.0):
 	self.duration = 0.2
 	self.allowed_stance = [Sequence.EType.Start, Sequence.EType.Release]
 	self.block_movement = true
+	self.block_action = true
 	self.type = EType.cast
 	self.distance = distance
 
@@ -26,7 +27,7 @@ func cancel():
 # UI HELPER
 func get_variables_to_set() -> Array[ActionParameterField]:
 	return [
-		FloatParameterField.new("velocity", ActionParameterField.EFieldType.Range, 100., 800.)
+		FloatParameterField.new("distance", ActionParameterField.EFieldType.Range, 100., 800.)
 	]
 
 

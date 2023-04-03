@@ -1,4 +1,4 @@
-class_name BoolParameterField
+class_name StanceParameterField
 extends ActionParameterField
 
 func _init(key: String):

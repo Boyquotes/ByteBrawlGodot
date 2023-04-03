@@ -21,7 +21,7 @@ var canceled_sequence: Sequence
 
 
 # PRIVATE
-var current_state: ESequenceState
+var current_state: ESequenceState = ESequenceState.Done
 
 
 # LIFECYCLE
@@ -51,6 +51,8 @@ func _process(delta):
 
 # LOGIC
 func stop():
+	if self.current_state == ESequenceState.Done:
+		return
 	if self.current_state == ESequenceState.Pressed:
 		end_sequence()
 	self.current_state = ESequenceState.Release
