@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://kmbt7yiu60mn"]
+
+[ext_resource type="Script" path="res://UI/StartMenuManager.gd" id="1_33cn6"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_33cn6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -50.5
+offset_right = 62.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Play"
+
+[node name="ModifyStancesButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Modify Stances"
+
+[node name="OptionButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Option"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_play"]
+[connection signal="pressed" from="VBoxContainer/ModifyStancesButton" to="." method="_modify_stances"]
+[connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_option"]

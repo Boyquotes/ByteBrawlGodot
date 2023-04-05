@@ -1,35 +1,41 @@
 {
-	"stances": {
-		"normal": {
-			"inputs": {
-				"input_1": {
-					"started_sequence": [
-						{
-							"name": "Dash",
-							"values": {
-								"distance": 100,
-								"duration": 0.2
-							}
+	"normal": {
+		"inputs": {
+			"input_1": {
+				"canceled_sequence": [],
+				"pressed_sequence": [],
+				"released_sequence": [],
+				"started_sequence": [
+					{
+						"name": "Dash",
+						"values": {
+							"distance": 100,
+							"duration": 0.2
 						}
-					],
-					"pressed_sequence": [],
-					"released_sequence": [],
-					"canceled_sequence": []
-				},
-				"input_2": {
-					"started_sequence": [],
-					"pressed_sequence": [],
-					"released_sequence": [],
-					"canceled_sequence": []
-				},
-				"input_3": {
-					"started_sequence": [],
-					"pressed_sequence": [],
-					"released_sequence": [],
-					"canceled_sequence": []
-				}
+					},
+					{
+						"name": "SwitchTargetMode",
+						"values": {
+							"target_type": "None"
+						}
+					}
+				]
+			},
+			"input_2": {
+				"canceled_sequence": [],
+				"pressed_sequence": [],
+				"released_sequence": [],
+				"started_sequence": []
+			},
+			"input_3": {
+				"canceled_sequence": [],
+				"pressed_sequence": [],
+				"released_sequence": [],
+				"started_sequence": []
 			}
-		},
-		"scoping": {}
+		}
+	},
+	"scoping": {
+
 	}
 }

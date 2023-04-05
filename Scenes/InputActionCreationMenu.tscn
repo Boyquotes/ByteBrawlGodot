@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://uus56i1k24cl"]
+[gd_scene load_steps=7 format=3 uid="uid://uus56i1k24cl"]
 
 [ext_resource type="Script" path="res://UI/InputSelector.gd" id="1_tx2ev"]
 [ext_resource type="Script" path="res://UI/ActionSelector.gd" id="2_2ncmf"]
 [ext_resource type="ButtonGroup" uid="uid://cw3v46c301u7m" path="res://UI/SequenceButtonGroup.tres" id="2_b2nds"]
 [ext_resource type="Script" path="res://UI/ActionList.gd" id="2_ulxsr"]
 [ext_resource type="Script" path="res://UI/SequenceButton.gd" id="3_8je12"]
+[ext_resource type="Script" path="res://UI/SaveAndDiscard.gd" id="6_uv0h1"]
 
 [node name="InputActionCreationMenu" type="Control"]
 layout_mode = 3
@@ -14,7 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Separator" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,28 +23,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Separator"]
+[node name="Separator" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Separator"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="InputSelector" type="VBoxContainer" parent="Separator/ScrollContainer"]
+[node name="InputSelector" type="VBoxContainer" parent="VBoxContainer/Separator/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_tx2ev")
 
-[node name="Separator" type="VBoxContainer" parent="Separator"]
+[node name="Separator" type="VBoxContainer" parent="VBoxContainer/Separator"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MainScreen" type="HBoxContainer" parent="Separator/Separator"]
+[node name="MainScreen" type="HBoxContainer" parent="VBoxContainer/Separator/Separator"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SequenceSelector" type="VBoxContainer" parent="Separator/Separator/MainScreen"]
+[node name="SequenceSelector" type="VBoxContainer" parent="VBoxContainer/Separator/Separator/MainScreen"]
 layout_mode = 2
 
-[node name="StartedSequence" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+[node name="StartedSequence" type="Button" parent="VBoxContainer/Separator/Separator/MainScreen/SequenceSelector"]
 editor_description = "started_sequence"
 custom_minimum_size = Vector2(30, 2.08165e-12)
 layout_mode = 2
@@ -54,7 +59,7 @@ button_group = ExtResource("2_b2nds")
 text = "Start"
 script = ExtResource("3_8je12")
 
-[node name="PressedSequence" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+[node name="PressedSequence" type="Button" parent="VBoxContainer/Separator/Separator/MainScreen/SequenceSelector"]
 editor_description = "pressed_sequence"
 custom_minimum_size = Vector2(10, 2.08165e-12)
 layout_mode = 2
@@ -64,7 +69,7 @@ button_group = ExtResource("2_b2nds")
 text = "Pressed"
 script = ExtResource("3_8je12")
 
-[node name="ReleasedSequence" type="Button" parent="Separator/Separator/MainScreen/SequenceSelector"]
+[node name="ReleasedSequence" type="Button" parent="VBoxContainer/Separator/Separator/MainScreen/SequenceSelector"]
 editor_description = "released_sequence"
 custom_minimum_size = Vector2(10, 2.08165e-12)
 layout_mode = 2
@@ -74,22 +79,40 @@ button_group = ExtResource("2_b2nds")
 text = "Released"
 script = ExtResource("3_8je12")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Separator/Separator/MainScreen"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Separator/Separator/MainScreen"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ActionList" type="GridContainer" parent="Separator/Separator/MainScreen/ScrollContainer"]
+[node name="ActionList" type="GridContainer" parent="VBoxContainer/Separator/Separator/MainScreen/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 4
 script = ExtResource("2_ulxsr")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Separator/Separator"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Separator/Separator"]
 layout_mode = 2
 vertical_scroll_mode = 0
 
-[node name="ActionSelector" type="HBoxContainer" parent="Separator/Separator/ScrollContainer"]
+[node name="ActionSelector" type="HBoxContainer" parent="VBoxContainer/Separator/Separator/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_2ncmf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("6_uv0h1")
+
+[node name="DiscardChangesButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Discard Changes"
+
+[node name="SaveButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Save"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/DiscardChangesButton" to="VBoxContainer/HBoxContainer" method="_discard"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SaveButton" to="VBoxContainer/HBoxContainer" method="_save"]
