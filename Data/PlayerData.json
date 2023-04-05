@@ -6,22 +6,10 @@
 					"started_sequence": [
 						{
 							"name": "Dash",
-							"parameters": [
-								{
-									"name": "velocity",
-									"type": "enum",
-									"value": "CRABE",
-									"enum_values": [
-										"CUICUI",
-										"FOURCHETTE",
-										"FROMAGE",
-										"CRABE",
-										"DESTRUCTION",
-										"TELEVISION",
-										"ORC"
-									]
-								}
-							],
+							"values": {
+								"distance": 100,
+								"duration": 0.2
+							}
 						}
 					],
 					"pressed_sequence": [],

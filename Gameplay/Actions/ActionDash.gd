@@ -3,9 +3,9 @@ extends Action
 
 var distance: float
 
-func _init(distance: float = 400.0):
+func _init(distance: float = 400.0, duration: float = 0.2):
 	super._init()
-	self.duration = 0.2
+	self.duration = duration
 	self.allowed_stance = [Sequence.EType.Start, Sequence.EType.Release]
 	self.block_movement = true
 	self.block_action = true
@@ -15,7 +15,7 @@ func _init(distance: float = 400.0):
 
 # LOGIC
 func activate():
-	(_owner as CharacterBody2D).velocity = (_owner as CharacterBody2D).velocity.normalized() * distance
+	(_owner as CharacterBody2D).velocity = (_owner as CharacterBody2D).velocity.normalized() * distance / duration
 
 func done():
 	(_owner as CharacterBody2D).velocity = Vector2.ZERO

@@ -7,7 +7,7 @@ func _on_focus_exited():
 
 func _on_text_changed(new_text: String):
 	if new_text.is_valid_float():
-		update_value(float(new_text))
+		super.update_value(new_text)
 	elif new_text == "":
 		self.text = ""
 		self.placeholder_text = str(field_value)

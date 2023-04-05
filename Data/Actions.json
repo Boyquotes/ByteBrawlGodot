@@ -1,37 +1,48 @@
-[
-	{
-		"name": "Dash",
-		"parameters": [
-			{
-				"name": "dash_velocity",
-				"type": "float",
-				"value": 4.0
-			},
-			{
-				"name": "test",
-				"type": "bool",
-				"value": false
-			},
-		]
+{
+	"Dash": {
+		"distance": {
+			"pretty_name": "Distance",
+			"type": "float",
+			"default_value": 100
+		},
+		"duration": {
+			"pretty_name": "Duration",
+			"type": "float",
+			"default_value": 0.2
+		}
 	},
-	{
-		"name": "DashTP",
-		"parameters": [
-			{
-				"name": "distance",
-				"type": "float",
-				"value": 5.0
-			},
-			{
-				"name": "time",
-				"type": "float",
-				"value": 1.0
-			},
-			{
-				"name": "time2",
-				"type": "float",
-				"value": 1.0
-			}
-		]
+	"ChangeStance": {
+		"stance": {
+			"pretty_name": "Stance",
+			"type": "enum",
+			"default_value": "normal",
+			"enum_values": [
+				"normal",
+				"scooping"
+			]
+		}
 	},
-]
+	"SwitchTargetMode": {
+		"target_type": {
+			"pretty_name": "Target Type",
+			"type": "enum",
+			"default_value": "None",
+			"enum_values": [
+				"None",
+				"Direction",
+				"Position"
+			]
+		}
+	},
+	"Throw": {
+		"itemType": {
+			"pretty_name": "Item Type",
+			"type": "enum",
+			"default_value": "ThrowingKnife",
+			"enum_values": [
+				"ThrowingKnife",
+				"ThrowingAxe"
+			]
+		}
+	}
+}

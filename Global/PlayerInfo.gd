@@ -12,5 +12,5 @@ var action_list: ActionList
 func _init():
 	stances = player_data.data["stances"]
 
-func get_selected_action_list() -> Array:
+func get_selected_actions_values() -> Array:
 	return stances[selected_stance]["inputs"][selected_input][selected_sequence]
