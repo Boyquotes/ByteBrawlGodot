@@ -1,7 +1,7 @@
 extends Node
 
-func load_scene(str: String):
-	get_tree().change_scene_to_file(str)
+func load_scene(scene_path: String):
+	get_tree().change_scene_to_file(scene_path)
 
 func _play():
 	load_scene("res://Scenes/Play.tscn")

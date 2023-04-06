@@ -14,6 +14,5 @@ func _init():
 			box.button_pressed = true
 			first_input = false
 		box.button_group = input_button_group
-		box.text = input_name
 		box.input_name = input_name
 		add_child(box)

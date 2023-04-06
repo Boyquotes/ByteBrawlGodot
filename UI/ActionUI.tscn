@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh6y8qyv2ovtr"]
+[gd_scene load_steps=5 format=3 uid="uid://dh6y8qyv2ovtr"]
 
 [ext_resource type="Script" path="res://UI/ActionUI.gd" id="1_7c80b"]
-[ext_resource type="Script" path="res://UI/ListParameters.gd" id="2_h2gcy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7kxp"]
 bg_color = Color(1, 0, 0, 1)
@@ -61,6 +60,5 @@ horizontal_scroll_mode = 0
 custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("2_h2gcy")
 
 [connection signal="pressed" from="Header/Cancel" to="." method="_on_cancel_pressed"]

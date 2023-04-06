@@ -3,5 +3,15 @@ class_name InputButton
 
 var input_name: String
 
+func _ready():
+	var events: Array[InputEvent] = InputMap.action_get_events(input_name)
+	text = ""
+	
+	for i in range(len(events)):
+		if i > 0:
+			text += " / "
+		text += events[i].as_text()
+
 func _pressed():
 	PlayerInfo.selected_input = input_name
+	PlayerInfo.action_list.reset()
