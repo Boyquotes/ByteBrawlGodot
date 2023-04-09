@@ -13,10 +13,14 @@ enum EType
 	changeStance
 }
 
-
 # PUBLIC
 var type: EType = EType.saveLocation
-var duration: float = 0.
+
+var duration_min: float = 0.
+var duration_max: float = 1.0
+
+var duration: float = duration_min:
+	set(x): duration = clamp(x, duration_min, duration_max)
 var cancelable: bool = false
 var blockable: bool = false
 var end_sequence: bool = false
@@ -103,7 +107,7 @@ func _can_be_cast():
 
 
 # UI HELPER
-func get_variables_to_set() -> Array[ActionParameterField]:
+func get_variables_to_set() -> Array[Field]:
 	return []
 
 

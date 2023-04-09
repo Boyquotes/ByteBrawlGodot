@@ -1,10 +1,12 @@
 class_name FieldBool
 extends Field
 
+func _ready():
+	self.button_pressed = getter.call()
+
 func _on_pressed():
-	self.field_value = self.button_pressed
-	update_value(field_value)
+	update_value(not getter.call())
 
 func update_value(updated_value):
-	self.button_pressed = updated_value
 	super.update_value(updated_value)
+	self.button_pressed = getter.call()

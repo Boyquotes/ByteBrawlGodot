@@ -2,12 +2,38 @@
 
 [ext_resource type="Script" path="res://UI/Input/FieldFloat.gd" id="1_sx2or"]
 
-[node name="FieldFloat" type="LineEdit"]
-custom_minimum_size = Vector2(20, 50)
+[node name="FieldFloat" type="VBoxContainer"]
+offset_right = 79.0
+offset_bottom = 61.0
 alignment = 1
-caret_blink = true
-caret_blink_interval = 0.5
 script = ExtResource("1_sx2or")
 
+[node name="Panel" type="PanelContainer" parent="."]
+clip_contents = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+alignment = 2
+
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
-[connection signal="text_changed" from="." to="." method="_on_text_changed"]
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="focus_exited" from="HBoxContainer/LineEdit" to="." method="_on_line_edit_focus_exited"]
+[connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="_on_text_changed"]
+[connection signal="text_submitted" from="HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
