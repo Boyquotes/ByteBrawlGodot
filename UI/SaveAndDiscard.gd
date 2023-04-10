@@ -8,6 +8,7 @@ func _save():
 	file.store_string(JSON.stringify(PlayerInfo.player_data))
 	file.close()
 	reload_menu_scene()
+	PlayerInfo.init_stances()
 
 func _discard():
 	PlayerInfo.reload_player_data()

@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+ActionsInfo="*res://Global/ActionsInfo.gd"
 PlayerInfo="*res://Global/PlayerInfo.gd"
-ActionInfo="*res://UI/ActionInfo.gd"
 
 [input]
 

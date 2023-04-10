@@ -4,10 +4,11 @@ extends BaseNode
 
 # PUBLIC
 var inputs: Array[ActionInput] = []
-
+var stance_name: String
 
 # LIFECYCLE
-func _init():
+func _init(stance_name: String):
+	self.stance_name = stance_name
 	self.name = "stance"
 	for input in PlayerInput.PLAYER_INPUT.size():
 		inputs.append(ActionInput.new())

@@ -18,8 +18,7 @@ func create():
 		i += 1
 
 func reset():
-	print("reseting action list")
 	for child in get_children():
-		child.queue_free()
+		child.free()
 	
 	create()

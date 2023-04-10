@@ -1,1 +1,45 @@
-{"normal":{"inputs":{"input_1":{"canceled_sequence":[],"pressed_sequence":[],"released_sequence":[],"started_sequence":[{"name":"Dash","values":{"distance":100,"duration":0.2}},{"name":"SwitchTargetMode","values":{"target_type":"None"}}]},"input_2":{"canceled_sequence":[],"pressed_sequence":[],"released_sequence":[],"started_sequence":[]},"input_3":{"canceled_sequence":[],"pressed_sequence":[],"released_sequence":[],"started_sequence":[]},"input_4":{"canceled_sequence":[],"pressed_sequence":[],"released_sequence":[],"started_sequence":[]}}},"scoping":{}}
+{
+	"normal": {
+		"inputs": [
+			{
+				"started_sequence": [
+					{
+						"name": "SwitchTargetMode",
+						"values": {
+							"target_type": "MoveDirection",
+						}
+					}
+				],
+				"pressed_sequence": [],
+				"released_sequence": [
+					{
+						"name": "Dash",
+						"values": {
+							"distance": 100,
+							"duration": 0.1
+						}
+					}
+				],
+				"canceled_sequence": []
+			},
+			{
+				"started_sequence": [],
+				"pressed_sequence": [],
+				"released_sequence": [],
+				"canceled_sequence": []
+			},
+			{
+				"started_sequence": [],
+				"pressed_sequence": [],
+				"released_sequence": [],
+				"canceled_sequence": []
+			},
+			{
+				"started_sequence": [],
+				"pressed_sequence": [],
+				"released_sequence": [],
+				"canceled_sequence": []
+			}
+		]
+	}
+}

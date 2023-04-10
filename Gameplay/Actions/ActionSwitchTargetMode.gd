@@ -9,11 +9,11 @@ enum ETargetType {
 	Position,
 }
 
-var target_type = ETargetType.None
+var target_type: ETargetType
 
-func _init(type: ETargetType):
+func _init(values: Dictionary):
 	self.type = EType.setTarget
-	self.target_type = type
+	self.target_type = ETargetType.get(values["target_type"])
 
 func activate():
 	if _owner_target_locator:
@@ -29,14 +29,21 @@ func spawn_target():
 		ETargetType.Position:
 			_owner.add_child(LocatorPosition.new())
 
+# UI HELPER
+static func get_default_values() -> Dictionary:
+	return {"target_type": "Direction"}
 
+func get_variables_to_set() -> Array[Field]:
+	var target_type_keys = ETargetType.keys()
+	return [
+		ActionsInfo.Enum(
+			"target_type",
+			"Target Type",
+			func(): return target_type_keys[target_type],
+			func(x): target_type = ETargetType.get(x),
+			target_type_keys.slice(1)
+		)
+	]
 
 func done():
 	pass
-
-
-# UI HELPER
-func get_variables_to_set() -> Array[ActionParameterField]:
-	return [
-		EnumParameterField.new("target_type", [ ETargetType.Direction, ETargetType.Position ])
-	]
