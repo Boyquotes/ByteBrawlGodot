@@ -11,14 +11,14 @@ var item_type: EItemType
 # item ptr in inventory, if null take equiped item
 var item
 
-func _init(values: Dictionary):
+func _init(item_type: EItemType):
 	super._init()
 	self.duration = 0.2
-	self.allowed_stance = [Sequence.EType.Start, Sequence.EType.Press, Sequence.EType.Release]
+	self.allowed_sequence = [Sequence.EType.Start, Sequence.EType.Press, Sequence.EType.Release]
 	self.block_movement = true
 	self.block_action = true
 	self.type = EType.cast
-	self.item_type = EItemType.get(values["item_type"])
+	self.item_type = item_type
 
 
 # LOGIC
@@ -26,7 +26,10 @@ func _init(values: Dictionary):
 
 # UI HELPER
 static func get_default_values() -> Dictionary:
-	return {"item_type": "ThrowingKnife"}
+	return { "item_type": "ThrowingKnife" }
+
+static func new_from_editor(values: Dictionary):
+	return ActionThrow.new(EItemType.get(values["item_type"]))
 
 func get_variables_to_set() -> Array[Field]:
 	var item_type_keys = EItemType.keys()

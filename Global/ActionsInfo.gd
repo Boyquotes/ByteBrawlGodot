@@ -4,7 +4,8 @@ var actions: Dictionary = {
 	"Dash": ActionDash,
 	"ChangeStance": ActionChangeStance,
 	"SwitchTargetMode": ActionSwitchTargetMode,
-	"Throw": ActionThrow
+	"Throw": ActionThrow,
+	"GenerateMateria": ActionGenerateMateria,
 }
 
 var field_bool = load("res://UI/Input/FieldBool.tscn")

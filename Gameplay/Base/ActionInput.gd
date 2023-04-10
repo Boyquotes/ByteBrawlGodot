@@ -33,8 +33,8 @@ func _init():
 
 func _ready():
 	if self.started_sequence.actions.any(func(action: Action): return action.type == Action.EType.setTarget):
-		self.released_sequence.actions.append(ActionSwitchTargetMode.new({ "target_type": "None" }))
-		self.canceled_sequence.actions.append(ActionSwitchTargetMode.new({ "target_type": "None" }))
+		self.released_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.None))
+		self.canceled_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.None))
 
 func _enter_tree():
 	add_child(self.started_sequence)

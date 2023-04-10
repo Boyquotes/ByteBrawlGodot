@@ -24,7 +24,7 @@ func init_stances():
 			for sequence_name in inputs_info[i]:
 				for action_info in inputs_info[i][sequence_name]:
 					var action_type = ActionsInfo.actions[action_info["name"]]
-					new_stance.inputs[i].get(sequence_name).actions.append(action_type.new(action_info["values"]))
+					new_stance.inputs[i].get(sequence_name).actions.append(action_type.new_from_editor(action_info["values"]))
 
 func reload_player_data():
 	player_data = load("res://Data/PlayerData.json").data

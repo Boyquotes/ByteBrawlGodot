@@ -3,12 +3,12 @@ extends Action
 
 var stance: Stance
 
-func _init(values: Dictionary):
+func _init(stance: Stance):
 	super._init()
-	self.stance = PlayerInfo.stances[values["stance"]]
+	self.stance = stance
 	self.duration = 0.1
 	self.end_sequence = true
-	self.allowed_stance = [Sequence.EType.Release]
+	self.allowed_sequence = [Sequence.EType.Release]
 	self.type = EType.changeStance
 
 func done():
@@ -21,6 +21,9 @@ func done():
 static func get_default_values() -> Dictionary:
 	return {"stance": "normal"}
 	
+static func new_from_editor(values: Dictionary):
+	return ActionChangeStance.new(PlayerInfo.stances[values["stance"]])
+
 func get_variables_to_set() -> Array[Field]:
 	return [
 		ActionsInfo.Enum(

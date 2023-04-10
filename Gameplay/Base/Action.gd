@@ -25,7 +25,7 @@ var cancelable: bool = false
 var blockable: bool = false
 var end_sequence: bool = false
 var requirements: Array[Requirement] = []
-var allowed_stance: Array[Sequence.EType] = []
+var allowed_sequence: Array[Sequence.EType] = []
 var block_action: bool = false
 var block_movement: bool = false
 
