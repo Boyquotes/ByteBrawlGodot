@@ -6,12 +6,13 @@ const distance_max: float = 500.
 var distance: float = distance_min:
 	set(x): distance = clamp(x, distance_min, distance_max)
 
+const allowed_sequence: Array[Sequence.EType] = [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
+const display_name = "Dash"
 
 func _init(distance: float, duration: float):
 	super._init()
 	self.duration_min = 0.1
 	self.duration_max = 2.0
-	self.allowed_sequence = [Sequence.EType.Start, Sequence.EType.Release]
 	self.block_movement = true
 	self.block_action = true
 	self.type = EType.cast

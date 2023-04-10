@@ -11,9 +11,11 @@ enum ETargetType {
 
 var target_type: ETargetType
 
+const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
+const display_name = "SwitchTargetMode"
+
 func _init(target_type: ETargetType):
 	self.type = EType.setTarget
-	self.allowed_sequence = [Sequence.EType.Start, Sequence.EType.Release]
 	self.target_type = target_type
 
 func activate():

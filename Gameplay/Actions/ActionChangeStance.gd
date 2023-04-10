@@ -2,13 +2,14 @@ class_name ActionChangeStance
 extends Action
 
 var stance: Stance
+const allowed_sequence = [Sequence.EType.released_sequence]
+const display_name = "ChangeStance"
 
 func _init(stance: Stance):
 	super._init()
 	self.stance = stance
 	self.duration = 0.1
 	self.end_sequence = true
-	self.allowed_sequence = [Sequence.EType.Release]
 	self.type = EType.changeStance
 
 func done():

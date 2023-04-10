@@ -11,7 +11,7 @@ func create():
 	var i = 0
 	for action in PlayerInfo.get_selected_actions_values():
 		var box: ActionUI = ActionBox.instantiate()
-		
+
 		box.init(action["name"], i)
 		add_child(box)
 		

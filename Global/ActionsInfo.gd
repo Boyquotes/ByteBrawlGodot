@@ -1,12 +1,12 @@
 extends Node
 
-var actions: Dictionary = {
-	"Dash": ActionDash,
-	"ChangeStance": ActionChangeStance,
-	"SwitchTargetMode": ActionSwitchTargetMode,
-	"Throw": ActionThrow,
-	"GenerateMateria": ActionGenerateMateria,
-}
+var actions: Array = [
+	ActionDash,
+	ActionChangeStance,
+	ActionSwitchTargetMode,
+	ActionThrow,
+	ActionGenerateMateria,
+]
 
 var field_bool = load("res://UI/Input/FieldBool.tscn")
 var field_int = load("res://UI/Input/FieldInt.tscn")

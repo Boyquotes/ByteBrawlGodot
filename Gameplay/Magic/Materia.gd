@@ -17,17 +17,15 @@ enum EType
 	Spacium,
 }
 
-var generation_time_customer: float
 var life_time: float
 var type: EType
 
-func _init(type: EType, generation_time_customer = 1., life_time = 5.):
+func _init(type: EType, life_time = 5.):
 	self.type = type
-	self.generation_time_customer = generation_time_customer
 	self.life_time = life_time
 
 func clone() -> Materia:
-	return Materia.new(type, generation_time_customer, life_time)
+	return Materia.new(type, life_time)
 
 func _process(delta_time):
 	life_time -= delta_time
@@ -37,6 +35,5 @@ func _process(delta_time):
 func _to_string():
 	return \
 """type : %s
-generationTimeCustomer : %.3f
 lifTime : %.3f
-""" % [type, generation_time_customer, life_time]
+""" % [type, life_time]

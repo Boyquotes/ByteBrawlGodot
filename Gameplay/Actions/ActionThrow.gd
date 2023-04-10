@@ -6,6 +6,10 @@ enum EItemType {
 	ThrowingAxe,
 }
 
+const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence, Sequence.EType.released_sequence]
+const display_name = "Throw"
+
+
 var item_type: EItemType
 
 # item ptr in inventory, if null take equiped item
@@ -14,7 +18,6 @@ var item
 func _init(item_type: EItemType):
 	super._init()
 	self.duration = 0.2
-	self.allowed_sequence = [Sequence.EType.Start, Sequence.EType.Press, Sequence.EType.Release]
 	self.block_movement = true
 	self.block_action = true
 	self.type = EType.cast
