@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://clxd8haha2pce"]
+
+[ext_resource type="Texture2D" uid="uid://ctr2cjuim57s2" path="res://rounded.png" id="1_ci4kg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jdhxg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hh4d"]
+
+[sub_resource type="Gradient" id="Gradient_axntq"]
+colors = PackedColorArray(1, 1, 0.588235, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kpal0"]
+gradient = SubResource("Gradient_axntq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qimlj"]
+texture = SubResource("GradientTexture1D_kpal0")
+texture_margin_top = 12.0
+texture_margin_bottom = 12.0
+
+[resource]
+HSlider/icons/grabber = ExtResource("1_ci4kg")
+HSlider/icons/grabber_highlight = ExtResource("1_ci4kg")
+HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_jdhxg")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_0hh4d")
+HSlider/styles/slider = SubResource("StyleBoxTexture_qimlj")
