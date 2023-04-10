@@ -9,6 +9,8 @@ readonly SIZE_Y=30
     position="$(((SIZE_X*x)+MARGIN_X))+$(((SIZE_Y*y)+MARING_Y))"
     echo "${position} ${index}"
     magick icons.jpg -crop ${SIZE_X}x${SIZE_Y}+${position} icons/icon_${index}.jpg
+    convert icons/icon_${index}.jpg -alpha set -channel alpha -fuzz 18% -fill none -floodfill +0+0 black icons/icon_${index}.png
+    rm icons/icon_${index}.jpg
   done
 done
 
