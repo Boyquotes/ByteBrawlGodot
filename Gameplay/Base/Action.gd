@@ -9,7 +9,7 @@ enum EType
 	generateMateria,
 	cast,
 	throw,
-	changeStateTarget,
+	setTarget,
 	changeStance
 }
 
@@ -36,8 +36,11 @@ func _owner_gameplay_get(): return _owner.get_node("gameplay") as Gameplay if _o
 var _owner_movement: Move: get = _owner_movement_get
 func _owner_movement_get(): return _owner.get_node("movement") as Move if _owner else null
 
+var _owner_materia_pool: MateriaPool: get = _owner_materia_pool_get
+func _owner_materia_pool_get(): return _owner.get_node("materia_pool") as MateriaPool if _owner and _owner.has_node("materia_pool") else null
+
 var _owner_target_locator: BaseNode2D: get = _owner_target_locator_get
-func _owner_target_locator_get(): return _owner.get_node("target_locator") as BaseNode2D if _owner else null
+func _owner_target_locator_get(): return _owner.get_node("target_locator") as BaseNode2D if _owner and _owner.has_node("target_locator") else null
 
 # LIFECYCLE
 func _enter_tree():

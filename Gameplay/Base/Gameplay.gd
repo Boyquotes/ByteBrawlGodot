@@ -7,14 +7,13 @@ var action_blocked: bool = false
 
 func _ready():
 	stances = [Stance.new(), Stance.new()]
-	stances[0].inputs[1].started_sequence.actions.append(ActionDash.new(200.))
 	stances[0].inputs[0].started_sequence.actions.append(ActionChangeStance.new(stances[1]))
-	stances[0].inputs[2].started_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.Direction))
-	stances[0].inputs[2].released_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.None))
-	stances[1].inputs[1].started_sequence.actions.append(ActionDash.new(1000.))
+	stances[0].inputs[1].started_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.MoveDirection))
+	stances[0].inputs[1].released_sequence.actions.append(ActionDash.new(100.))
+	stances[0].inputs[2].started_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.Position))
 	stances[1].inputs[0].started_sequence.actions.append(ActionChangeStance.new(stances[0]))
-	stances[1].inputs[2].started_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.Position))
-	stances[1].inputs[2].released_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.None))
+	stances[1].inputs[1].started_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.Direction))
+	stances[1].inputs[1].released_sequence.actions.append(ActionDash.new(400.))
 	change_stance(stances[0])
 
  # LOGIC

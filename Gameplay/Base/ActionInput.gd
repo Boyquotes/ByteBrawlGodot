@@ -31,6 +31,11 @@ func _init():
 	self.released_sequence = Sequence.new(Sequence.EType.Release)
 	self.canceled_sequence = Sequence.new(Sequence.EType.Cancel)
 
+func _ready():
+	if self.started_sequence.actions.any(func(action: Action): return action.type == Action.EType.setTarget):
+		self.released_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.None))
+		self.canceled_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.None))
+
 func _enter_tree():
 	add_child(self.started_sequence)
 	self.current_state = ESequenceState.Start

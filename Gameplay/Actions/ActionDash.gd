@@ -15,7 +15,8 @@ func _init(distance: float = 400.0, duration: float = 0.2):
 
 # LOGIC
 func activate():
-	(_owner as CharacterBody2D).velocity = (_owner as CharacterBody2D).velocity.normalized() * distance / duration
+	if _owner_target_locator:
+		(_owner as CharacterBody2D).velocity = _owner_target_locator.position.normalized() * distance / duration
 
 func done():
 	(_owner as CharacterBody2D).velocity = Vector2.ZERO
