@@ -6,7 +6,7 @@
 					{
 						"name": "SwitchTargetMode",
 						"values": {
-							"target_type": "MoveDirection",
+							"target_type": "MoveDirection"
 						}
 					}
 				],
