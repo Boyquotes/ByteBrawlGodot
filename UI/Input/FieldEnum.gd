@@ -1,10 +1,11 @@
 class_name FieldEnum
 extends Field
 
-var popup = Callable(self, "get_popup").call()
+var popup: PopupMenu
 
 func _init():
-	popup.connect("id_pressed", on_item_pressed)
+	self.popup = (self as Control as MenuButton).get_popup()
+	self.popup.connect("id_pressed", on_item_pressed)
 	super._init()
 
 func on_item_pressed(item_id: int):

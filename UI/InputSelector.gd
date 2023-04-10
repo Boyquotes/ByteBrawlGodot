@@ -6,10 +6,10 @@ var input_button_group = load("res://UI/InputButtonGroup.tres")
 func _init():
 	var player_inputs: Dictionary = PlayerInfo.player_data["normal"]["inputs"]
 	var first_input: bool = true
-	
+
 	for input_name in player_inputs:
 		var box: InputButton = input_button.instantiate()
-		
+
 		if first_input:
 			box.button_pressed = true
 			first_input = false

@@ -8,6 +8,13 @@ var field_enum = load("res://UI/Input/FieldEnum.tscn")
 var field_int = load("res://UI/Input/FieldInt.tscn")
 var field_default = load("res://UI/Input/Field.tscn")
 
+var TYPE_DICT: Dictionary = {
+	"bool": field_bool,
+	"float": field_float,
+	"enum": field_enum,
+	"int": field_int
+}
+
 var action_name: String
 
 func init(action_name: String, index: int):
@@ -27,13 +34,8 @@ func init(action_name: String, index: int):
 		parameters_container.add_child(box)
 
 func create_field(param_name: String, parameter_info: Dictionary, value):
-	var type_dict: Dictionary = {
-		"bool": field_bool,
-		"float": field_float,
-		"enum": field_enum,
-		"int": field_int
-	}
-	var new_field: Field = type_dict.get(parameter_info["type"], field_default).instantiate()
+
+	var new_field: Field = TYPE_DICT.get(parameter_info["type"], field_default).instantiate()
 
 	new_field.field_name = param_name
 	if parameter_info["type"] == "enum":
