@@ -10,3 +10,4 @@ func _pressed():
 	print("button pressed")
 	PlayerInfo.selected_sequence = sequence_name
 	PlayerInfo.action_list.reset()
+	PlayerInfo.action_selector.reset()

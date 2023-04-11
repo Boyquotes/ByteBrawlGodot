@@ -6,17 +6,18 @@ const distance_max: float = 500.
 var distance: float = distance_min:
 	set(x): distance = clamp(x, distance_min, distance_max)
 
+const allowed_sequence: Array[Sequence.EType] = [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
+const display_name = "Dash"
 
-func _init(values: Dictionary):
+func _init(distance: float, duration: float):
 	super._init()
 	self.duration_min = 0.1
 	self.duration_max = 2.0
-	self.allowed_stance = [Sequence.EType.Start, Sequence.EType.Release]
 	self.block_movement = true
 	self.block_action = true
 	self.type = EType.cast
-	self.duration = values["duration"]
-	self.distance = values["distance"]
+	self.duration = duration
+	self.distance = distance
 
 
 # LOGIC
@@ -33,7 +34,10 @@ func cancel():
 
 # UI HELPER
 static func get_default_values() -> Dictionary:
-	return {"distance": 50, "duration": 0.2}
+	return { "distance": 50, "duration": 0.2 }
+
+static func new_from_editor(values: Dictionary):
+	return ActionDash.new(values["distance"], values["duration"])
 
 func get_variables_to_set() -> Array[Field]:
 	return [

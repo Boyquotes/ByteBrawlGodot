@@ -11,9 +11,12 @@ enum ETargetType {
 
 var target_type: ETargetType
 
-func _init(values: Dictionary):
+const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
+const display_name = "SwitchTargetMode"
+
+func _init(target_type: ETargetType):
 	self.type = EType.setTarget
-	self.target_type = ETargetType.get(values["target_type"])
+	self.target_type = target_type
 
 func activate():
 	if _owner_target_locator:
@@ -31,7 +34,10 @@ func spawn_target():
 
 # UI HELPER
 static func get_default_values() -> Dictionary:
-	return {"target_type": "Direction"}
+	return { "target_type": "Direction" }
+
+static func new_from_editor(values: Dictionary):
+	return ActionSwitchTargetMode.new(ETargetType.get(values["target_type"]))
 
 func get_variables_to_set() -> Array[Field]:
 	var target_type_keys = ETargetType.keys()

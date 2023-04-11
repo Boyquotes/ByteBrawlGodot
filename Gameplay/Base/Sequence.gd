@@ -7,10 +7,10 @@ const RESET_STATE = -1
 
 enum EType
 {
-	Start,
-	Press,
-	Release,
-	Cancel,
+	started_sequence,
+	pressed_sequence,
+	released_sequence,
+	canceled_sequence,
 }
 
 # PUBLIC

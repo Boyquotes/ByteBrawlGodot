@@ -26,15 +26,15 @@ var current_state: ESequenceState = ESequenceState.Done
 
 # LIFECYCLE
 func _init():
-	self.started_sequence = Sequence.new(Sequence.EType.Start)
-	self.pressed_sequence = Sequence.new(Sequence.EType.Press)
-	self.released_sequence = Sequence.new(Sequence.EType.Release)
-	self.canceled_sequence = Sequence.new(Sequence.EType.Cancel)
+	self.started_sequence = Sequence.new(Sequence.EType.started_sequence)
+	self.pressed_sequence = Sequence.new(Sequence.EType.pressed_sequence)
+	self.released_sequence = Sequence.new(Sequence.EType.released_sequence)
+	self.canceled_sequence = Sequence.new(Sequence.EType.canceled_sequence)
 
 func _ready():
 	if self.started_sequence.actions.any(func(action: Action): return action.type == Action.EType.setTarget):
-		self.released_sequence.actions.append(ActionSwitchTargetMode.new({ "target_type": "None" }))
-		self.canceled_sequence.actions.append(ActionSwitchTargetMode.new({ "target_type": "None" }))
+		self.released_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.None))
+		self.canceled_sequence.actions.append(ActionSwitchTargetMode.new(ActionSwitchTargetMode.ETargetType.None))
 
 func _enter_tree():
 	add_child(self.started_sequence)

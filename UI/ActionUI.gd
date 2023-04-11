@@ -15,7 +15,7 @@ func init(action_name: String, index: int):
 	(get_node("Header/Panel/Name") as Label).text = action_name
 	
 	var parameters_container: Container = get_node("ScrollContainerListParameters/ListParameters")
-	var action: Action = ActionsInfo.actions[action_name].new(PlayerInfo.get_selected_actions_values()[index]["values"])
+	var action: Action = ActionsInfo.actions.filter(func (x): return x.display_name == action_name)[0].new_from_editor(PlayerInfo.get_selected_actions_values()[index]["values"])
 	for param in action.get_variables_to_set():
 		param.connect("on_value_changed", input_value_changed)
 		parameters_container.add_child(param)

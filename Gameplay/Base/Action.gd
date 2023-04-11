@@ -17,7 +17,7 @@ enum EType
 var type: EType = EType.saveLocation
 
 var duration_min: float = 0.
-var duration_max: float = 1.0
+var duration_max: float = INF
 
 var duration: float = duration_min:
 	set(x): duration = clamp(x, duration_min, duration_max)
@@ -25,7 +25,6 @@ var cancelable: bool = false
 var blockable: bool = false
 var end_sequence: bool = false
 var requirements: Array[Requirement] = []
-var allowed_stance: Array[Sequence.EType] = []
 var block_action: bool = false
 var block_movement: bool = false
 
@@ -34,17 +33,17 @@ var _started = false
 var _current_duration: float = 0.
 var _owner: Node
 
-var _owner_gameplay: Gameplay: get = _owner_gameplay_get
-func _owner_gameplay_get(): return _owner.get_node("gameplay") as Gameplay if _owner else null
+var _owner_gameplay: Gameplay:
+	get: return _owner.get_node("gameplay") as Gameplay if _owner else null
 
-var _owner_movement: Move: get = _owner_movement_get
-func _owner_movement_get(): return _owner.get_node("movement") as Move if _owner else null
+var _owner_movement: Move:
+	get: return _owner.get_node("movement") as Move if _owner else null
 
-var _owner_materia_pool: MateriaPool: get = _owner_materia_pool_get
-func _owner_materia_pool_get(): return _owner.get_node("materia_pool") as MateriaPool if _owner and _owner.has_node("materia_pool") else null
+var _owner_materia_pool: MateriaPool:
+	get: return _owner.get_node("materia_pool") as MateriaPool if _owner and _owner.has_node("materia_pool") else null
 
-var _owner_target_locator: BaseNode2D: get = _owner_target_locator_get
-func _owner_target_locator_get(): return _owner.get_node("target_locator") as BaseNode2D if _owner and _owner.has_node("target_locator") else null
+var _owner_target_locator: BaseNode2D:
+	get: return _owner.get_node("target_locator") as BaseNode2D if _owner and _owner.has_node("target_locator") else null
 
 # LIFECYCLE
 func _enter_tree():
