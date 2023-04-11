@@ -20,6 +20,6 @@ func create():
 
 func reset():
 	for child in get_children():
-		child.free()
+		child.queue_free()
 
 	create()
