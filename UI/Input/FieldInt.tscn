@@ -1,7 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://67cn7c0xpnl6"]
+[gd_scene load_steps=3 format=3 uid="uid://67cn7c0xpnl6"]
 
 [ext_resource type="Script" path="res://UI/Input/FieldInt.gd" id="1_ntwv3"]
+[ext_resource type="Theme" uid="uid://clxd8haha2pce" path="res://UI/new_theme.tres" id="2_u5ydk"]
 
-[node name="FieldFloat" type="SpinBox"]
-custom_minimum_size = Vector2(20, 50)
+[node name="FieldInt" type="VBoxContainer"]
 script = ExtResource("1_ntwv3")
+
+[node name="Panel" type="PanelContainer" parent="."]
+clip_contents = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("2_u5ydk")
+rounded = true
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/SpinBox" to="." method="_on_value_changed"]
