@@ -36,12 +36,17 @@ script = ExtResource("1_7c80b")
 [node name="Header" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Name" type="LineEdit" parent="Header"]
+[node name="Panel" type="PanelContainer" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="Header/Panel"]
 custom_minimum_size = Vector2(2.08165e-12, 40)
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
-editable = false
+text = "awddwa"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Cancel" type="Button" parent="Header"]
 custom_minimum_size = Vector2(40, 40)
@@ -61,4 +66,5 @@ custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 3
 
+[connection signal="gui_input" from="Header/Panel" to="." method="_on_panel_gui_input"]
 [connection signal="pressed" from="Header/Cancel" to="." method="_on_cancel_pressed"]

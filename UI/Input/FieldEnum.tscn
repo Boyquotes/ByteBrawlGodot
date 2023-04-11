@@ -2,6 +2,25 @@
 
 [ext_resource type="Script" path="res://UI/Input/FieldEnum.gd" id="1_x3l3n"]
 
-[node name="FieldEnum" type="MenuButton"]
-custom_minimum_size = Vector2(20, 50)
+[node name="FieldEnum" type="HBoxContainer"]
+offset_right = 81.0
+offset_bottom = 50.0
+alignment = 1
 script = ExtResource("1_x3l3n")
+
+[node name="Panel" type="PanelContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="MenuButton" parent="."]
+custom_minimum_size = Vector2(20, 50)
+layout_mode = 2
+size_flags_horizontal = 3
