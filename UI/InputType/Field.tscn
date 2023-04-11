@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5kjstwojd7su"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://UI/Input/Field.gd" id="1_kx2i1"]
+[ext_resource type="Script" path="res://UI/InputType/Field.gd" id="1_kx2i1"]
 
 [node name="FieldFloat" type="LineEdit"]
 alignment = 1

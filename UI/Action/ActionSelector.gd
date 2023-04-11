@@ -1,7 +1,7 @@
 class_name ActionSelector
 extends Container
 
-var action_button = load("res://UI/ActionButton.tscn")
+var action_button = load("res://UI/Action/ActionButton.tscn")
 
 
 func _ready():

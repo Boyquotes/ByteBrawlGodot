@@ -15,3 +15,4 @@ func _ready():
 func _pressed():
 	PlayerInfo.selected_input = input_index
 	PlayerInfo.action_list.reset()
+	PlayerInfo.action_selector.reset()

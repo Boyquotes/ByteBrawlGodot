@@ -1,7 +1,7 @@
 class_name ActionList
 extends Container
 
-var ActionBox = load("res://UI/ActionUI.tscn")
+var ActionBox = load("res://UI/Action/ActionUI.tscn")
 
 func _ready():
 	PlayerInfo.action_list = self

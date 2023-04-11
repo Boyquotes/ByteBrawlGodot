@@ -1,13 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cds8ivpd5uwmg"]
+[gd_scene load_steps=2 format=3 uid="uid://b3qpnooscl7io"]
 
-[ext_resource type="Script" path="res://UI/Input/FieldFloat.gd" id="1_sx2or"]
-[ext_resource type="Theme" uid="uid://clxd8haha2pce" path="res://UI/new_theme.tres" id="2_bbny4"]
+[ext_resource type="Script" path="res://UI/InputType/FieldFloat.gd" id="1_3gqrg"]
 
 [node name="FieldFloat" type="VBoxContainer"]
 offset_right = 297.0
 offset_bottom = 216.0
 alignment = 1
-script = ExtResource("1_sx2or")
+script = ExtResource("1_3gqrg")
 
 [node name="Panel" type="PanelContainer" parent="."]
 clip_contents = true
@@ -27,7 +26,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme = ExtResource("2_bbny4")
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
 clip_contents = true

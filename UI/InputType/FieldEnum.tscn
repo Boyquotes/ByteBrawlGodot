@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvai8t4ta1xwk"]
+[gd_scene load_steps=2 format=3 uid="uid://ego4vsftr77b"]
 
-[ext_resource type="Script" path="res://UI/Input/FieldEnum.gd" id="1_x3l3n"]
+[ext_resource type="Script" path="res://UI/InputType/FieldEnum.gd" id="1_egajd"]
 
 [node name="FieldEnum" type="HBoxContainer"]
 offset_right = 81.0
 offset_bottom = 50.0
 alignment = 1
-script = ExtResource("1_x3l3n")
+script = ExtResource("1_egajd")
 
 [node name="Panel" type="PanelContainer" parent="."]
 clip_contents = true

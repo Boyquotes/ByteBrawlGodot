@@ -1,8 +1,6 @@
 class_name ActionUI
 extends Container
 
-var action_parameter = load("res://UI/Parameter.tscn")
-
 var action_name: String
 
 var drag_point = null
