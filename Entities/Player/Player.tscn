@@ -28,5 +28,5 @@ script = ExtResource("3_k7330")
 [node name="gameplay" type="Node" parent="."]
 script = ExtResource("4_8svt5")
 
-[node name="Materia_pool" type="Node" parent="."]
+[node name="materia_pool" type="Node" parent="."]
 script = ExtResource("5_n5t1p")

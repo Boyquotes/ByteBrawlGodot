@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0igj1eqgb75i"]
+
+[ext_resource type="Script" path="res://UI/HUD/MateriaHUD.gd" id="1_5bm1s"]
+[ext_resource type="Texture2D" uid="uid://bq58bb3j3mjg0" path="res://Assets/huge-set-fantasy-planets-dark-background/icons/icon_1.png" id="2_pnsoj"]
+
+[node name="MateriaHUD" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(110, 50)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+script = ExtResource("1_5bm1s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_pnsoj")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="number" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "#"
+
+[node name="name" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "name"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2

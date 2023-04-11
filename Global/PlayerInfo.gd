@@ -5,6 +5,7 @@ var player_data: Dictionary = load("res://Data/PlayerData.json").data
 var selected_stance: String = "normal"
 var selected_input: int = 0
 var selected_sequence: String = "started_sequence"
+var player: Player
 
 var action_list: ActionList
 var action_selector: ActionSelector
