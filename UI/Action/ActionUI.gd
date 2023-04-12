@@ -41,6 +41,7 @@ func _on_panel_gui_input(event):
 			instantiate_ghost_action()
 			set_position(get_global_mouse_position() - drag_point)
 		else:
+			global_position = ghost_action.global_position
 			drag_point = null
 			ghost_action.free()
 			ghost_action = null
@@ -78,10 +79,12 @@ func find_nearest_child(min_distance: float):
 func instantiate_ghost_action():
 	ghost_action = duplicate()
 	
+	ghost_action.size = size
 	ghost_action.modulate = Color(1, 1, 1, 0.3)
 	disable_scripts_recursive(ghost_action)
 	
 	should_set_ghost_pos = true
 	ghost_pos = global_position
+	ghost_action.global_position = global_position
 	
-	add_child(ghost_action)
+	find_parent("InputActionCreationMenu").find_child("GhostActionContainer").add_child(ghost_action)

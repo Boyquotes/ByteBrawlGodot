@@ -128,5 +128,10 @@ layout_mode = 2
 size_flags_horizontal = 10
 text = "Save"
 
+[node name="GhostActionContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/DiscardChangesButton" to="VBoxContainer/HBoxContainer" method="_discard"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/SaveButton" to="VBoxContainer/HBoxContainer" method="_save"]

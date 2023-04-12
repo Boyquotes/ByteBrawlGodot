@@ -18,14 +18,14 @@ func Bool(id_name: String, pretty_name: String, getter: Callable, setter: Callab
 	field.init(id_name, pretty_name, getter, setter)
 	return field
 
-func Int(id_name: String, pretty_name: String, getter: Callable, setter: Callable, min: int, max: int):
+func Int(id_name: String, pretty_name: String, getter: Callable, setter: Callable, min: int, max: int, cost_curve: CostCurve):
 	var field: FieldInt = field_int.instantiate()
-	field.init(id_name, pretty_name, getter, setter, [min, max])
+	field.init(id_name, pretty_name, getter, setter, [min, max, cost_curve])
 	return field
 
-func Float(id_name: String, pretty_name: String, getter: Callable, setter: Callable, min: float, max: float):
+func Float(id_name: String, pretty_name: String, getter: Callable, setter: Callable, min: float, max: float, cost_curve: CostCurve):
 	var field: FieldFloat = field_float.instantiate()
-	field.init(id_name, pretty_name, getter, setter, [min, max])
+	field.init(id_name, pretty_name, getter, setter, [min, max, cost_curve])
 	return field
 
 func Enum(id_name: String, pretty_name: String, getter: Callable, setter: Callable, values: Array):
