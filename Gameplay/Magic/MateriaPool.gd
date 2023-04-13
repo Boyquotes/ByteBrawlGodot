@@ -14,17 +14,17 @@ extends BaseNode
 
 
 
-func addMateriaByType(type: Materia.EType):
+func add_materia_by_type(type: Materia.EType):
 	self.add_child(Materia.new(type))
 
 
-func addMateria(materia: Materia):
+func add_materia(materia: Materia):
 	self.add_child(materia)
 
 
 # (<Materia.EType, Int>) -> bool
-func removeMaterias(materias: Dictionary) -> bool:
-	var children = getChildAsMaterias()
+func remove_materias(materias: Dictionary) -> bool:
+	var children = get_child_as_materias()
 	for key in materias.keys():
 		for i in materias[key]:
 			var toRemove = (children[key] as Array[Materia]).pop_front() as Materia
@@ -36,17 +36,17 @@ func removeMaterias(materias: Dictionary) -> bool:
 
 
 # (<Materia.EType, Int>) -> bool
-func hasMaterias(materias: Dictionary) -> bool:
-	var children = getChildAsMaterias()
+func has_materias(materias: Dictionary) -> bool:
+	var children = get_child_as_materias()
 	return materias.keys().all(func (key): materias[key] <= (children[key] as Array[Materia]).size())
 
 
 # (void) -> <Materia.EType, Array[Materia]>
-func getChildAsMaterias() -> Dictionary:
+func get_child_as_materias() -> Dictionary:
 	var ret = {}
 	for type in Materia.EType:
 		ret[type] = []
 	for child in self.get_children():
 		if child is Materia:
-			ret[child.type].append(child)
+			ret[Materia.EType.find_key(child.type)].append(child)
 	return ret

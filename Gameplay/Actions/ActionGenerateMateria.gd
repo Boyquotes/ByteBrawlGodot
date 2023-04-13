@@ -27,7 +27,7 @@ func activate():
 
 func done():
 	if _owner_materia_pool:
-		_owner_materia_pool.addMateria(materia.clone())
+		_owner_materia_pool.add_materia(materia.clone())
 		pass
 
 # UI HELPER
