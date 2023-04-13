@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0igj1eqgb75i"]
+[gd_scene load_steps=3 format=3 uid="uid://bah8q0qihx5de"]
 
 [ext_resource type="Script" path="res://UI/HUD/MateriaHUD.gd" id="1_5bm1s"]
-[ext_resource type="Texture2D" uid="uid://bq58bb3j3mjg0" path="res://Assets/huge-set-fantasy-planets-dark-background/icons/icon_1.png" id="2_pnsoj"]
+[ext_resource type="Texture2D" uid="uid://bq58bb3j3mjg0" path="res://Assets/MateriaIcons/icon_1.png" id="2_5nure"]
 
 [node name="MateriaHUD" type="Control"]
 clip_contents = true
@@ -16,24 +16,24 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource("1_5bm1s")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="container" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="icon" type="TextureRect" parent="container"]
 layout_mode = 2
-texture = ExtResource("2_pnsoj")
+texture = ExtResource("2_5nure")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="number" type="Label" parent="HBoxContainer"]
+[node name="count" type="Label" parent="container"]
 layout_mode = 2
 text = "#"
 
-[node name="name" type="Label" parent="HBoxContainer"]
+[node name="name" type="Label" parent="container"]
 layout_mode = 2
 text = "name"
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="container"]
 layout_mode = 2

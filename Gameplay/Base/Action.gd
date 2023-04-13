@@ -22,9 +22,8 @@ var duration_max: float = INF
 var duration: float = duration_min:
 	set(x): duration = clamp(x, duration_min, duration_max)
 var cancelable: bool = false
-var blockable: bool = false
 var end_sequence: bool = false
-var requirements: Array[Requirement] = []
+
 var block_action: bool = false
 var block_movement: bool = false
 
@@ -105,7 +104,7 @@ func can_be_cast():
 
 func _can_be_cast():
 	if _owner_gameplay.action_blocked: return false
-	return requirements.all(func(requirement): requirement.is_satisfied(_owner)) and can_be_cast()
+	return can_be_cast()
 
 
 # UI HELPER
