@@ -1,5 +1,5 @@
 class_name FieldInt
-extends Field
+extends FieldSlider
 
 var spinbox: SpinBox
 var slider: Slider
@@ -18,7 +18,7 @@ func init(field_name: String, pretty_name: String, getter: Callable, setter: Cal
 	slider.max_value = _args[1]
 	spinbox.max_value = _args[1]
 	
-	super.init(field_name, pretty_name, getter, setter)
+	super.init(field_name, pretty_name, getter, setter, [_args[2]])
 
 func update_value(field_value):
 	super.update_value(field_value)
