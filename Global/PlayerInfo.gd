@@ -13,15 +13,18 @@ var action_selector: ActionSelector
 var stances: Dictionary
 
 func _init():
+	pass
+
+func _ready():
 	init_stances()
 
 func init_stances():
 	for stance_name in player_data:
-		var new_stance: Stance = Stance.new(stance_name)
-		stances[stance_name] = new_stance
-		
-		var inputs_info: Array = player_data[stance_name]["inputs"]
+		stances[stance_name] = Stance.new(stance_name)
 
+	for stance_name in stances.keys():
+		var new_stance: Stance = stances[stance_name]
+		var inputs_info: Array = player_data[stance_name]["inputs"]
 		for i in inputs_info.size():
 			for sequence_name in inputs_info[i]:
 				for action_info in inputs_info[i][sequence_name]:
