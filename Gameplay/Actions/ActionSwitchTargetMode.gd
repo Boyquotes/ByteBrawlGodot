@@ -18,6 +18,10 @@ func _init(target_type: ETargetType):
 	self.type = EType.setTarget
 	self.target_type = target_type
 
+func _process(delta_time):
+	if target_type == ETargetType.None or (_owner_target_locator and not _owner_target_locator.position.is_zero_approx()):
+		_done()
+
 func activate():
 	if _owner_target_locator:
 		_owner_target_locator.queue_free()
@@ -50,6 +54,3 @@ func get_variables_to_set() -> Array[Field]:
 			target_type_keys.slice(1)
 		)
 	]
-
-func done():
-	pass
