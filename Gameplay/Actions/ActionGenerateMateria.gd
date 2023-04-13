@@ -12,6 +12,9 @@ var _generation_time_customer: float = 1.
 var generation_time_customer:
 	set(x): _generation_time_customer = x; duration = PLAYER_STAT_GENERATION_MATERIA * x
 
+var cost_curve_materia_life_time: CostCurve = CostCurve.new(.1, 10., CostCurve.EMode.Exponential)
+var cost_curve_generation_time_customer: CostCurve = CostCurve.new(.1, 10., CostCurve.EMode.Exponential)
+
 const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence]
 const display_name = "GenerateMateria"
 
@@ -51,7 +54,8 @@ func get_variables_to_set() -> Array[Field]:
 			func(): return materia.life_time,
 			func(x): materia.life_time = x,
 			materia_life_time_min,
-			materia_life_time_max
+			materia_life_time_max,
+			cost_curve_materia_life_time
 		),
 		ActionsInfo.Float(
 			"generation_time_customer",
@@ -59,6 +63,7 @@ func get_variables_to_set() -> Array[Field]:
 			func(): return _generation_time_customer,
 			func(x): generation_time_customer = x,
 			generation_time_customer_min,
-			generation_time_customer_max
+			generation_time_customer_max,
+			cost_curve_generation_time_customer
 		)
 	]

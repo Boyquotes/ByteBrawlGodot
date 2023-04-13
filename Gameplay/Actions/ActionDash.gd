@@ -9,6 +9,9 @@ var distance: float = distance_min:
 const allowed_sequence: Array[Sequence.EType] = [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
 const display_name = "Dash"
 
+var cost_curve_duration = CostCurve.new(10., .1, CostCurve.EMode.Exponential)
+var cost_curve_distance = CostCurve.new(.1, 10., CostCurve.EMode.Exponential)
+
 func _init(distance: float, duration: float):
 	super._init()
 	self.duration_min = 0.1
@@ -18,7 +21,6 @@ func _init(distance: float, duration: float):
 	self.type = EType.cast
 	self.duration = duration
 	self.distance = distance
-
 
 # LOGIC
 func activate():
@@ -41,8 +43,8 @@ static func new_from_editor(values: Dictionary):
 
 func get_variables_to_set() -> Array[Field]:
 	return [
-		ActionsInfo.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max),
-		ActionsInfo.Float("duration", "Duration", func(): return duration, func(x): duration = x, duration_min, duration_max)
+		ActionsInfo.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max, cost_curve_distance),
+		ActionsInfo.Float("duration", "Duration", func(): return duration, func(x): duration = x, duration_min, duration_max, cost_curve_duration)
 	]
 
 

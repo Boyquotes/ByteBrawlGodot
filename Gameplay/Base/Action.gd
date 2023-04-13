@@ -27,6 +27,8 @@ var end_sequence: bool = false
 var block_action: bool = false
 var block_movement: bool = false
 
+@export var cost_curve: CostCurve
+
 # PRIVATE
 var _started = false
 var _current_duration: float = 0.

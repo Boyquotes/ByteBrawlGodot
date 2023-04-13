@@ -1,7 +1,7 @@
 extends Container
 
-var input_button = load("res://UI/InputButton.tscn")
-var input_button_group = load("res://UI/InputButtonGroup.tres")
+var input_button = load("res://UI/Input/InputButton.tscn")
+var input_button_group = load("res://UI/Input/InputButtonGroup.tres")
 
 func _init():
 	var first_input: bool = true
