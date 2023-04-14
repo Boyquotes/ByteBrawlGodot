@@ -5,13 +5,13 @@ var popup: PopupMenu
 
 var button: MenuButton
 
-func init(field_name: String, pretty_name: String, getter: Callable, setter: Callable, items_string: Array = []):
+func init(field_name: String, pretty_name: String, getter: Callable, setter: Callable, _args: Array = []):
 	button = get_node("Button")
 	
 	popup = button.get_popup()
 	
 	popup.connect("id_pressed", on_item_pressed)
-	for item_string in items_string:
+	for item_string in _args[0].values:
 		popup.add_item(item_string)
 	
 	(get_node("Panel/Label") as Label).text = pretty_name

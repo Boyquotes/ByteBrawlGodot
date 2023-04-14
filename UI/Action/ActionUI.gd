@@ -8,8 +8,6 @@ var ghost_action: ActionUI
 var should_set_ghost_pos: bool = false
 var ghost_pos
 
-var params: Array[Field]
-
 var parameters_container: Container
 
 func init(action_name: String, index: int):
@@ -19,11 +17,9 @@ func init(action_name: String, index: int):
 	parameters_container = get_node("ScrollContainerListParameters/ListParameters")
 	var action: Action = ActionsInfo.actions.filter(func (x): return x.display_name == action_name)[0].new_from_json(PlayerInfo.get_selected_actions_values()[index]["values"])
 	
-	self.params = action.get_variables_to_set()
-	for param in params:
-		param.action_ui = self
-		param.connect("on_value_changed", input_value_changed)
-		parameters_container.add_child(param)
+	for field in action.fields:
+		field.connect("on_value_changed", input_value_changed)
+		parameters_container.add_child(field)
 
 func _process(delta):
 	if should_set_ghost_pos:
