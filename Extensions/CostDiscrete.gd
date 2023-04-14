@@ -16,7 +16,7 @@ static func init_same_values(keys: Array, value: float, other_values: Dictionary
 	var values = {}
 	
 	for key in keys:
-		values[keys] = value
+		values[key] = value
 	
 	for key in other_values:
 		values[key] = other_values[key]
