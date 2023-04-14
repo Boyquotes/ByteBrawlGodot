@@ -15,7 +15,7 @@ func create():
 	for action in ui_info.selected_sequence.actions:
 		var box: ActionUI = ActionBox.instantiate()
 
-		box.init(action["name"], i, ui_info)
+		box.init(action.action_name, i, ui_info)
 		add_child(box)
 		
 		i += 1

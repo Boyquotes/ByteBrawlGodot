@@ -10,8 +10,7 @@ func _ready():
 	text = action_name
 
 func _pressed():
-	var action_values = {"name": action_name, "values": ActionsInfo.actions.filter(func (x): return x.display_name == action_name)[0].get_default_values()}
-	var action = Action.new_from_json(action_values)
+	var action = Action.new_from_name(action_name)
 	
 	ui_info.selected_sequence.actions.append(action)
 	ui_info.action_list.reset()

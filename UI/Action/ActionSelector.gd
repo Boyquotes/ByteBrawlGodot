@@ -16,7 +16,7 @@ func create():
 	for action in actions:
 		var box: ActionButton = action_button.instantiate()
 
-		box.action_name = action.display_name
+		box.action_name = action.action_name
 		add_child(box)
 
 
