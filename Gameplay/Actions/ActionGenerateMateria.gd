@@ -7,45 +7,27 @@ const materia_life_time_max: float = 10.
 const generation_time_customer_min: float = .2
 const generation_time_customer_max: float = 4.
 
-var materia: Materia
-var _generation_time_customer: float = 1.
+var materia: Materia = Materia.new(Materia.EType.Fire)
+var _generation_time_customer: float
 var generation_time_customer:
 	set(x): _generation_time_customer = x; duration = PLAYER_STAT_GENERATION_MATERIA * x
 
 const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence]
-const display_name = "GenerateMateria"
+const action_name = "GenerateMateria"
 
-
-func _init(materia: Materia, generation_time_customer: float):
-	self.materia = materia
-	self.generation_time_customer = generation_time_customer
+func _init():
+	self.type = EType.generateMateria
+	self.generation_time_customer = 1
 
 func activate():
 	pass
 
 func done():
-	if _owner_materia_pool:
-		_owner_materia_pool.add_materia(materia.clone())
+	if _owner.materia_pool:
+		_owner.materia_pool.add_materia(materia.clone())
 		pass
 
 # UI HELPER
-func get_display_name():
-	return self.display_name
-
-static func get_default_values() -> Dictionary:
-	return { "materia_type": "Fire", "materia_life_time": 4., "generation_time_customer": 1. }
-
-func to_json():
-	return {
-		"name": display_name,
-		"values": {
-		}
-	}
-
-static func new_from_json(values: Dictionary):
-	return ActionGenerateMateria.new(Materia.new(Materia.EType.get(values["materia_type"]), values["materia_life_time"]), values["generation_time_customer"])
-
-
 func set_fields() -> Array[Field]:
 	var materia_type_keys = Materia.EType.keys()
 	return [

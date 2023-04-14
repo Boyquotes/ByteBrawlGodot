@@ -9,22 +9,21 @@ enum ETargetType {
 	Position,
 }
 
-var target_type: ETargetType
+var target_type: ETargetType = ETargetType.None
 
 const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
-const display_name = "SwitchTargetMode"
+const action_name = "SwitchTargetMode"
 
-func _init(target_type: ETargetType):
+func _init():
 	self.type = EType.setTarget
-	self.target_type = target_type
 
 func _process(delta_time):
-	if target_type == ETargetType.None or (_owner_target_locator and not _owner_target_locator.position.is_zero_approx()):
+	if target_type == ETargetType.None or (_owner.target_locator and not _owner.target_locator.position.is_zero_approx()):
 		_done()
 
 func activate():
-	if _owner_target_locator:
-		_owner_target_locator.queue_free()
+	if _owner.target_locator:
+		_owner.target_locator.queue_free()
 	spawn_target()
 
 func spawn_target():
@@ -37,15 +36,6 @@ func spawn_target():
 			_owner.add_child(LocatorPosition.new())
 
 # UI HELPER
-func get_display_name():
-	return self.display_name
-
-static func get_default_values() -> Dictionary:
-	return { "target_type": "Direction" }
-
-static func new_from_json(values: Dictionary):
-	return ActionSwitchTargetMode.new(ETargetType.get(values["target_type"]))
-
 func set_fields() -> Array[Field]:
 	var target_type_keys = ETargetType.keys()
 	return [

@@ -7,22 +7,21 @@ var distance: float = distance_min:
 	set(x): distance = clamp(x, distance_min, distance_max)
 
 const allowed_sequence: Array[Sequence.EType] = [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
-const display_name = "Dash"
+const action_name = "Dash"
 
-func _init(distance: float, duration: float):
+func _init():
 	super._init()
 	self.duration_min = 0.1
 	self.duration_max = 2.0
+	self.duration = duration_max
 	self.block_movement = true
 	self.block_action = true
 	self.type = EType.cast
-	self.duration = duration
-	self.distance = distance
 
 # LOGIC
 func activate():
-	if _owner_target_locator:
-		(_owner as CharacterBody2D).velocity = _owner_target_locator.position.normalized() * distance / duration
+	if _owner.target_locator:
+		(_owner as CharacterBody2D).velocity = _owner.target_locator.position.normalized() * distance / duration
 
 func done():
 	(_owner as CharacterBody2D).velocity = Vector2.ZERO
@@ -34,13 +33,6 @@ func cancel():
 # UI HELPER
 func get_display_name():
 	return self.display_name
-
-static func get_default_values() -> Dictionary:
-	return { "distance": 50, "duration": 0.2 }
-
-
-static func new_from_json(values: Dictionary):
-	return ActionDash.new(values["distance"], values["duration"])
 
 func set_fields() -> Array[Field]:
 	return [

@@ -7,8 +7,7 @@ enum EItemType {
 }
 
 const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence, Sequence.EType.released_sequence]
-const display_name = "Throw"
-
+const action_name = "Throw"
 
 var item_type: EItemType
 
@@ -28,15 +27,6 @@ func _init(item_type: EItemType):
 
 
 # UI HELPER
-func get_display_name():
-	return self.display_name
-
-static func get_default_values() -> Dictionary:
-	return { "item_type": "ThrowingKnife" }
-
-static func new_from_json(values: Dictionary):
-	return ActionThrow.new(EItemType.get(values["item_type"]))
-
 func set_fields() -> Array[Field]:
 	var item_type_keys = EItemType.keys()
 	return [

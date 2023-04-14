@@ -34,19 +34,7 @@ var fields: Array[Field] = []
 # PRIVATE
 var _started = false
 var _current_duration: float = 0.
-var _owner: Node
-
-var _owner_gameplay: Gameplay:
-	get: return _owner.get_node("gameplay") as Gameplay if _owner else null
-
-var _owner_movement: Move:
-	get: return _owner.get_node("movement") as Move if _owner else null
-
-var _owner_materia_pool: MateriaPool:
-	get: return _owner.get_node("materia_pool") as MateriaPool if _owner and _owner.has_node("materia_pool") else null
-
-var _owner_target_locator: BaseNode2D:
-	get: return _owner.get_node("target_locator") as BaseNode2D if _owner and _owner.has_node("target_locator") else null
+var _owner: Player
 
 # LIFECYCLE
 func _init():
@@ -85,13 +73,13 @@ func _cancel():
 
 func _block_action_if_needed(value: bool):
 	if not self.block_action: return
-	var gameplay_node = _owner_gameplay
+	var gameplay_node = _owner.gameplay
 	if gameplay_node:
 		gameplay_node.action_blocked = value
 
 func _block_movement_if_needed(value: bool):
 	if not self.block_movement: return
-	var movement_node = _owner_movement
+	var movement_node = _owner.movement
 	if movement_node:
 		movement_node.block_movement(value)
 
@@ -109,7 +97,7 @@ func can_be_cast():
 	return true
 
 func _can_be_cast():
-	if _owner_gameplay.action_blocked: return false
+	if _owner.gameplay.action_blocked: return false
 	return can_be_cast()
 
 # UI HELPER
@@ -132,9 +120,15 @@ func from_json(data: Dictionary):
 	for field in fields:
 		field.set.call(data[field.field_name])
 
-static func new_from_json(data: Dictionary):
-	var action_type = ActionsInfo.actions.filter(func (x): return x.display_name == data.name)[0]
-	return action_type.new_from_json(data.values)
+static func new_from_name(name: String) -> Action:
+	var ActionClasses = ActionsInfo.actions.filter(func (x): return x.action_name == name)
+	return ActionClasses[0].new() if ActionClasses else null
+
+static func new_from_json(data: Dictionary) -> Action:
+	var action = new_from_name(data.name)
+	if not action: return null
+	action.from_json(data)
+	return action
 
 # DEBUG
 func _to_string() -> String:
