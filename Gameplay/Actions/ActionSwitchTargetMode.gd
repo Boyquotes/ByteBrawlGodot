@@ -18,6 +18,10 @@ func _init(target_type: ETargetType):
 	self.type = EType.setTarget
 	self.target_type = target_type
 
+func _process(delta_time):
+	if target_type == ETargetType.None or (_owner_target_locator and not _owner_target_locator.position.is_zero_approx()):
+		_done()
+
 func activate():
 	if _owner_target_locator:
 		_owner_target_locator.queue_free()
@@ -33,13 +37,16 @@ func spawn_target():
 			_owner.add_child(LocatorPosition.new())
 
 # UI HELPER
+func get_display_name():
+	return self.display_name
+
 static func get_default_values() -> Dictionary:
 	return { "target_type": "Direction" }
 
-static func new_from_editor(values: Dictionary):
+static func new_from_json(values: Dictionary):
 	return ActionSwitchTargetMode.new(ETargetType.get(values["target_type"]))
 
-func get_variables_to_set() -> Array[Field]:
+func set_fields() -> Array[Field]:
 	var target_type_keys = ETargetType.keys()
 	return [
 		ActionsInfo.Enum(
@@ -50,6 +57,3 @@ func get_variables_to_set() -> Array[Field]:
 			CostDiscrete.init_same_values(target_type_keys.slice(1), 1.)
 		)
 	]
-
-func done():
-	pass

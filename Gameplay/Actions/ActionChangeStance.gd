@@ -21,11 +21,11 @@ func done():
 # UI HELPER
 static func get_default_values() -> Dictionary:
 	return {"stance": "normal"}
-	
-static func new_from_editor(values: Dictionary):
+
+static func new_from_json(values: Dictionary):
 	return ActionChangeStance.new(PlayerInfo.stances[values["stance"]])
 
-func get_variables_to_set() -> Array[Field]:
+func set_fields() -> Array[Field]:
 	return [
 		ActionsInfo.Enum(
 			"stance",

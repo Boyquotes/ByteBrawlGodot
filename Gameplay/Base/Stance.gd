@@ -22,6 +22,16 @@ func _exit_tree():
 func _process(delta):
 	pass
 
+# UI HELPER
+func to_json():
+	return {
+		"name": self.stance_name,
+		"inputs": self.inputs.map(func(x): x.to_json())
+	}
+
+func from_json(data: Dictionary):
+	inputs = data.inputs.map(func(x): var action = ActionInput.new(); return action.from_json(x))
+
 # DEBUG
 func _to_string() -> String:
 	return \

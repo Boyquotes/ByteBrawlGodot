@@ -3,6 +3,7 @@ extends Node
 
 
 var action_blocked: bool = false
+var stances: Array[Stance]
 
 func _ready():
 	change_stance(PlayerInfo.stances["normal"])
@@ -43,4 +44,17 @@ func deactive_input(index: int):
 
 func block_action(value: bool):
 	self.action_blocked = value
+
+# UI HELPER
+func to_json():
+	return {
+		"stances": self.stances.map(func(x): x.to_json())
+	}
+
+func from_json(data: Dictionary):
+	for stance in data.stances:
+		stances.append(Stance.new(stance.name))
+	for key in data.stances.keys():
+		stances[key].from_json(data.stances[key])
+
 

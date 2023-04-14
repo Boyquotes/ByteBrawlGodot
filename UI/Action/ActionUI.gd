@@ -17,7 +17,7 @@ func init(action_name: String, index: int):
 	(get_node("Header/Panel/Name") as Label).text = action_name
 	
 	parameters_container = get_node("ScrollContainerListParameters/ListParameters")
-	var action: Action = ActionsInfo.actions.filter(func (x): return x.display_name == action_name)[0].new_from_editor(PlayerInfo.get_selected_actions_values()[index]["values"])
+	var action: Action = ActionsInfo.actions.filter(func (x): return x.display_name == action_name)[0].new_from_json(PlayerInfo.get_selected_actions_values()[index]["values"])
 	
 	self.params = action.get_variables_to_set()
 	for param in params:
