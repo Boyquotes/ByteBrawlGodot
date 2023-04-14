@@ -35,13 +35,17 @@ func cancel():
 
 
 # UI HELPER
+func get_display_name():
+	return self.display_name
+
 static func get_default_values() -> Dictionary:
 	return { "distance": 50, "duration": 0.2 }
 
-static func new_from_editor(values: Dictionary):
+
+static func new_from_json(values: Dictionary):
 	return ActionDash.new(values["distance"], values["duration"])
 
-func get_variables_to_set() -> Array[Field]:
+func set_fields() -> Array[Field]:
 	return [
 		ActionsInfo.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max, cost_curve_distance),
 		ActionsInfo.Float("duration", "Duration", func(): return duration, func(x): duration = x, duration_min, duration_max, cost_curve_duration)

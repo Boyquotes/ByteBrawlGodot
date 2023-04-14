@@ -49,6 +49,15 @@ func can_be_cast():
 			return false
 	return true
 
+# UI HELPER
+
+func to_json():
+	return {
+		"actions": self.actions.map(func(x): return x.to_json())
+	}
+
+func from_json(data: Dictionary):
+	actions = data.actions.map(func(x): return Action.new_from_json(x))
 
 # DEBUG
 func _to_string() -> String:

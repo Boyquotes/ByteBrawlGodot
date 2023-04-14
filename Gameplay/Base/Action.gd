@@ -29,6 +29,8 @@ var block_movement: bool = false
 
 @export var cost_curve: CostCurve
 
+var fields: Array[Field] = []
+
 # PRIVATE
 var _started = false
 var _current_duration: float = 0.
@@ -47,6 +49,9 @@ var _owner_target_locator: BaseNode2D:
 	get: return _owner.get_node("target_locator") as BaseNode2D if _owner and _owner.has_node("target_locator") else null
 
 # LIFECYCLE
+func _init():
+	self.set_fields()
+
 func _enter_tree():
 	if not _owner:
 		_owner = find_parent("gameplay").get_parent()
@@ -57,7 +62,6 @@ func _process(delta_time):
 	_current_duration += delta_time
 	if _current_duration >= duration:
 		_done()
-
 
 # LOGIC
 func _activate():
@@ -108,11 +112,29 @@ func _can_be_cast():
 	if _owner_gameplay.action_blocked: return false
 	return can_be_cast()
 
-
 # UI HELPER
-func get_variables_to_set() -> Array[Field]:
-	return []
+func get_display_name():
+	return "! NO DISPLAY NAME !"
 
+func set_fields():
+	pass
+
+func to_json():
+	var values: Dictionary
+	for field in fields:
+		values[field.field_name] = field.getter.call()
+	return {
+		"name": get_display_name(),
+		"values": values
+	}
+
+func from_json(data: Dictionary):
+	for field in fields:
+		field.set.call(data[field.field_name])
+
+static func new_from_json(data: Dictionary):
+	var action_type = ActionsInfo.actions.filter(func (x): return x.display_name == data.name)[0]
+	return action_type.new_from_json(data.values)
 
 # DEBUG
 func _to_string() -> String:

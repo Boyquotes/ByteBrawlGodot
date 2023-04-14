@@ -18,6 +18,7 @@ var cost_curve_generation_time_customer: CostCurve = CostCurve.new(.1, 10., Cost
 const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence]
 const display_name = "GenerateMateria"
 
+
 func _init(materia: Materia, generation_time_customer: float):
 	self.materia = materia
 	self.generation_time_customer = generation_time_customer
@@ -31,14 +32,24 @@ func done():
 		pass
 
 # UI HELPER
+func get_display_name():
+	return self.display_name
+
 static func get_default_values() -> Dictionary:
 	return { "materia_type": "Fire", "materia_life_time": 4., "generation_time_customer": 1. }
-	
-static func new_from_editor(values: Dictionary):
+
+func to_json():
+	return {
+		"name": display_name,
+		"values": {
+		}
+	}
+
+static func new_from_json(values: Dictionary):
 	return ActionGenerateMateria.new(Materia.new(Materia.EType.get(values["materia_type"]), values["materia_life_time"]), values["generation_time_customer"])
 
 
-func get_variables_to_set() -> Array[Field]:
+func set_fields() -> Array[Field]:
 	var materia_type_keys = Materia.EType.keys()
 	return [
 		ActionsInfo.Enum(

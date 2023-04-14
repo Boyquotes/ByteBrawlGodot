@@ -28,13 +28,16 @@ func _init(item_type: EItemType):
 
 
 # UI HELPER
+func get_display_name():
+	return self.display_name
+
 static func get_default_values() -> Dictionary:
 	return { "item_type": "ThrowingKnife" }
 
-static func new_from_editor(values: Dictionary):
+static func new_from_json(values: Dictionary):
 	return ActionThrow.new(EItemType.get(values["item_type"]))
 
-func get_variables_to_set() -> Array[Field]:
+func set_fields() -> Array[Field]:
 	var item_type_keys = EItemType.keys()
 	return [
 		ActionsInfo.Enum(
