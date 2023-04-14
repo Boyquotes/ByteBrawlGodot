@@ -37,7 +37,7 @@ func spawn_target():
 			_owner.add_child(LocatorPosition.new())
 
 # UI HELPER
-func set_fields() -> Array[Field]:
+func set_fields():
 	var target_type_keys = ETargetType.keys()
 	self.fields = [
 		ActionsInfo.Enum(

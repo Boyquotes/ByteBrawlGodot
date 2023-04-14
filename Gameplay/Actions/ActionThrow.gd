@@ -26,7 +26,7 @@ func _init():
 
 
 # UI HELPER
-func set_fields() -> Array[Field]:
+func set_fields():
 	var item_type_keys = EItemType.keys()
 	self.fields = [
 		ActionsInfo.Enum(

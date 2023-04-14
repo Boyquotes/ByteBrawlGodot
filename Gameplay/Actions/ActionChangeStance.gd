@@ -17,7 +17,7 @@ func done():
 		(gameplay_node as Gameplay).change_stance(stance)
 
 # UI HELPER
-func set_fields() -> Array[Field]:
+func set_fields():
 	self.fields = [
 		ActionsInfo.Enum(
 			"stance",

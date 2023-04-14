@@ -29,7 +29,7 @@ func done():
 		pass
 
 # UI HELPER
-func set_fields() -> Array[Field]:
+func set_fields():
 	var materia_type_keys = Materia.EType.keys()
 	self.fields = [
 		ActionsInfo.Enum(
