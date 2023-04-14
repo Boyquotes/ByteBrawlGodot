@@ -3,11 +3,13 @@ extends Button
 
 var sequence_name: String
 
-func _init():
+var ui_info: UIInfo
+
+func _ready():
+	ui_info = find_parent("InputActionCreationMenu")
 	sequence_name = editor_description
 
 func _pressed():
-	print("button pressed")
-	PlayerInfo.selected_sequence = sequence_name
-	PlayerInfo.action_list.reset()
-	PlayerInfo.action_selector.reset()
+	ui_info.selected_sequence_name = sequence_name
+	ui_info.action_list.reset()
+	ui_info.action_selector.reset()

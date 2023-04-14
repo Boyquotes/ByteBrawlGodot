@@ -43,8 +43,8 @@ func deactive_input(index: int):
 func block_action(value: bool):
 	self.action_blocked = value
 
-func get_stance(name: String) -> Stance:
-	var stances = self.stances.filter(func(x): return x.stance_name == name)
+func get_stance(stance_name: String) -> Stance:
+	var stances = self.stances.filter(func(x): return x.stance_name == stance_name)
 	return null if stances.size() == 0 else stances[0]
 
 # UI HELPER

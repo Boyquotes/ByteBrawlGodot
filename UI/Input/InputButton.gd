@@ -3,7 +3,10 @@ class_name InputButton
 
 var input_index: int
 
+var ui_info: UIInfo
+
 func _ready():
+	ui_info = find_parent("InputActionCreationMenu")
 	var events: Array[InputEvent] = InputMap.action_get_events(PlayerInput.PLAYER_INPUT[input_index])
 	text = ""
 	
@@ -13,6 +16,6 @@ func _ready():
 		text += events[i].as_text()
 
 func _pressed():
-	PlayerInfo.selected_input = input_index
-	PlayerInfo.action_list.reset()
-	PlayerInfo.action_selector.reset()
+	ui_info.selected_input_index = input_index
+	ui_info.action_list.reset()
+	ui_info.action_selector.reset()

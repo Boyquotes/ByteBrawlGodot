@@ -3,11 +3,16 @@ extends Button
 
 var action_name: String
 
+var ui_info: UIInfo
+
 func _ready():
+	ui_info = find_parent("InputActionCreationMenu")
 	text = action_name
 
 func _pressed():
 	var action_values = {"name": action_name, "values": ActionsInfo.actions.filter(func (x): return x.display_name == action_name)[0].get_default_values()}
-	PlayerInfo.get_selected_actions_values().append(action_values)
-	PlayerInfo.action_list.reset()
-	PlayerInfo.action_selector.reset()
+	var action = Action.new_from_json(action_values)
+	
+	ui_info.selected_sequence.actions.append(action)
+	ui_info.action_list.reset()
+	ui_info.action_selector.reset()

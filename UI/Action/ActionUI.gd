@@ -10,15 +10,18 @@ var ghost_pos
 
 var parameters_container: Container
 
-func init(action_name: String, index: int):
+var ui_info: UIInfo
+
+func init(action_name: String, index: int, ui_info: UIInfo):
 	self.action_name = action_name
 	(get_node("Header/Panel/Name") as Label).text = action_name
 	
+	self.ui_info = ui_info
+	
 	parameters_container = get_node("ScrollContainerListParameters/ListParameters")
-	var action: Action = ActionsInfo.actions.filter(func (x): return x.display_name == action_name)[0].new_from_json(PlayerInfo.get_selected_actions_values()[index]["values"])
+	var action: Action = ui_info.selected_sequence.actions[index]
 	
 	for field in action.fields:
-		field.connect("on_value_changed", input_value_changed)
 		parameters_container.add_child(field)
 
 func _process(delta):
@@ -32,14 +35,9 @@ func get_action_greatest_cost():
 		if parameter is FieldSlider:
 			parameter.cost_curve
 
-func get_action_values():
-	return PlayerInfo.get_selected_actions_values()[get_index()]["values"]
-
-func input_value_changed(field: Field):
-	get_action_values()[field.field_name] = field.getter.call()
-
 func _on_cancel_pressed():
-	PlayerInfo.get_selected_actions_values().remove_at(get_index())
+	ui_info.selected_sequence.actions[get_index()].queue_free()
+	ui_info.selected_sequence.actions.remove_at(get_index())
 	queue_free()
 
 func _on_panel_gui_input(event):

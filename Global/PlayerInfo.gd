@@ -9,6 +9,3 @@ var action_selector: ActionSelector
 
 func get_selected_sequence_type() -> Sequence.EType:
 	return Sequence.EType.get(selected_sequence)
-
-func get_selected_actions_values() -> Array:
-	return player_data[selected_stance]["inputs"][selected_input][selected_sequence]
