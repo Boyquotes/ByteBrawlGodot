@@ -8,8 +8,11 @@ var min_color: Color = Color.WHITE
 
 var cost_curve: CostCurve
 
-func _init():
-	pass
+func get_max_cost():
+	return cost_curve.max_value
+
+func get_action_cost():
+	return action_ui.params.reduce(func(accum, x): return accum * x.cost)
 
 func init_gradient():
 	self.gradient = Gradient.new()
@@ -24,9 +27,11 @@ func init_gradient():
 	update_gradient()
 
 func update_gradient():
+	var new_max_color = Color.RED
+	
 	for i in gradient_precision:
 		var factor: float = cost_curve.normalize_eval(i / (gradient_precision - 1.))
-		gradient.set_color(i, factor*max_color + (1 - factor)*min_color)
+		gradient.set_color(i, factor*new_max_color + (1 - factor)*min_color)
 
 func init(field_name: String, pretty_name: String, getter: Callable, setter: Callable, _args: Array = []):
 	self.cost_curve = _args[0]

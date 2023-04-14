@@ -32,6 +32,6 @@ func get_variables_to_set() -> Array[Field]:
 			"Stance",
 			func(): return stance.stance_name,
 			func(x): stance = PlayerInfo.stances[x],
-			PlayerInfo.stances.values().map(func(x): return x.stance_name)
+			CostDiscrete.init_same_values(PlayerInfo.stances.values().map(func(x): return x.stance_name), 1.5)
 		)
 	]

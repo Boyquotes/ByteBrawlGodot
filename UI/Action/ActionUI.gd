@@ -8,13 +8,20 @@ var ghost_action: ActionUI
 var should_set_ghost_pos: bool = false
 var ghost_pos
 
+var params: Array[Field]
+
+var parameters_container: Container
+
 func init(action_name: String, index: int):
 	self.action_name = action_name
 	(get_node("Header/Panel/Name") as Label).text = action_name
 	
-	var parameters_container: Container = get_node("ScrollContainerListParameters/ListParameters")
+	parameters_container = get_node("ScrollContainerListParameters/ListParameters")
 	var action: Action = ActionsInfo.actions.filter(func (x): return x.display_name == action_name)[0].new_from_editor(PlayerInfo.get_selected_actions_values()[index]["values"])
-	for param in action.get_variables_to_set():
+	
+	self.params = action.get_variables_to_set()
+	for param in params:
+		param.action_ui = self
 		param.connect("on_value_changed", input_value_changed)
 		parameters_container.add_child(param)
 
@@ -22,7 +29,12 @@ func _process(delta):
 	if should_set_ghost_pos:
 		should_set_ghost_pos = false
 		ghost_action.global_position = ghost_pos
+
+func get_action_greatest_cost():
+	for parameter in parameters_container.get_children():
 		
+		if parameter is FieldSlider:
+			parameter.cost_curve
 
 func get_action_values():
 	return PlayerInfo.get_selected_actions_values()[get_index()]["values"]

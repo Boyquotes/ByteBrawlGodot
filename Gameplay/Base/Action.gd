@@ -27,7 +27,7 @@ var end_sequence: bool = false
 var block_action: bool = false
 var block_movement: bool = false
 
-@export var cost_curve: CostCurve
+var param_cost: Dictionary = {}
 
 # PRIVATE
 var _started = false

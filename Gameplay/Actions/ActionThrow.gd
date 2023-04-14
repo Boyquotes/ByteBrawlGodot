@@ -42,7 +42,7 @@ func get_variables_to_set() -> Array[Field]:
 			"Item Type",
 			func(): return item_type_keys[item_type],
 			func(x): item_type = EItemType.get(x),
-			item_type_keys
+			CostDiscrete.init_same_values(item_type_keys, 1.)
 		)
 	]
 

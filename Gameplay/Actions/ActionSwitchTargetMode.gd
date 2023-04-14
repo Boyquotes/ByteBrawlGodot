@@ -47,7 +47,7 @@ func get_variables_to_set() -> Array[Field]:
 			"Target Type",
 			func(): return target_type_keys[target_type],
 			func(x): target_type = ETargetType.get(x),
-			target_type_keys.slice(1)
+			CostDiscrete.init_same_values(target_type_keys.slice(1), 1.)
 		)
 	]
 
