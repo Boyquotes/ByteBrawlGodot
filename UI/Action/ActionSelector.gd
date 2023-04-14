@@ -3,14 +3,16 @@ extends Container
 
 var action_button = load("res://UI/Action/ActionButton.tscn")
 
+var ui_info: UIInfo
 
 func _ready():
-	PlayerInfo.action_selector = self
+	ui_info = find_parent("InputActionCreationMenu")
+	ui_info.action_selector = self
 	create()
 
 func create():
-	var sequence = PlayerInfo.get_selected_sequence_type()
-	var actions = ActionsInfo.actions.filter(func (x): return x.allowed_sequence.has(sequence));
+	var sequence = ui_info.selected_sequence
+	var actions = ActionsInfo.actions.filter(func (x): return x.allowed_sequence.has(sequence.type));
 	for action in actions:
 		var box: ActionButton = action_button.instantiate()
 

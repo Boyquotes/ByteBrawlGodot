@@ -8,8 +8,6 @@ var player: Player
 
 func _init():
 	self.player = PlayerInstance.instantiate()
-
-func _ready():
 	self.load_player()
 
 func load_player():

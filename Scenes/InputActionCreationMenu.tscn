@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqds43vnr4o8o"]
+[gd_scene load_steps=9 format=3 uid="uid://dqds43vnr4o8o"]
 
+[ext_resource type="Script" path="res://UI/UIInfo.gd" id="1_m7jjo"]
 [ext_resource type="Script" path="res://UI/Stance/StanceSelector.gd" id="1_uo0ha"]
 [ext_resource type="Script" path="res://UI/Input/InputSelector.gd" id="2_3hlhr"]
 [ext_resource type="ButtonGroup" uid="uid://cw3v46c301u7m" path="res://UI/Sequence/SequenceButtonGroup.tres" id="3_bwq10"]
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_m7jjo")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
