@@ -9,18 +9,17 @@ enum EItemType {
 const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence, Sequence.EType.released_sequence]
 const action_name = "Throw"
 
-var item_type: EItemType
+var item_type: EItemType = EItemType.ThrowingKnife
 
 # item ptr in inventory, if null take equiped item
 var item
 
-func _init(item_type: EItemType):
+func _init():
 	super._init()
 	self.duration = 0.2
 	self.block_movement = true
 	self.block_action = true
 	self.type = EType.cast
-	self.item_type = item_type
 
 
 # LOGIC
