@@ -3,11 +3,15 @@ extends Node
 
 
 var action_blocked: bool = false
-var stances: Array[Stance]
+var stances: Array[Stance] = []
+var current_stance: Stance:
+	get: return get_node("stance") if has_node("stance") else null
 
 func _ready():
-	change_stance(PlayerInfo.stances["normal"])
-	
+	var stance = self.get_stance("normal")
+	if stance:
+		change_stance(stance)
+
  # LOGIC
 func _input(event):
 	var input = PlayerInput.get_input_type(event)
@@ -21,11 +25,7 @@ func _process(delta_time):
 func _physics_process(delta_time):
 	pass
 
-func get_stance():
-	return get_node("stance") if has_node("stance") else null
-
 func change_stance(selected_stance: Stance):
-	var current_stance = get_stance()
 	if not selected_stance or current_stance == selected_stance: return
 	if current_stance:
 		current_stance.remove_all_descendants()
@@ -33,28 +33,30 @@ func change_stance(selected_stance: Stance):
 	add_child(selected_stance)
 
 func active_input(index: int):
-	var stance = get_stance()
-	if not stance or index == -1 or stance.inputs[index].get_parent() == stance: return
-	stance.add_child(stance.inputs[index])
+	if not current_stance or index == -1 or current_stance.inputs[index].get_parent() == current_stance: return
+	current_stance.add_child(current_stance.inputs[index])
 
 func deactive_input(index: int):
-	var stance = get_stance()
-	if not stance or index == -1 or stance.inputs[index].get_parent() != stance: return
-	stance.inputs[index].stop()
+	if not current_stance or index == -1 or current_stance.inputs[index].get_parent() != current_stance: return
+	current_stance.inputs[index].stop()
 
 func block_action(value: bool):
 	self.action_blocked = value
 
+func get_stance(name: String) -> Stance:
+	var stances = self.stances.filter(func(x): return x.stance_name == name)
+	return null if stances.size() == 0 else stances[0]
+
 # UI HELPER
 func to_json():
 	return {
-		"stances": self.stances.map(func(x): x.to_json())
+		"stances": self.stances.map(func(x): return x.to_json())
 	}
 
 func from_json(data: Dictionary):
 	for stance in data.stances:
 		stances.append(Stance.new(stance.name))
-	for key in data.stances.keys():
+	for key in self.stances.size():
 		stances[key].from_json(data.stances[key])
 
 

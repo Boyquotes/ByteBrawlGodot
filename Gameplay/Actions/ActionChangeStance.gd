@@ -23,7 +23,7 @@ static func get_default_values() -> Dictionary:
 	return {"stance": "normal"}
 
 static func new_from_json(values: Dictionary):
-	return ActionChangeStance.new(PlayerInfo.stances[values["stance"]])
+	return ActionChangeStance.new(GameInfo.player.gameplay.get_stance(values["stance"]))
 
 func set_fields() -> Array[Field]:
 	return [
@@ -31,7 +31,7 @@ func set_fields() -> Array[Field]:
 			"stance",
 			"Stance",
 			func(): return stance.stance_name,
-			func(x): stance = PlayerInfo.stances[x],
-			CostDiscrete.init_same_values(PlayerInfo.stances.values().map(func(x): return x.stance_name), 1.5)
+			func(x): stance = GameInfo.player.gameplay.get_stance(x),
+			CostDiscrete.init_same_values(GameInfo.player.gameplay.stances.map(func(x): return x.stance_name), 1.5)
 		)
 	]

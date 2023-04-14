@@ -26,11 +26,13 @@ func _process(delta):
 func to_json():
 	return {
 		"name": self.stance_name,
-		"inputs": self.inputs.map(func(x): x.to_json())
+		"inputs": self.inputs.map(func(x): return x.to_json())
 	}
 
 func from_json(data: Dictionary):
-	inputs = data.inputs.map(func(x): var action = ActionInput.new(); return action.from_json(x))
+	self.stance_name = data.name
+	for i in data.inputs.size():
+		self.inputs[i].from_json(data.inputs[i])
 
 # DEBUG
 func _to_string() -> String:

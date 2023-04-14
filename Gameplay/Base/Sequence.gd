@@ -57,7 +57,8 @@ func to_json():
 	}
 
 func from_json(data: Dictionary):
-	actions = data.actions.map(func(x): return Action.new_from_json(x))
+	if data.actions:
+		self.actions = data.actions.map(func(x): return Action.new_from_json(x)) as Array[Action]
 
 # DEBUG
 func _to_string() -> String:
