@@ -15,6 +15,7 @@ const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.releas
 const action_name = "SwitchTargetMode"
 
 func _init():
+	super._init()
 	self.type = EType.setTarget
 
 func _process(delta_time):
@@ -38,7 +39,7 @@ func spawn_target():
 # UI HELPER
 func set_fields() -> Array[Field]:
 	var target_type_keys = ETargetType.keys()
-	return [
+	self.fields = [
 		ActionsInfo.Enum(
 			"target_type",
 			"Target Type",

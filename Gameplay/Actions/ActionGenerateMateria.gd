@@ -16,6 +16,7 @@ const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.presse
 const action_name = "GenerateMateria"
 
 func _init():
+	super._init()
 	self.type = EType.generateMateria
 	self.generation_time_customer = 1
 
@@ -30,7 +31,7 @@ func done():
 # UI HELPER
 func set_fields() -> Array[Field]:
 	var materia_type_keys = Materia.EType.keys()
-	return [
+	self.fields = [
 		ActionsInfo.Enum(
 			"materia_type",
 			"Materia Type",

@@ -18,7 +18,7 @@ func done():
 
 # UI HELPER
 func set_fields() -> Array[Field]:
-	return [
+	self.fields = [
 		ActionsInfo.Enum(
 			"stance",
 			"Stance",
