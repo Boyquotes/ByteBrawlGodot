@@ -31,6 +31,14 @@ var param_cost: Dictionary = {}
 
 var fields: Array[Field] = []
 
+static func get_allowed_sequences(): return []
+var allowed_sequences: Array[Sequence.EType]:
+	get: return get_allowed_sequences()
+
+static func get_action_name(): return "! NO ACTION NAME !"
+var action_name: String:
+	get: return get_action_name()
+
 # PRIVATE
 var _started = false
 var _current_duration: float = 0.
@@ -100,10 +108,14 @@ func _can_be_cast():
 	if _owner.gameplay.action_blocked: return false
 	return can_be_cast()
 
-# UI HELPER
-func get_display_name():
-	return "! NO DISPLAY NAME !"
+# MEMORY
+func delete():
+	for field in fields:
+		field.queue_free()
+	self.queue_free()
 
+
+# UI HELPER
 func get_fields() -> Array[Field]:
 	return []
 
@@ -112,7 +124,7 @@ func to_json():
 	for field in fields:
 		values[field.field_name] = field.getter.call()
 	return {
-		"name": get_display_name(),
+		"name": get_action_name(),
 		"values": values
 	}
 
@@ -121,10 +133,8 @@ func from_json(data: Dictionary):
 		field.set.call(data[field.field_name])
 
 static func new_from_name(name: String) -> Action:
-	var ActionClasses = ActionsInfo.actions.filter(func (x): return x.action_name == name)
-	if ActionClasses.size() == 0:
-		return
-	return ActionClasses[0].new()
+	var ActionClasses = ActionsInfo.actions.filter(func (X): return X.get_action_name() == name)
+	return ActionClasses[0].new() if ActionClasses else null
 
 static func new_from_json(data: Dictionary) -> Action:
 	var action = new_from_name(data.name)

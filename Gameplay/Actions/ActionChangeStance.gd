@@ -2,8 +2,10 @@ class_name ActionChangeStance
 extends Action
 
 var stance: Stance = GameInfo.player.gameplay.get_stance("normal")
-const allowed_sequence = [Sequence.EType.released_sequence]
-const action_name = "ChangeStance"
+
+static func get_allowed_sequences(): return [Sequence.EType.released_sequence]
+static func get_action_name(): return "ChangeStance"
+
 
 func _init():
 	self.duration = 0.1
@@ -12,9 +14,8 @@ func _init():
 	super._init()
 
 func done():
-	var gameplay_node = _owner.get_node("gameplay")
-	if gameplay_node:
-		(gameplay_node as Gameplay).change_stance(stance)
+	if _owner.gameplay:
+		_owner.gameplay.change_stance(stance)
 
 # UI HELPER
 func get_fields() -> Array[Field]:

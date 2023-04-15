@@ -15,9 +15,13 @@ func remove_player():
 	self.player = null
 
 func load_player():
-	self.remove_player()
 	self.player = PlayerInstance.instantiate()
 	self.player.from_json(load(PLAYER_DATA_PATH).data)
+
+func reload_player():
+	self.remove_player()
+	self.load_player()
+
 
 func save_player():
 	var file = FileAccess.open(PLAYER_DATA_PATH, FileAccess.WRITE)

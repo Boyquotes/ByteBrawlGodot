@@ -6,8 +6,8 @@ enum EItemType {
 	ThrowingAxe,
 }
 
-const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence, Sequence.EType.released_sequence]
-const action_name = "Throw"
+static func get_allowed_sequences(): return [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence, Sequence.EType.released_sequence]
+static func get_action_name(): return "Throw"
 
 var item_type: EItemType = EItemType.ThrowingKnife
 

@@ -12,8 +12,8 @@ var _generation_time_customer: float
 var generation_time_customer:
 	set(x): _generation_time_customer = x; duration = PLAYER_STAT_GENERATION_MATERIA * x
 
-const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence]
-const action_name = "GenerateMateria"
+static func get_allowed_sequences(): return [Sequence.EType.started_sequence, Sequence.EType.pressed_sequence]
+static func get_action_name(): return "GenerateMateria"
 
 func _init():
 	self.type = EType.generateMateria

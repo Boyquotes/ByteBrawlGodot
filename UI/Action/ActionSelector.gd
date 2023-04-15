@@ -12,11 +12,11 @@ func _ready():
 
 func create():
 	var sequence = ui_info.selected_sequence
-	var actions = ActionsInfo.actions.filter(func (x): return x.allowed_sequence.has(sequence.type));
-	for action in actions:
+	var ActionClasses = ActionsInfo.actions.filter(func (x): return x.get_allowed_sequences().has(sequence.type));
+	for ActionClass in ActionClasses:
 		var box: ActionButton = action_button.instantiate()
 
-		box.action_name = action.action_name
+		box.action_name = ActionClass.get_action_name()
 		add_child(box)
 
 

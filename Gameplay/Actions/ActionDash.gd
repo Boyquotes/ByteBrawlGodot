@@ -6,8 +6,8 @@ const distance_max: float = 500.
 var distance: float = distance_min:
 	set(x): distance = clamp(x, distance_min, distance_max)
 
-const allowed_sequence: Array[Sequence.EType] = [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
-const action_name = "Dash"
+static func get_allowed_sequences(): return [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
+static func get_action_name(): return "Dash"
 
 func _init():
 	self.duration_min = 0.1
@@ -30,9 +30,6 @@ func cancel():
 	done()
 
 # UI HELPER
-func get_display_name():
-	return self.display_name
-
 func get_fields() -> Array[Field]:
 	return [
 		Field.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max, CostCurve.new(.1, 10., CostCurve.EMode.Exponential)),
