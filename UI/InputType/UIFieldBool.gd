@@ -4,7 +4,7 @@ extends UIField
 var button: CheckButton
 
 func _ready():
-	(get_node("Panel/Label") as Label).text = field.field_name
+	(get_node("Panel/Label") as Label).text = field.display_name
 	button = get_node("FieldBool")
 	button.button_pressed = field.getter.call()
 

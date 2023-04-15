@@ -32,7 +32,7 @@ func cancel():
 # UI HELPER
 func init_fields():
 	fields = [
-		Field.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max, CostCurve.new(.1, 10., CostCurve.EMode.Exponential)),
+		Field.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max, CostCurve.new(.1, 20., CostCurve.EMode.Exponential)),
 		Field.Float("duration", "Duration", func(): return duration, func(x): duration = x, duration_min, duration_max, CostCurve.new(10., .1, CostCurve.EMode.Exponential))
 	]
 

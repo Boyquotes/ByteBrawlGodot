@@ -9,7 +9,11 @@ enum EMode
 	Manual
 }
 
-func normalize_eval(x: float) -> float:
+func normalize_eval(x: float, min_value = null, max_value = null) -> float:
+	if min_value == null:
+		min_value = self.min_value
+	if max_value == null:
+		max_value = self.max_value
 	return (sample(x) - min_value) / (max_value - min_value)
 
 func _init(left_value: float, right_value: float, curve_mode: EMode, curve_points: Array[CurvePoint] = []):

@@ -1,7 +1,7 @@
 class_name ActionUI
 extends Container
 
-var action_name: String
+var action: Action
 
 var drag_point = null
 var ghost_action: ActionUI
@@ -12,14 +12,13 @@ var parameters_container: Container
 
 var ui_info: UIInfo
 
-func init(action_name: String, index: int, ui_info: UIInfo):
-	self.action_name = action_name
-	(get_node("Header/Panel/Name") as Label).text = action_name
-	
+func init(index: int, ui_info: UIInfo):
+	self.action = ui_info.selected_sequence.actions[index]
 	self.ui_info = ui_info
 	
+	(get_node("Header/Panel/Name") as Label).text = action.action_name
+	
 	parameters_container = get_node("ScrollContainerListParameters/ListParameters")
-	var action: Action = ui_info.selected_sequence.actions[index]
 	
 	for field in action.fields:
 		var new_ui_field: UIField = field.instantiate_ui_field()
