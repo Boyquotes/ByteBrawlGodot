@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://baj6u4fqqjhd1"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="TileSet" uid="uid://7o3f7p2v2nkb" path="res://Scenes/Map.tres" id="1_e7or5"]
 [ext_resource type="Script" path="res://Scenes/Play.gd" id="1_oxjtw"]
-[ext_resource type="PackedScene" uid="uid://ckpofd10guh6r" path="res://UI/HUD/HUD.tscn" id="3_0gnnd"]
+[ext_resource type="PackedScene" uid="uid://b2ojkepnm8vij" path="res://HUD/HUD.tscn" id="3_0gnnd"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_oxjtw")

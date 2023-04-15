@@ -1,12 +1,20 @@
 class_name MateriaPool
 extends BaseNode
 
+
+signal changed
+
+
+func _ready():
+	self.child_entered_tree.connect(func(_v): changed.emit())
+	self.child_exiting_tree.connect(func(_v): changed.emit())
+
 func add_materia_by_type(type: Materia.EType):
 	self.add_child(Materia.new(type))
 
-
 func add_materia(materia: Materia):
 	self.add_child(materia)
+	
 
 # (<Materia.EType, Int>) -> bool
 func remove_materias(materias: Dictionary) -> bool:

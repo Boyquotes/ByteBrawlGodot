@@ -3,16 +3,16 @@ extends Node
 var materia_frames = load("res://Assets/Icons/icons.tres") as SpriteFrames
 
 const icon_index = {
-	"Fire": 21,
-	"Wind": 7,
-	"Water": 26,
-	"Earth": 16,
-	"Lightning": 12,
-	"Ice": 44,
-	"Wood": 19,
-	"Metal": 33,
-	"Momentum": 14,
-	"Spacium": 20,
+	"Fire": 20,
+	"Wind": 6,
+	"Water": 25,
+	"Earth": 15,
+	"Lightning": 11,
+	"Ice": 43,
+	"Wood": 18,
+	"Metal": 32,
+	"Momentum": 13,
+	"Spacium": 19,
 }
 
 func get_icon_texture(type: Materia.EType) -> Texture2D:

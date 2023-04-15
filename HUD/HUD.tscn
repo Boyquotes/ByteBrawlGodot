@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ojkepnm8vij"]
+
+[ext_resource type="Script" path="res://HUD/HUD.gd" id="1_kn15d"]
+[ext_resource type="PackedScene" path="res://HUD/MateriaPoolHUD.tscn" id="2_jgkt8"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_kn15d")
+
+[node name="MateriaPoolHUD" parent="." instance=ExtResource("2_jgkt8")]
