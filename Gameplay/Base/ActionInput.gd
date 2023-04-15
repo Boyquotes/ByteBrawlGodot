@@ -29,7 +29,7 @@ var fields: Array[Field]
 var cooldown_timer: Timer = Timer.new()
 
 var cooldown_percent: float:
-	get: return (cooldown_timer.wait_time / cooldown_timer.time_left) * 100
+	get: return (cooldown_timer.time_left / cooldown_timer.wait_time) * 100
 
 var sequence_container = BaseNode.new()
 

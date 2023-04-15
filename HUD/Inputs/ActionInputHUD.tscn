@@ -5,4 +5,5 @@
 [node name="ActionInputHUD" type="TextureProgressBar"]
 offset_right = 40.0
 offset_bottom = 40.0
+fill_mode = 5
 script = ExtResource("1_k8h2i")
