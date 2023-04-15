@@ -28,6 +28,9 @@ var fields: Array[Field]
 var cooldown: float = 1.
 var _current_cooldown: float = 0.
 
+var icon: Texture2D
+var icon_cooldown: Texture2D
+
 var sequences: Array[Sequence]:
 	get: return [self.started_sequence, self.pressed_sequence, self.released_sequence]
 
