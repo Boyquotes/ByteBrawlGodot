@@ -14,7 +14,7 @@ func _ready():
 	for item_string in field.cost_discrete.values:
 		popup.add_item(item_string)
 	
-	(get_node("Panel/Label") as Label).text = field.field_name
+	(get_node("Panel/Label") as Label).text = field.display_name
 
 	button.text = field.getter.call()
 

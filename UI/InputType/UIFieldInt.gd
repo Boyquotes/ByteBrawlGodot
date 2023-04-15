@@ -4,7 +4,7 @@ extends UIFieldSlider
 var spinbox: SpinBox
 
 func _ready():
-	get_node("Panel/Label").text = field.field_name
+	get_node("Panel/Label").text = field.display_name
 	spinbox = get_node("HBoxContainer/SpinBox")
 	slider = get_node("HBoxContainer/HSlider")
 	

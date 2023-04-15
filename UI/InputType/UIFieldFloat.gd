@@ -11,7 +11,7 @@ func _on_text_changed(new_text: String):
 		line_edit.placeholder_text = str(field.getter.call())
 
 func _ready():
-	get_node("Panel/Label").text = field.field_name
+	get_node("Panel/Label").text = field.display_name
 	self.line_edit = get_node("HBoxContainer/LineEdit")
 	self.slider = get_node("HBoxContainer/HSlider")
 	
