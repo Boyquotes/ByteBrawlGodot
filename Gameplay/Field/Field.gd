@@ -13,6 +13,14 @@ var display_name: String
 var setter: Callable
 var getter: Callable
 
+func get_max_cost(): return null
+var max_cost: float:
+	get: return get_max_cost()
+
+func get_min_cost(): return null
+var min_cost: float:
+	get: return get_min_cost()
+
 func get_cost(): return null
 var cost: float:
 	get: return get_cost()

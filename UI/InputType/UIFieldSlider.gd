@@ -7,6 +7,13 @@ var max_color: Color = Color.RED
 var min_color: Color = Color.WHITE
 
 var slider: Slider
+var max_field_cost_in_action: float:
+	get: return get_max_field_cost_in_action()
+
+@onready var action_ui: ActionUI = find_parent("ActionUI*")
+
+func get_max_field_cost_in_action():
+	return action_ui.action.fields.map(func(x): return x.max_cost).max()
 
 func init_gradient():
 	self.gradient = Gradient.new()
@@ -24,7 +31,7 @@ func update_gradient():
 	var new_max_color = Color.RED
 	
 	for i in gradient_precision:
-		var factor: float = field.cost_curve.normalize_eval(i / (gradient_precision - 1.))
+		var factor: float = field.cost_curve.normalize_eval(i / (gradient_precision - 1.), null, max_field_cost_in_action)
 		gradient.set_color(i, factor*new_max_color + (1 - factor)*min_color)
 
 func _ready():

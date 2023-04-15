@@ -5,6 +5,12 @@ var min_value
 var max_value
 var cost_curve: CostCurve
 
+func get_max_cost():
+	return cost_curve.max_value
+
+func get_min_cost():
+	return cost_curve.min_value
+
 func get_cost():
 	return cost_curve.sample((float(getter.call()) - min_value) / (max_value - min_value))
 

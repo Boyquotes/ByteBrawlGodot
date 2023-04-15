@@ -3,6 +3,12 @@ extends Field
 
 var cost_discrete: CostDiscrete
 
+func get_max_cost():
+	return cost_discrete.max_value
+
+func get_min_cost():
+	return cost_discrete.min_value
+
 func get_cost():
 	return cost_discrete.eval(getter.call())
 
