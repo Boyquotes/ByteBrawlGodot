@@ -83,7 +83,7 @@ func delete():
 # UI HELPER
 func get_variables_to_set() -> Array[Field]:
 	return [
-		ActionsInfo.Float("cooldown", "Cooldown", func(): return cooldown, func(x): cooldown = x, COOLDOWN_MIN, COOLDOWN_MAX, cost_curve_cooldown)
+		Field.Float("cooldown", "Cooldown", func(): return cooldown, func(x): cooldown = x, COOLDOWN_MIN, COOLDOWN_MAX, cost_curve_cooldown)
 	]
 
 func to_json():

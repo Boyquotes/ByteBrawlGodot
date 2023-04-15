@@ -16,9 +16,9 @@ const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.presse
 const action_name = "GenerateMateria"
 
 func _init():
-	super._init()
 	self.type = EType.generateMateria
 	self.generation_time_customer = 1
+	super._init()
 
 func activate():
 	pass
@@ -29,17 +29,17 @@ func done():
 		pass
 
 # UI HELPER
-func set_fields():
+func get_fields() -> Array[Field]:
 	var materia_type_keys = Materia.EType.keys()
-	self.fields = [
-		ActionsInfo.Enum(
+	return [
+		Field.Enum(
 			"materia_type",
 			"Materia Type",
 			func(): return materia_type_keys[materia.type],
 			func(x): materia.type = Materia.EType.get(x),
 			CostDiscrete.init_same_values(materia_type_keys, 1., {"Ice": 2.})
 		),
-		ActionsInfo.Float(
+		Field.Float(
 			"materia_life_time",
 			"Materia life time",
 			func(): return materia.life_time,
@@ -48,7 +48,7 @@ func set_fields():
 			materia_life_time_max,
 			CostCurve.new(.1, 10., CostCurve.EMode.Exponential)
 		),
-		ActionsInfo.Float(
+		Field.Float(
 			"generation_time_customer",
 			"Generation Time Customer",
 			func(): return _generation_time_customer,

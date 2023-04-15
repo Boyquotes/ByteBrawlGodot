@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ego4vsftr77b"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://UI/InputType/FieldEnum.gd" id="1_egajd"]
+[ext_resource type="Script" path="res://UI/InputType/UIFieldEnum.gd" id="1_egajd"]
 
 [node name="FieldEnum" type="HBoxContainer"]
 offset_right = 81.0

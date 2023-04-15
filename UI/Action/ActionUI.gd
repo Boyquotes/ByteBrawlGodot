@@ -22,18 +22,13 @@ func init(action_name: String, index: int, ui_info: UIInfo):
 	var action: Action = ui_info.selected_sequence.actions[index]
 	
 	for field in action.fields:
-		parameters_container.add_child(field)
+		var new_ui_field: UIField = field.instantiate_ui_field()
+		parameters_container.add_child(new_ui_field)
 
 func _process(delta):
 	if should_set_ghost_pos:
 		should_set_ghost_pos = false
 		ghost_action.global_position = ghost_pos
-
-func get_action_greatest_cost():
-	for parameter in parameters_container.get_children():
-		
-		if parameter is FieldSlider:
-			parameter.cost_curve
 
 func _on_cancel_pressed():
 	ui_info.selected_sequence.actions[get_index()].queue_free()

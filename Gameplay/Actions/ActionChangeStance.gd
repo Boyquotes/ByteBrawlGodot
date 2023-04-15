@@ -6,10 +6,10 @@ const allowed_sequence = [Sequence.EType.released_sequence]
 const action_name = "ChangeStance"
 
 func _init():
-	super._init()
 	self.duration = 0.1
 	self.end_sequence = true
 	self.type = EType.changeStance
+	super._init()
 
 func done():
 	var gameplay_node = _owner.get_node("gameplay")
@@ -17,9 +17,9 @@ func done():
 		(gameplay_node as Gameplay).change_stance(stance)
 
 # UI HELPER
-func set_fields():
-	self.fields = [
-		ActionsInfo.Enum(
+func get_fields() -> Array[Field]:
+	return [
+		Field.Enum(
 			"stance",
 			"Stance",
 			func(): return stance.stance_name,

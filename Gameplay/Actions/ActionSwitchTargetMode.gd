@@ -15,8 +15,8 @@ const allowed_sequence = [Sequence.EType.started_sequence, Sequence.EType.releas
 const action_name = "SwitchTargetMode"
 
 func _init():
-	super._init()
 	self.type = EType.setTarget
+	super._init()
 
 func _process(delta_time):
 	if target_type == ETargetType.None or (_owner.target_locator and not _owner.target_locator.position.is_zero_approx()):
@@ -37,10 +37,10 @@ func spawn_target():
 			_owner.add_child(LocatorPosition.new())
 
 # UI HELPER
-func set_fields():
+func get_fields() -> Array[Field]:
 	var target_type_keys = ETargetType.keys()
-	self.fields = [
-		ActionsInfo.Enum(
+	return [
+		Field.Enum(
 			"target_type",
 			"Target Type",
 			func(): return target_type_keys[target_type],

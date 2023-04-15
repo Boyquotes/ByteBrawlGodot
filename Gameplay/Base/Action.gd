@@ -38,7 +38,7 @@ var _owner: Player
 
 # LIFECYCLE
 func _init():
-	self.set_fields()
+	fields = get_fields()
 
 func _enter_tree():
 	if not _owner:
@@ -104,8 +104,8 @@ func _can_be_cast():
 func get_display_name():
 	return "! NO DISPLAY NAME !"
 
-func set_fields():
-	pass
+func get_fields() -> Array[Field]:
+	return []
 
 func to_json():
 	var values: Dictionary
@@ -122,7 +122,9 @@ func from_json(data: Dictionary):
 
 static func new_from_name(name: String) -> Action:
 	var ActionClasses = ActionsInfo.actions.filter(func (x): return x.action_name == name)
-	return ActionClasses[0].new() if ActionClasses else null
+	if ActionClasses.size() == 0:
+		return
+	return ActionClasses[0].new()
 
 static func new_from_json(data: Dictionary) -> Action:
 	var action = new_from_name(data.name)
