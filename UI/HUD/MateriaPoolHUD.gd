@@ -35,7 +35,6 @@ func _process(delta_time):
 		return
 	current_time += delta_time
 	if current_time >= REFRESH_TIME:
-		get_node("/root/").print_tree_pretty()
 		current_time = 0
 		self.update_materias()
 
