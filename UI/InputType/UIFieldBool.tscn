@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://de2jpwgsec7ox"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://UI/InputType/FieldBool.gd" id="1_tvnpe"]
+[ext_resource type="Script" path="res://UI/InputType/UIFieldBool.gd" id="1_tvnpe"]
 
 [node name="FieldBool" type="HBoxContainer"]
 offset_right = 81.0

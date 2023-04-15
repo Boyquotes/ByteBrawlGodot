@@ -15,21 +15,20 @@ var item_type: EItemType = EItemType.ThrowingKnife
 var item
 
 func _init():
-	super._init()
 	self.duration = 0.2
 	self.block_movement = true
 	self.block_action = true
 	self.type = EType.cast
-
+	super._init()
 
 # LOGIC
 
 
 # UI HELPER
-func set_fields():
+func get_fields() -> Array[Field]:
 	var item_type_keys = EItemType.keys()
-	self.fields = [
-		ActionsInfo.Enum(
+	return [
+		Field.Enum(
 			"item_type",
 			"Item Type",
 			func(): return item_type_keys[item_type],

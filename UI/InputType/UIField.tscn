@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://hnqqns14f87i"]
+
+[sub_resource type="GDScript" id="GDScript_mtkl8"]
+script/source = "
+"
+
+[node name="FieldFloat" type="LineEdit"]
+alignment = 1
+caret_blink = true
+caret_blink_interval = 0.5
+script = SubResource("GDScript_mtkl8")

@@ -10,13 +10,13 @@ const allowed_sequence: Array[Sequence.EType] = [Sequence.EType.started_sequence
 const action_name = "Dash"
 
 func _init():
-	super._init()
 	self.duration_min = 0.1
 	self.duration_max = 2.0
 	self.duration = duration_max
 	self.block_movement = true
 	self.block_action = true
 	self.type = EType.cast
+	super._init()
 
 # LOGIC
 func activate():
@@ -29,15 +29,14 @@ func done():
 func cancel():
 	done()
 
-
 # UI HELPER
 func get_display_name():
 	return self.display_name
 
-func set_fields():
-	self.fields = [
-		ActionsInfo.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max, CostCurve.new(.1, 10., CostCurve.EMode.Exponential)),
-		#ActionsInfo.Float("duration", "Duration", func(): return duration, func(x): duration = x, duration_min, duration_max, CostCurve.new(10., .1, CostCurve.EMode.Exponential))
+func get_fields() -> Array[Field]:
+	return [
+		Field.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max, CostCurve.new(.1, 10., CostCurve.EMode.Exponential)),
+		Field.Float("duration", "Duration", func(): return duration, func(x): duration = x, duration_min, duration_max, CostCurve.new(10., .1, CostCurve.EMode.Exponential))
 	]
 
 
