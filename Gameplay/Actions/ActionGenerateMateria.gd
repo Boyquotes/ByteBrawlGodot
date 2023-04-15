@@ -29,9 +29,9 @@ func done():
 		pass
 
 # UI HELPER
-func get_fields() -> Array[Field]:
+func init_fields():
 	var materia_type_keys = Materia.EType.keys()
-	return [
+	fields = [
 		Field.Enum(
 			"materia_type",
 			"Materia Type",

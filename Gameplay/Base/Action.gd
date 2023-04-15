@@ -46,7 +46,7 @@ var _owner: Player
 
 # LIFECYCLE
 func _init():
-	fields = get_fields()
+	init_fields()
 
 func _enter_tree():
 	if not _owner:
@@ -115,16 +115,15 @@ func delete():
 	self.queue_free()
 
 
-# UI HELPER
-func get_fields() -> Array[Field]:
-	return []
+func init_fields():
+	pass
 
 func to_json():
 	var values: Dictionary
 	for field in fields:
 		values[field.field_name] = field.getter.call()
 	return {
-		"name": get_action_name(),
+		"name": self.action_name,
 		"values": values
 	}
 

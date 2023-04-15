@@ -18,8 +18,8 @@ func done():
 		_owner.gameplay.change_stance(stance)
 
 # UI HELPER
-func get_fields() -> Array[Field]:
-	return [
+func init_fields():
+	fields = [
 		Field.Enum(
 			"stance",
 			"Stance",
