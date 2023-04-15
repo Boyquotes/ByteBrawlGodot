@@ -12,6 +12,8 @@ var max_field_cost_in_action: float:
 
 @onready var action_ui: ActionUI = find_parent("ActionUI*")
 
+var is_action_parameter: bool = true
+
 func get_max_field_cost_in_action():
 	return action_ui.action.fields.map(func(x): return x.max_cost).max()
 
@@ -31,7 +33,9 @@ func update_gradient():
 	var new_max_color = Color.RED
 	
 	for i in gradient_precision:
-		var factor: float = field.cost_curve.normalize_eval(i / (gradient_precision - 1.), null, max_field_cost_in_action)
+		var max_value = max_field_cost_in_action if is_action_parameter else null
+		
+		var factor: float = field.cost_curve.normalize_eval(i / (gradient_precision - 1.), null, max_value)
 		gradient.set_color(i, factor*new_max_color + (1 - factor)*min_color)
 
 func _ready():

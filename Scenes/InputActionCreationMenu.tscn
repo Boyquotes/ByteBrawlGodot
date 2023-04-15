@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqds43vnr4o8o"]
+[gd_scene load_steps=10 format=3 uid="uid://dqds43vnr4o8o"]
 
 [ext_resource type="Script" path="res://UI/UIInfo.gd" id="1_m7jjo"]
 [ext_resource type="Script" path="res://UI/Stance/StanceSelector.gd" id="1_uo0ha"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://UI/Sequence/SequenceButton.gd" id="3_oyw1u"]
 [ext_resource type="Script" path="res://UI/Action/ActionList.gd" id="4_601sw"]
 [ext_resource type="Script" path="res://UI/Action/ActionSelector.gd" id="5_xp8ot"]
+[ext_resource type="PackedScene" uid="uid://bv1gev3okkay8" path="res://UI/Input/InputDetails.tscn" id="6_3ntme"]
 [ext_resource type="Script" path="res://UI/SaveAndDiscard.gd" id="6_uv0h1"]
 
 [node name="InputActionCreationMenu" type="Control"]
@@ -92,12 +93,20 @@ button_group = ExtResource("3_bwq10")
 text = "Released"
 script = ExtResource("3_oyw1u")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Separator/Separator/MainScreen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Separator/Separator/MainScreen"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="InputDetails" parent="VBoxContainer/Separator/Separator/MainScreen/VBoxContainer" instance=ExtResource("6_3ntme")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Separator/Separator/MainScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="ActionList" type="GridContainer" parent="VBoxContainer/Separator/Separator/MainScreen/ScrollContainer"]
+[node name="ActionList" type="GridContainer" parent="VBoxContainer/Separator/Separator/MainScreen/VBoxContainer/ScrollContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
