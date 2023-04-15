@@ -22,6 +22,13 @@ func _exit_tree():
 func _process(delta):
 	pass
 
+# MEMORY
+func delete():
+	for input in inputs:
+		input.delete()
+	self.queue_free()
+
+
 # UI HELPER
 func to_json():
 	return {

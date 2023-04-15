@@ -47,6 +47,12 @@ func get_stance(stance_name: String) -> Stance:
 	var stances = self.stances.filter(func(x): return x.stance_name == stance_name)
 	return null if stances.size() == 0 else stances[0]
 
+# MEMORY
+func delete():
+	for stance in stances:
+		stance.delete()
+
+
 # UI HELPER
 func to_json():
 	return {

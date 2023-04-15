@@ -49,8 +49,14 @@ func can_be_cast():
 			return false
 	return true
 
-# UI HELPER
+# MEMORY
+func delete():
+	for action in self.actions:
+		action.delete()
+	self.queue_free()
 
+
+# UI HELPER
 func to_json():
 	return {
 		"actions": self.actions.map(func(x): return x.to_json())

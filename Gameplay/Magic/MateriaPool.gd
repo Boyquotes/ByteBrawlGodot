@@ -1,26 +1,12 @@
 class_name MateriaPool
 extends BaseNode
 
-#func _init():
-#	for type in Materia.EType:
-#		materias[type] = 0
-
-#func hasMaterias(needed: Dictionary):
-#	return needed.keys().all(func (key): needed[key] <= materias[key])
-
-#func removeMaterias(toRemove: Dictionary):
-#	for key in toRemove.keys():
-#		materias[key] = max(materias[key] - max(toRemove[key], 0), 0)
-
-
-
 func add_materia_by_type(type: Materia.EType):
 	self.add_child(Materia.new(type))
 
 
 func add_materia(materia: Materia):
 	self.add_child(materia)
-
 
 # (<Materia.EType, Int>) -> bool
 func remove_materias(materias: Dictionary) -> bool:
@@ -33,7 +19,6 @@ func remove_materias(materias: Dictionary) -> bool:
 			else:
 				return false
 	return true
-
 
 # (<Materia.EType, Int>) -> bool
 func has_materias(materias: Dictionary) -> bool:
