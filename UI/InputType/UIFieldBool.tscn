@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://c2c3d0vvlmll"]
 
 [ext_resource type="Script" path="res://UI/InputType/UIFieldBool.gd" id="1_tvnpe"]
 
 [node name="FieldBool" type="HBoxContainer"]
 offset_right = 81.0
 offset_bottom = 50.0
+size_flags_horizontal = 3
 alignment = 1
 script = ExtResource("1_tvnpe")
 

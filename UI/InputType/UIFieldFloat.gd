@@ -1,7 +1,7 @@
 class_name UIFieldFloat
 extends UIFieldSlider
 
-const slider_number_of_step: int = 100
+const slider_number_of_step: int = 120
 
 var line_edit: LineEdit
 

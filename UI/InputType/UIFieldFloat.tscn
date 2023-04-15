@@ -6,6 +6,7 @@
 [node name="FieldFloat" type="VBoxContainer"]
 offset_right = 297.0
 offset_bottom = 216.0
+size_flags_horizontal = 3
 alignment = 1
 script = ExtResource("1_idold")
 

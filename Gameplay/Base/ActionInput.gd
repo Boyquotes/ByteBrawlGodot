@@ -13,8 +13,7 @@ enum ESequenceState
 }
 
 const COOLDOWN_MIN = 0.
-const COOLDOWN_MAX = 200.
-var cost_curve_cooldown = CostCurve.new(10., .1, CostCurve.EMode.Linear)
+const COOLDOWN_MAX = 60.
 
 # PUBLIC
 var started_sequence: Sequence
@@ -22,7 +21,6 @@ var pressed_sequence: Sequence
 var released_sequence: Sequence
 var canceled_sequence: Sequence
 var fields: Array[Field]
-
 
 var cooldown: float = 1.
 
@@ -91,7 +89,7 @@ func delete():
 # UI HELPER
 func init_fields():
 	self.fields = [
-		Field.Float("cooldown", "Cooldown", func(): return cooldown, func(x): cooldown = x, COOLDOWN_MIN, COOLDOWN_MAX, cost_curve_cooldown)
+		Field.Float("cooldown", "Cooldown", func(): return cooldown, func(x): cooldown = x, COOLDOWN_MIN, COOLDOWN_MAX, CostCurve.new(10., .1, CostCurve.EMode.Linear))
 	]
 
 func to_json():
