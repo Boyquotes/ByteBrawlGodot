@@ -17,6 +17,9 @@ enum EType
 var actions: Array[Action]
 var type: EType
 
+var cost: float:
+	get: return self.actions.map(func(x): return x.cost).reduce(func(acc, x): return acc + x, 0)
+
 
 # PRIVATE
 var current_action_index: int
@@ -49,6 +52,10 @@ func can_be_cast():
 			return false
 	return true
 
+func create_action(action: Action):
+	self.actions.append(action)
+	action.connect("changed", func(x): self.emit_signal("changed"))
+
 # MEMORY
 func delete():
 	for action in self.actions:
@@ -63,8 +70,9 @@ func to_json():
 	}
 
 func from_json(data: Dictionary):
-	if data.actions:
-		self.actions = data.actions.map(func(x): return Action.new_from_json(x)) as Array[Action]
+	self.actions = []
+	for action in data.actions:
+		self.actions.append(Action.new_from_json(action))
 
 # DEBUG
 func _to_string() -> String:

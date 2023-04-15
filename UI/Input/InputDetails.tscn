@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsshv54r3emja"]
+
+[ext_resource type="Script" path="res://UI/Input/InputDetails.gd" id="1_rntwt"]
+[ext_resource type="Texture2D" uid="uid://bq58bb3j3mjg0" path="res://Assets/MateriaIcons/icon_1.png" id="2_e7k23"]
+
+[node name="InputDetails" type="MarginContainer"]
+offset_right = 107.0
+offset_bottom = 71.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_rntwt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/minimum_character_width = 20
+placeholder_text = "Input name"
+max_length = 200
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="MenuButton" type="MenuButton" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_e7k23")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="field_box" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="cost_label" type="Label" parent="HBoxContainer"]
+layout_mode = 2

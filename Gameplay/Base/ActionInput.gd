@@ -21,8 +21,14 @@ var started_sequence: Sequence
 var pressed_sequence: Sequence
 var released_sequence: Sequence
 var canceled_sequence: Sequence
+var fields = Array[Field]
 
 var cooldown: float = 1.
+
+var cost: float:
+	get: return [self.started_sequence, self.pressed_sequence, self.released_sequence] \
+		.map(func(x): return x.cost) \
+		.reduce(func(acc, x): return acc + x, 0)
 
 # PRIVATE
 var current_state: ESequenceState = ESequenceState.Done
@@ -34,6 +40,7 @@ func _init():
 	self.pressed_sequence = Sequence.new(Sequence.EType.pressed_sequence)
 	self.released_sequence = Sequence.new(Sequence.EType.released_sequence)
 	self.canceled_sequence = Sequence.new(Sequence.EType.canceled_sequence)
+	self.init_fields()
 
 func _ready():
 	if self.started_sequence.actions.any(func(action: Action): return action.type == Action.EType.setTarget):
@@ -81,8 +88,8 @@ func delete():
 
 
 # UI HELPER
-func get_variables_to_set() -> Array[Field]:
-	return [
+func init_fields():
+	self.fields = [
 		Field.Float("cooldown", "Cooldown", func(): return cooldown, func(x): cooldown = x, COOLDOWN_MIN, COOLDOWN_MAX, cost_curve_cooldown)
 	]
 

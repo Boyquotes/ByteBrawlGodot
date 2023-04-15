@@ -8,5 +8,5 @@ func _save():
 	reload_menu_scene()
 
 func _discard():
-	GameInfo.load_player()
+	GameInfo.reload_player()
 	reload_menu_scene()

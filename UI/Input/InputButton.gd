@@ -9,7 +9,7 @@ func _ready():
 	ui_info = find_parent("InputActionCreationMenu")
 	var events: Array[InputEvent] = InputMap.action_get_events(PlayerInput.PLAYER_INPUT[input_index])
 	text = ""
-	
+
 	for i in range(len(events)):
 		if i > 0:
 			text += " / "

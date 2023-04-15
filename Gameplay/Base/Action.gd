@@ -31,13 +31,16 @@ var param_cost: Dictionary = {}
 
 var fields: Array[Field] = []
 
-static func get_allowed_sequences(): return []
+static func get_allowed_sequences() -> Array[Sequence.EType]: return []
 var allowed_sequences: Array[Sequence.EType]:
 	get: return get_allowed_sequences()
 
 static func get_action_name(): return "! NO ACTION NAME !"
 var action_name: String:
 	get: return get_action_name()
+
+var cost: float:
+	get: return self.fields.map(func(x): return x.cost).reduce(func(acc, x): return acc * x, 1)
 
 # PRIVATE
 var _started = false
@@ -129,7 +132,7 @@ func to_json():
 
 func from_json(data: Dictionary):
 	for field in fields:
-		field.set.call(data[field.field_name])
+		field.setter.call(data.values[field.field_name])
 
 static func new_from_name(name: String) -> Action:
 	var ActionClasses = ActionsInfo.actions.filter(func (X): return X.get_action_name() == name)
