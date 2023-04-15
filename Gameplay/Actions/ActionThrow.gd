@@ -25,9 +25,9 @@ func _init():
 
 
 # UI HELPER
-func get_fields() -> Array[Field]:
+func init_fields():
 	var item_type_keys = EItemType.keys()
-	return [
+	fields = [
 		Field.Enum(
 			"item_type",
 			"Item Type",

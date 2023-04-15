@@ -38,7 +38,7 @@ var _owner: Player
 
 # LIFECYCLE
 func _init():
-	fields = get_fields()
+	init_fields()
 
 func _enter_tree():
 	if not _owner:
@@ -104,8 +104,8 @@ func _can_be_cast():
 func get_display_name():
 	return "! NO DISPLAY NAME !"
 
-func get_fields() -> Array[Field]:
-	return []
+func init_fields():
+	pass
 
 func to_json():
 	var values: Dictionary
