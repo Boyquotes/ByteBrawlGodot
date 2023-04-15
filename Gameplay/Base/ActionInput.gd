@@ -28,8 +28,12 @@ var fields: Array[Field]
 var cooldown: float = 1.
 var _current_cooldown: float = 0.
 
-var icon: Texture2D
-var icon_cooldown: Texture2D
+var icon_index: int = 0
+var icon: Texture2D:
+	get: return Icons.get_texture("inputs", icon_index)
+var icon_cooldown_index: int = 0
+var icon_cooldown: Texture2D:
+	get: return Icons.get_texture("inputs", icon_cooldown_index)
 
 var sequences: Array[Sequence]:
 	get: return [self.started_sequence, self.pressed_sequence, self.released_sequence]
@@ -110,6 +114,8 @@ func init_fields():
 
 func to_json():
 	return {
+		"icon_index": icon_index,
+		"icon_cooldown_index": icon_cooldown_index,
 		"cooldown": cooldown,
 		"current_cooldown": _current_cooldown,
 		"sequence": {
@@ -121,6 +127,8 @@ func to_json():
 	}
 
 func from_json(data: Dictionary):
+	self.icon_index = data.icon_index
+	self.icon_cooldown_index = data.icon_cooldown_index
 	self.cooldown = data.cooldown
 	for sequence_name in data.sequence.keys():
 		self[sequence_name].from_json(data.sequence[sequence_name])
