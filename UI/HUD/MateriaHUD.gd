@@ -5,15 +5,15 @@ var name_label: Label
 var icon: TextureRect
 
 var type: Materia.EType:
-	set(x): name_label.text = Materia.EType.find_key(x); icon.texture = MateriaList.get_icon_path(x); type = x
+	set(x): name_label.text = Materia.EType.find_key(x); icon.texture = MateriaList.get_icon_texture(x); type = x
 
 var count: int:
 	set(x): count_label.text = str(x); count = x
 
 func init(type: Materia.EType, count = 1):
-	count_label = self.get_node("container/count")
-	name_label = self.get_node("container/name")
-	icon = self.get_node("container/icon")
+	count_label = self.get_node("count")
+	name_label = self.get_node("name")
+	icon = self.get_node("icon")
 	self.type = type
 	self.count = count
 

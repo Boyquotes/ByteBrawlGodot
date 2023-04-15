@@ -1,18 +1,20 @@
-class_name MateriaList
+extends Node
 
-const icon_path = {
-	"Fire": "res://Assets/MateriaIcons/icon_21.png",
-	"Wind": "res://Assets/MateriaIcons/icon_7.png",
-	"Water": "res://Assets/MateriaIcons/icon_26.png",
-	"Earth": "res://Assets/MateriaIcons/icon_16.png",
-	"Lightning": "res://Assets/MateriaIcons/icon_12.png",
-	"Ice": "res://Assets/MateriaIcons/icon_44.png",
-	"Wood": "res://Assets/MateriaIcons/icon_19.png",
-	"Metal": "res://Assets/MateriaIcons/icon_33.png",
-	"Momentum": "res://Assets/MateriaIcons/icon_14.png",
-	"Spacium": "res://Assets/MateriaIcons/icon_20.png",
+var materia_frames = load("res://Assets/Icons/icons.tres") as SpriteFrames
+
+const icon_index = {
+	"Fire": 21,
+	"Wind": 7,
+	"Water": 26,
+	"Earth": 16,
+	"Lightning": 12,
+	"Ice": 44,
+	"Wood": 19,
+	"Metal": 33,
+	"Momentum": 14,
+	"Spacium": 20,
 }
 
-static func get_icon_path(type: Materia.EType) -> Texture2D:
+func get_icon_texture(type: Materia.EType) -> Texture2D:
 	var type_name = Materia.EType.find_key(type)
-	return load(icon_path[type_name])
+	return materia_frames.get_frame_texture("materias", icon_index[type_name])

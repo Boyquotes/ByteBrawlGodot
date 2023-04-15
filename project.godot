@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ActionsInfo="*res://Global/ActionsInfo.gd"
 GameInfo="*res://Global/GameInfo.gd"
+MateriaList="*res://Global/MateriaList.gd"
 
 [input]
 

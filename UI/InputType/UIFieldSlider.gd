@@ -6,6 +6,8 @@ var gradient_precision: int = 5
 var max_color: Color = Color.RED
 var min_color: Color = Color.WHITE
 
+var _is_ready = false
+
 var slider: Slider
 var max_field_cost_in_action: float:
 	get: return get_max_field_cost_in_action()
@@ -42,7 +44,8 @@ func _ready():
 	style_box.texture_margin_top = 12
 	style_box.texture_margin_bottom = 12
 	self.slider.add_theme_stylebox_override("slider", style_box)
-	
 	slider.min_value = field.min_value
 	slider.max_value = field.max_value
 	slider.value = field.getter.call()
+	_is_ready = true
+
