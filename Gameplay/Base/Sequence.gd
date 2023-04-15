@@ -20,6 +20,7 @@ var type: EType
 var cost: float:
 	get: return self.actions.map(func(x): return x.cost).reduce(func(acc, x): return acc + x, 0)
 
+signal changed
 
 # PRIVATE
 var current_action_index: int
@@ -48,7 +49,7 @@ func add_action() -> bool:
 
 func create_action(action: Action):
 	self.actions.append(action)
-	action.connect("changed", func(x): self.emit_signal("changed"))
+	action.changed.connect(func(): changed.emit())
 
 # MEMORY
 func delete():
@@ -66,7 +67,7 @@ func to_json():
 func from_json(data: Dictionary):
 	self.actions = []
 	for action in data.actions:
-		self.actions.append(Action.new_from_json(action))
+		self.create_action(Action.new_from_json(action))
 
 # DEBUG
 func _to_string() -> String:

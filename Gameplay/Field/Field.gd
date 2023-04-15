@@ -13,6 +13,8 @@ var display_name: String
 var setter: Callable
 var getter: Callable
 
+signal changed(new_value, old_value)
+
 func get_max_cost(): return null
 var max_cost: float:
 	get: return get_max_cost()
@@ -25,11 +27,18 @@ func get_cost(): return null
 var cost: float:
 	get: return get_cost()
 
+func on_value_changed(x, setter):
+	var old_value = getter.call()
+	setter.call(x)
+	var new_value = getter.call()
+	if old_value != new_value:
+		changed.emit(new_value, old_value)
+
 func _init(field_name: String, display_name: String, getter: Callable, setter: Callable, _args: Array = []):
 	self.field_name = field_name
 	self.display_name = display_name
 	self.getter = getter
-	self.setter = setter
+	self.setter = on_value_changed.bind(setter)
 
 func instantiate_ui_field() -> UIField:
 	return null

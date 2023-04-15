@@ -12,6 +12,6 @@ func _ready():
 func _pressed():
 	var action = Action.new_from_name(action_name)
 	
-	ui_info.selected_sequence.actions.append(action)
+	ui_info.selected_sequence.create_action(action)
 	ui_info.action_list.reset()
 	ui_info.action_selector.reset()

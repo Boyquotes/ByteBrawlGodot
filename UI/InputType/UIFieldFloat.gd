@@ -17,14 +17,14 @@ func _ready():
 	
 	self.slider.step = (field.max_value - field.min_value) / slider_number_of_step
 	
-	line_edit.text = str(field.getter.call())
+	line_edit.text = "%.1f" % field.getter.call()
 	
 	super._ready()
 
 func update_value(field_value):
 	field.setter.call(field_value)
 	
-	var new_text: String = str(field.getter.call())
+	var new_text: String = "%.1f" % field.getter.call()
 	if line_edit.text != new_text:
 		line_edit.text = new_text
 	

@@ -14,6 +14,9 @@ enum ESequenceState
 
 const COOLDOWN_MIN = 0.
 const COOLDOWN_MAX = 60.
+var COOLDOWN_COST_CURVE = CostCurve.new(10., .1, CostCurve.EMode.Linear)
+
+var COOLDOWN_FIELD = Field.Float("cooldown", "Cooldown", func(): return cooldown, func(x): cooldown = x, COOLDOWN_MIN, COOLDOWN_MAX, COOLDOWN_COST_CURVE)
 
 # PUBLIC
 var started_sequence: Sequence
@@ -25,10 +28,13 @@ var fields: Array[Field]
 var cooldown: float = 1.
 var _current_cooldown: float = 0.
 
+var sequences: Array[Sequence]:
+	get: return [self.started_sequence, self.pressed_sequence, self.released_sequence]
+
 var cost: float:
-	get: return [self.started_sequence, self.pressed_sequence, self.released_sequence] \
-		.map(func(x): return x.cost) \
-		.reduce(func(acc, x): return acc + x, 0)
+	get: return sequences.map(func(x): return x.cost).reduce(func(acc, x): return acc + x, 0) * COOLDOWN_FIELD.cost
+
+signal changed
 
 # PRIVATE
 var current_state: ESequenceState = ESequenceState.Done
@@ -40,12 +46,16 @@ func _init():
 	self.pressed_sequence = Sequence.new(Sequence.EType.pressed_sequence)
 	self.released_sequence = Sequence.new(Sequence.EType.released_sequence)
 	self.canceled_sequence = Sequence.new(Sequence.EType.canceled_sequence)
+	for sequence in sequences:
+		sequence.changed.connect(func(): changed.emit())
 	self.init_fields()
+	for field in fields:
+		field.changed.connect(func(_old, _new): changed.emit())
 
 func _ready():
 	if self.started_sequence.actions.any(func(action: Action): return action.type == Action.EType.setTarget):
-		self.released_sequence.actions.append(ActionSwitchTargetMode.new())
-		self.canceled_sequence.actions.append(ActionSwitchTargetMode.new())
+		self.released_sequence.create_action(ActionSwitchTargetMode.new())
+		self.canceled_sequence.create_action(ActionSwitchTargetMode.new())
 
 func _enter_tree():
 	add_child(self.started_sequence)
@@ -93,9 +103,7 @@ func delete():
 
 # UI HELPER
 func init_fields():
-	self.fields = [
-		Field.Float("cooldown", "Cooldown", func(): return cooldown, func(x): cooldown = x, COOLDOWN_MIN, COOLDOWN_MAX, CostCurve.new(10., .1, CostCurve.EMode.Linear))
-	]
+	self.fields = [COOLDOWN_FIELD]
 
 func to_json():
 	return {
