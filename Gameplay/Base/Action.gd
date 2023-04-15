@@ -42,6 +42,8 @@ var action_name: String:
 var cost: float:
 	get: return self.fields.map(func(x): return x.cost).reduce(func(acc, x): return acc * x, 1)
 
+signal changed
+
 # PRIVATE
 var _started = false
 var _current_duration: float = 0.
@@ -50,6 +52,8 @@ var _owner: Player
 # LIFECYCLE
 func _init():
 	init_fields()
+	for field in fields:
+		field.changed.connect(func(): changed.emit())
 
 func _enter_tree():
 	if not _owner:
