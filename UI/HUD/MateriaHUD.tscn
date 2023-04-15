@@ -3,37 +3,24 @@
 [ext_resource type="Script" path="res://UI/HUD/MateriaHUD.gd" id="1_5bm1s"]
 [ext_resource type="Texture2D" uid="uid://bq58bb3j3mjg0" path="res://Assets/MateriaIcons/icon_1.png" id="2_5nure"]
 
-[node name="MateriaHUD" type="Control"]
-clip_contents = true
-custom_minimum_size = Vector2(110, 50)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource("1_5bm1s")
-
-[node name="container" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="MateriaHUD" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_5bm1s")
 
-[node name="icon" type="TextureRect" parent="container"]
+[node name="icon" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_5nure")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="count" type="Label" parent="container"]
+[node name="count" type="Label" parent="."]
 layout_mode = 2
 text = "#"
 
-[node name="name" type="Label" parent="container"]
+[node name="name" type="Label" parent="."]
 layout_mode = 2
-text = "name"
+text = "name fref erf erg reghrt g xtsrd ghdrj trdj yt"
 
-[node name="PanelContainer" type="PanelContainer" parent="container"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2

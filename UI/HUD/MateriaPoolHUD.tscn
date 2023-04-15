@@ -12,6 +12,8 @@ grow_vertical = 2
 script = ExtResource("1_qun1b")
 
 [node name="container" type="VBoxContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 4

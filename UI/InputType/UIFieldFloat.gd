@@ -43,7 +43,9 @@ func _on_line_edit_focus_exited():
 
 
 func _on_line_edit_text_submitted(new_text):
-	_on_line_edit_focus_exited()
+	if self._is_ready:
+		_on_line_edit_focus_exited()
 
 func _on_h_slider_value_changed(value):
-	update_value(value)
+	if self._is_ready:
+		update_value(value)
