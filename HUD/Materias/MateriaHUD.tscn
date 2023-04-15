@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxmu0wyq7osa4"]
+[gd_scene load_steps=3 format=3 uid="uid://dd626jpsvcpfa"]
 
-[ext_resource type="Script" path="res://HUD/MateriaHUD.gd" id="1_5bm1s"]
-[ext_resource type="Texture2D" uid="uid://bq58bb3j3mjg0" path="res://Assets/MateriaIcons/icon_1.png" id="2_5nure"]
+[ext_resource type="Script" path="res://HUD/Materias/MateriaHUD.gd" id="1_jdo1f"]
+[ext_resource type="Texture2D" uid="uid://bq58bb3j3mjg0" path="res://Assets/MateriaIcons/icon_1.png" id="2_kx67c"]
 
 [node name="MateriaHUD" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_5bm1s")
+script = ExtResource("1_jdo1f")
 
 [node name="icon" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_5nure")
+texture = ExtResource("2_kx67c")
 expand_mode = 3
 stretch_mode = 4
 

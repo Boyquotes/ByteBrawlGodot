@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv5yi1yhonax8"]
+[gd_scene load_steps=2 format=3 uid="uid://wn8vllwo65yk"]
 
-[ext_resource type="Script" path="res://HUD/MateriaPoolHUD.gd" id="1_qun1b"]
+[ext_resource type="Script" path="res://HUD/Materias/MateriaPoolHUD.gd" id="1_lro1d"]
 
 [node name="MateriaPoolHUD" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qun1b")
+script = ExtResource("1_lro1d")
 
 [node name="container" type="VBoxContainer" parent="."]
 layout_mode = 1

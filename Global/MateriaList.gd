@@ -1,6 +1,5 @@
 extends Node
-
-var materia_frames = load("res://Assets/Icons/icons.tres") as SpriteFrames
+class_name MateriaList
 
 const icon_index = {
 	"Fire": 20,
@@ -15,6 +14,6 @@ const icon_index = {
 	"Spacium": 19,
 }
 
-func get_icon_texture(type: Materia.EType) -> Texture2D:
+static func get_icon_texture(type: Materia.EType) -> Texture2D:
 	var type_name = Materia.EType.find_key(type)
-	return materia_frames.get_frame_texture("materias", icon_index[type_name])
+	return Icons.get_texture("materias", icon_index[type_name])

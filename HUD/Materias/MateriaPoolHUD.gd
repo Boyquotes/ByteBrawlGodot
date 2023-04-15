@@ -2,7 +2,7 @@ extends Control
 
 var pool: MateriaPool:
 	get: return GameInfo.player.materia_pool
-var MateriaHUD = load("res://HUD/MateriaHUD.tscn")
+var MateriaHUD = load("res://HUD/Materias/MateriaHUD.tscn")
 
 @onready var container = self.get_node("container")
 

@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Icons="*res://Global/Icons.gd"
 ActionsInfo="*res://Global/ActionsInfo.gd"
 GameInfo="*res://Global/GameInfo.gd"
-MateriaList="*res://Global/MateriaList.gd"
 
 [input]
 
