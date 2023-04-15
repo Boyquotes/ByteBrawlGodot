@@ -21,7 +21,8 @@ var started_sequence: Sequence
 var pressed_sequence: Sequence
 var released_sequence: Sequence
 var canceled_sequence: Sequence
-var fields = Array[Field]
+var fields: Array[Field]
+
 
 var cooldown: float = 1.
 

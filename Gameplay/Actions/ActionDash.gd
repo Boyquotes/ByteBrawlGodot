@@ -21,10 +21,10 @@ func _init():
 # LOGIC
 func activate():
 	if _owner.target_locator:
-		(_owner as CharacterBody2D).velocity = _owner.target_locator.position.normalized() * distance / duration
+		_owner.velocity = _owner.target_locator.position.normalized() * distance / duration
 
 func done():
-	(_owner as CharacterBody2D).velocity = Vector2.ZERO
+	_owner.velocity = Vector2.ZERO
 
 func cancel():
 	done()
