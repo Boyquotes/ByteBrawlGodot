@@ -16,7 +16,13 @@ script = ExtResource("1_rntwt")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="MenuButton" type="MenuButton" parent="HBoxContainer"]
+[node name="Icon" type="MenuButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(60, 2.08165e-12)
+layout_mode = 2
+icon = ExtResource("2_e7k23")
+icon_alignment = 1
+
+[node name="IconCooldown" type="MenuButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(60, 2.08165e-12)
 layout_mode = 2
 icon = ExtResource("2_e7k23")
