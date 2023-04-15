@@ -28,7 +28,6 @@ var cost: float:
 	get: return get_cost()
 
 func on_value_changed(x, setter):
-	print(x)
 	var old_value = getter.call()
 	setter.call(x)
 	var new_value = getter.call()

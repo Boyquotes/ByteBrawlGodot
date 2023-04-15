@@ -10,7 +10,7 @@ func _ready():
 	reload()
 
 func reload():
-	self.input.connect("changed", on_input_changed)
+	self.input.changed.connect(on_input_changed)
 	var cooldown_field: FieldFloat = input.fields.filter(func(x): return x.field_name == "cooldown")[0]
 	var ui_field: UIFieldFloat = cooldown_field.instantiate_ui_field()
 	ui_field.is_action_parameter = false
@@ -19,5 +19,5 @@ func reload():
 	ui_field.get_parent().move_child(ui_field, 1)
 
 func on_input_changed():
-	cost_label.text = "Cost : " + str(self.input.cost)
+	cost_label.text = "Cost : %03d" % self.input.cost
 

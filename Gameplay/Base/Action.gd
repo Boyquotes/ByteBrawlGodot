@@ -53,7 +53,7 @@ var _owner: Player
 func _init():
 	init_fields()
 	for field in fields:
-		field.changed.connect(func(): changed.emit())
+		field.changed.connect(func(_new, _old): changed.emit())
 
 func _enter_tree():
 	if not _owner:
