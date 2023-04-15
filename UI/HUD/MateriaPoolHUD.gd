@@ -1,6 +1,7 @@
 extends Control
 
-var pool: MateriaPool
+var pool: MateriaPool:
+	get: return GameInfo.player.materia_pool
 var MateriaHUD = load("res://UI/HUD/MateriaHUD.tscn")
 
 @onready var container = self.get_node("container")
@@ -30,13 +31,11 @@ func update_materias():
 			children_type.remove_at(index)
 
 func _process(delta_time):
-	if not PlayerInfo.player:
+	if not GameInfo.player:
 		return
-	if not pool:
-		pool = PlayerInfo.player.get_node("materia_pool")
 	current_time += delta_time
 	if current_time >= REFRESH_TIME:
+		get_node("/root/").print_tree_pretty()
 		current_time = 0
-		print("UPDATE")
 		self.update_materias()
 

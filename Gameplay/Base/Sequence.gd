@@ -46,12 +46,6 @@ func add_action() -> bool:
 	add_child(actions[self.current_action_index])
 	return true
 
-func can_be_cast():
-	for action in actions:
-		if not action.can_be_cast():
-			return false
-	return true
-
 func create_action(action: Action):
 	self.actions.append(action)
 	action.connect("changed", func(x): self.emit_signal("changed"))

@@ -24,7 +24,7 @@ func _process(delta_time):
 
 func activate():
 	if _owner.target_locator:
-		_owner.target_locator.queue_free()
+		_owner.target_locator.free()
 	spawn_target()
 
 func spawn_target():
