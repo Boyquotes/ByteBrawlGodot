@@ -23,6 +23,7 @@ var canceled_sequence: Sequence
 var fields: Array[Field]
 
 var cooldown: float = 1.
+var _current_cooldown: float = 0.
 
 var cost: float:
 	get: return [self.started_sequence, self.pressed_sequence, self.released_sequence] \
@@ -50,7 +51,10 @@ func _enter_tree():
 	add_child(self.started_sequence)
 	self.current_state = ESequenceState.Start
 
-func _process(delta):
+func _exit_tree():
+	_current_cooldown = 0.
+
+func _process(delta_time):
 	if has_child(): return
 	if self.current_state == ESequenceState.Start:
 		self.current_state = ESequenceState.Pressed
@@ -61,8 +65,9 @@ func _process(delta):
 		add_child(released_sequence)
 		self.current_state = ESequenceState.Done
 	elif self.current_state == ESequenceState.Done:
-		remove_from_parent()
-
+		_current_cooldown += delta_time
+		if _current_cooldown >= cooldown:
+			remove_from_parent()
 
 # LOGIC
 func stop():
@@ -95,6 +100,7 @@ func init_fields():
 func to_json():
 	return {
 		"cooldown": cooldown,
+		"current_cooldown": _current_cooldown,
 		"sequence": {
 			"started_sequence": started_sequence.to_json(),
 			"pressed_sequence": pressed_sequence.to_json(),
