@@ -71,6 +71,15 @@ func end_sequence():
 		remove_child(get_child(0))
 
 
+# MEMORY
+func delete():
+	self.started_sequence.delete()
+	self.pressed_sequence.delete()
+	self.released_sequence.delete()
+	self.canceled_sequence.delete()
+	self.queue_free()
+
+
 # UI HELPER
 func get_variables_to_set() -> Array[Field]:
 	return [
