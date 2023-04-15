@@ -9,6 +9,7 @@ enum ESequenceState
 	Pressed,
 	Release,
 	Cancel,
+	Cooldown,
 	Done,
 }
 
@@ -16,7 +17,7 @@ const COOLDOWN_MIN = 0.
 const COOLDOWN_MAX = 60.
 var COOLDOWN_COST_CURVE = CostCurve.new(10., .1, CostCurve.EMode.Linear)
 
-var COOLDOWN_FIELD = Field.Float("cooldown", "Cooldown", func(): return cooldown, func(x): cooldown = x, COOLDOWN_MIN, COOLDOWN_MAX, COOLDOWN_COST_CURVE)
+var COOLDOWN_FIELD = Field.Float("cooldown", "Cooldown", func(): return cooldown_timer.wait_time, func(x): cooldown_timer.wait_time = x, COOLDOWN_MIN, COOLDOWN_MAX, COOLDOWN_COST_CURVE)
 
 # PUBLIC
 var started_sequence: Sequence
@@ -25,8 +26,12 @@ var released_sequence: Sequence
 var canceled_sequence: Sequence
 var fields: Array[Field]
 
-var cooldown: float = 1.
-var _current_cooldown: float = 0.
+var cooldown_timer: Timer = Timer.new()
+
+var cooldown_percent: float:
+	get: return (cooldown_timer.wait_time / cooldown_timer.time_left) * 100
+
+var sequence_container = BaseNode.new()
 
 var icon: Texture2D
 var icon_cooldown: Texture2D
@@ -38,6 +43,8 @@ var cost: float:
 	get: return sequences.map(func(x): return x.cost).reduce(func(acc, x): return acc + x, 0) * COOLDOWN_FIELD.cost
 
 signal changed
+signal start_cooldown
+signal end_cooldown
 
 # PRIVATE
 var current_state: ESequenceState = ESequenceState.Done
@@ -55,45 +62,52 @@ func _init():
 	for field in fields:
 		field.changed.connect(func(_old, _new): changed.emit())
 
+	add_child(sequence_container)
+	add_child(cooldown_timer)
+	cooldown_timer.one_shot = true
+	cooldown_timer.timeout.connect(cooldown_ended)
+
 func _ready():
 	if self.started_sequence.actions.any(func(action: Action): return action.type == Action.EType.setTarget):
 		self.released_sequence.create_action(ActionSwitchTargetMode.new())
 		self.canceled_sequence.create_action(ActionSwitchTargetMode.new())
 
+
 func _enter_tree():
-	add_child(self.started_sequence)
+	sequence_container.add_child(self.started_sequence)
 	self.current_state = ESequenceState.Start
 
-func _exit_tree():
-	_current_cooldown = 0.
-
 func _process(delta_time):
-	if has_child(): return
+	if sequence_container.has_child(): return
 	if self.current_state == ESequenceState.Start:
 		self.current_state = ESequenceState.Pressed
 
 	if self.current_state == ESequenceState.Pressed:
-		add_child(pressed_sequence)
+		sequence_container.add_child(pressed_sequence)
 	elif self.current_state == ESequenceState.Release:
-		add_child(released_sequence)
-		self.current_state = ESequenceState.Done
+		sequence_container.add_child(released_sequence)
+		self.current_state = ESequenceState.Cooldown
+	elif self.current_state == ESequenceState.Cooldown and cooldown_timer.is_stopped():
+		start_cooldown.emit()
+		cooldown_timer.start()
 	elif self.current_state == ESequenceState.Done:
-		_current_cooldown += delta_time
-		if _current_cooldown >= cooldown:
-			remove_from_parent()
+		end_cooldown.emit()
+		remove_from_parent()
+
+func cooldown_ended():
+	self.current_state = ESequenceState.Done
 
 # LOGIC
 func stop():
-	if self.current_state == ESequenceState.Done:
+	if self.current_state == ESequenceState.Done or self.current_state == ESequenceState.Cooldown:
 		return
 	if self.current_state == ESequenceState.Pressed:
 		end_sequence()
 	self.current_state = ESequenceState.Release
 
 func end_sequence():
-	if has_child():
-		remove_child(get_child(0))
-
+	if sequence_container.has_child():
+		sequence_container.remove_child(sequence_container.get_child(0))
 
 # MEMORY
 func delete():
@@ -110,8 +124,7 @@ func init_fields():
 
 func to_json():
 	return {
-		"cooldown": cooldown,
-		"current_cooldown": _current_cooldown,
+		"cooldown": cooldown_timer.wait_time,
 		"sequence": {
 			"started_sequence": started_sequence.to_json(),
 			"pressed_sequence": pressed_sequence.to_json(),
@@ -121,7 +134,7 @@ func to_json():
 	}
 
 func from_json(data: Dictionary):
-	self.cooldown = data.cooldown
+	cooldown_timer.wait_time = data.cooldown
 	for sequence_name in data.sequence.keys():
 		self[sequence_name].from_json(data.sequence[sequence_name])
 
