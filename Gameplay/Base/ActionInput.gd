@@ -16,8 +16,9 @@ enum ESequenceState
 const COOLDOWN_MIN = 0.
 const COOLDOWN_MAX = 60.
 var COOLDOWN_COST_CURVE = CostCurve.new(10., .1, CostCurve.EMode.Linear)
+var cooldown_timer: Timer = Timer.new()
 
-var COOLDOWN_FIELD = Field.Float("cooldown", "Cooldown", func(): return cooldown_timer.wait_time, func(x): cooldown_timer.wait_time = x, COOLDOWN_MIN, COOLDOWN_MAX, COOLDOWN_COST_CURVE)
+var COOLDOWN_FIELD = Field.Float("cooldown", "Cooldown", func(): return self.cooldown_timer.wait_time, func(x): self.cooldown_timer.wait_time = x, COOLDOWN_MIN, COOLDOWN_MAX, COOLDOWN_COST_CURVE)
 
 # PUBLIC
 var started_sequence: Sequence
@@ -25,8 +26,6 @@ var pressed_sequence: Sequence
 var released_sequence: Sequence
 var canceled_sequence: Sequence
 var fields: Array[Field]
-
-var cooldown_timer: Timer = Timer.new()
 
 var sequence_container = BaseNode.new()
 
@@ -44,8 +43,6 @@ var cost: float:
 	get: return sequences.map(func(x): return x.cost).reduce(func(acc, x): return acc + x, 0) * COOLDOWN_FIELD.cost
 
 signal changed
-signal start_cooldown
-signal end_cooldown
 
 # PRIVATE
 var current_state: ESequenceState = ESequenceState.Done
@@ -89,10 +86,8 @@ func _process(delta_time):
 		sequence_container.add_child(released_sequence)
 		self.current_state = ESequenceState.Cooldown
 	elif self.current_state == ESequenceState.Cooldown and cooldown_timer.is_stopped():
-		start_cooldown.emit()
 		cooldown_timer.start()
 	elif self.current_state == ESequenceState.Done:
-		end_cooldown.emit()
 		remove_from_parent()
 
 func cooldown_ended():
