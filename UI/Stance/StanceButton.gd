@@ -12,3 +12,4 @@ func _pressed():
 	ui_info.selected_stance_name = stance_name
 	ui_info.action_list.reset()
 	ui_info.action_selector.reset()
+	ui_info.input_details_manager.reset()

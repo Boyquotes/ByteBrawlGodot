@@ -7,6 +7,7 @@ var selected_stance_name: String = "normal"
 
 var action_list: ActionList
 var action_selector: ActionSelector
+var input_details_manager: InputDetailsManager
 
 var selected_stance: Stance:
 	get: return GameInfo.player.gameplay.get_stance(selected_stance_name)

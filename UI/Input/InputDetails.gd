@@ -1,42 +1,54 @@
 extends Control
+class_name InputDetails
+
+var icon_menu_to_instantiate = load("res://UI/Menu/MenuItemList.tscn")
 
 var ui_info: UIInfo
 @onready var cost_label: Label = self.get_node("HBoxContainer/PanelContainer/MarginContainer/cost_label")
 var input: ActionInput:
 	get: return ui_info.selected_input
-@onready var icon: MenuButton = get_node("HBoxContainer/Icon")
-@onready var icon_popup: PopupMenu = icon.get_popup()
-@onready var icon_cooldown: MenuButton = get_node("HBoxContainer/IconCooldown")
-@onready var icon_cooldown_popup: PopupMenu = icon_cooldown.get_popup()
+var icon_menu: PanelContainer = null
+var icon_item_list: ItemList:
+	get: return icon_menu.get_node("MarginContainer/VBoxContainer/ItemList")
+@onready var icon_button: Button = get_node("HBoxContainer/IconButton")
+var ui_field: UIFieldFloat = null
 
 func _ready():
 	self.ui_info = find_parent("InputActionCreationMenu")
-	icon_popup.id_pressed.connect(on_icon_pressed)
-	icon_cooldown_popup.id_pressed.connect(on_icon_cooldown_pressed)
+	icon_button.pressed.connect(on_icon_button_pressed)
 	
-	for icon in Icons.get_all_textures("inputs"):
-		icon_popup.add_icon_item(icon, "")
-		icon_cooldown_popup.add_icon_item(icon, "")
-		
-	reload()
-
-func reload():
 	self.input.changed.connect(on_input_changed)
 	var cooldown_field: FieldFloat = input.fields.filter(func(x): return x.field_name == "cooldown")[0]
-	var ui_field: UIFieldFloat = cooldown_field.instantiate_ui_field()
+	
+	ui_field = cooldown_field.instantiate_ui_field()
 	ui_field.is_action_parameter = false
 	get_node("HBoxContainer").add_child(ui_field)
-	ui_field.get_parent().move_child(ui_field, 2)
-	icon.icon = input.icon
-	icon_cooldown.icon = input.icon_cooldown
+	ui_field.get_parent().move_child(ui_field, 1)
+	
+	icon_button.icon = input.icon
+	cost_label.text = "Cost : %03d" % self.input.cost
 
 func on_input_changed():
 	cost_label.text = "Cost : %03d" % self.input.cost
 
-func on_icon_pressed(item_index: int):
-	input.icon_index = item_index
-	icon.icon = input.icon
+func on_icon_button_pressed():
+	icon_menu = icon_menu_to_instantiate.instantiate()
+	icon_menu.gui_input.connect(on_click_outside)
+	icon_item_list.item_selected.connect(on_item_selected)
+	get_node("/root").add_child(icon_menu)
+	for icon in Icons.get_all_textures("inputs"):
+		icon_item_list.add_icon_item(icon)
 
-func on_icon_cooldown_pressed(item_index: int):
-	input.icon_cooldown_index = item_index
-	icon_cooldown.icon = input.icon_cooldown
+func delete_menu():
+	icon_menu.queue_free()
+	icon_menu = null
+
+func on_click_outside(input_event: InputEvent):
+	if input_event is InputEventMouseButton and input_event.is_pressed():
+		delete_menu()
+
+func on_item_selected(index: int):
+	input.icon_index = index
+	icon_button.icon = input.icon
+	
+	delete_menu()
