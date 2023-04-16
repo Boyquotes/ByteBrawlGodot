@@ -14,7 +14,9 @@ func _init(stance_name: String):
 		inputs.append(ActionInput.new())
 
 func _enter_tree():
-	pass
+	for input in inputs:
+		if input.current_state == input.ESequenceState.Cooldown:
+			add_child(input)
 
 func _exit_tree():
 	pass

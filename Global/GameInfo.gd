@@ -6,7 +6,7 @@ var PlayerInstance = load("res://Entities/Player/Player.tscn")
 
 var player: Player
 
-func _init():
+func _ready():
 	self.load_player()
 
 func remove_player():

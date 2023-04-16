@@ -72,8 +72,9 @@ func _ready():
 
 
 func _enter_tree():
-	sequence_container.add_child(self.started_sequence)
-	self.current_state = ESequenceState.Start
+	if self.current_state != ESequenceState.Cooldown:
+		sequence_container.add_child(self.started_sequence)
+		self.current_state = ESequenceState.Start
 
 func _process(delta_time):
 	if sequence_container.has_child(): return
@@ -113,6 +114,8 @@ func delete():
 	self.canceled_sequence.delete()
 	self.queue_free()
 
+func remove_all_descendants():
+	sequence_container.remove_all_descendants()
 
 # UI HELPER
 func init_fields():
