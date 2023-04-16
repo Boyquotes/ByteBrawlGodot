@@ -127,8 +127,9 @@ func delete():
 	self.queue_free()
 
 
-func init_fields():
-	pass
+func init_fields() -> Array[Field]:
+	fields = []
+	return fields
 
 func to_json():
 	var values: Dictionary

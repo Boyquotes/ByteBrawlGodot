@@ -15,7 +15,7 @@ func _ready():
 		popup.add_item(item_string)
 	
 	(get_node("Panel/Label") as Label).text = field.display_name
-
+	
 	button.text = field.getter.call()
 
 func on_item_pressed(item_id: int):
