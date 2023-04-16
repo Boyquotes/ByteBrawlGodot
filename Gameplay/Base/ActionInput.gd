@@ -67,8 +67,8 @@ func _init():
 
 func _ready():
 	if self.started_sequence.actions.any(func(action: Action): return action.type == Action.EType.setTarget):
-		self.released_sequence.create_action(ActionSwitchTargetMode.new())
-		self.canceled_sequence.create_action(ActionSwitchTargetMode.new())
+		self.released_sequence.create_action(ActionRemoveTarget.new())
+		self.canceled_sequence.create_action(ActionRemoveTarget.new())
 
 
 func _enter_tree():
@@ -86,6 +86,9 @@ func _process(delta_time):
 	elif self.current_state == ESequenceState.Release:
 		sequence_container.add_child(released_sequence)
 		self.current_state = ESequenceState.Cooldown
+	elif self.current_state == ESequenceState.Cancel:
+		sequence_container.add_child(canceled_sequence)
+		self.current_state = ESequenceState.Cooldown
 	elif self.current_state == ESequenceState.Cooldown and cooldown_timer.is_stopped():
 		cooldown_timer.start()
 	elif self.current_state == ESequenceState.Done:
@@ -101,6 +104,13 @@ func stop():
 	if self.current_state == ESequenceState.Pressed:
 		end_sequence()
 	self.current_state = ESequenceState.Release
+
+func cancel():
+	if self.current_state == ESequenceState.Done or self.current_state == ESequenceState.Cooldown:
+		return
+	if self.current_state == ESequenceState.Pressed:
+		end_sequence()
+	self.current_state = ESequenceState.Cancel
 
 func end_sequence():
 	sequence_container.remove_all_descendants()

@@ -10,7 +10,8 @@ enum EType
 	cast,
 	throw,
 	setTarget,
-	changeStance
+	changeStance,
+	cancelInput,
 }
 
 # PUBLIC

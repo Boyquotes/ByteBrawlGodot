@@ -1,6 +1,8 @@
 class_name PlayerInput
 
 const PLAYER_INPUT = [
+	"input_primary_1",
+	"input_primary_2",
 	"input_1",
 	"input_2",
 	"input_3",

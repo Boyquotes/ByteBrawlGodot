@@ -1,26 +1,27 @@
-class_name ActionSwitchTargetMode
+class_name ActionSwitchTargetPosition
 extends Action
 
 
 enum ETargetType {
-	None,
-	Direction,
-	MoveDirection,
-	Position,
+	Position
 }
 
-var target_type: ETargetType = ETargetType.None
+var target_type: ETargetType = ETargetType.Position
 var visible: bool = true
 
+const distance_min: float = 10.
+const distance_max: float = 500.
+var distance: float = 100.
+
 static func get_allowed_sequences(): return [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
-static func get_action_name(): return "SwitchTargetMode"
+static func get_action_name(): return "SwitchTargetPosition"
 
 func _init():
 	self.type = EType.setTarget
 	super._init()
 
 func _process(delta_time):
-	if target_type == ETargetType.None or (_owner.target_locator and not _owner.target_locator.position.is_zero_approx()):
+	if _owner.target_locator and not _owner.target_locator.position.is_zero_approx():
 		_done()
 
 func activate():
@@ -31,12 +32,8 @@ func activate():
 func spawn_target():
 	var locator: Node2D
 	match target_type:
-		ETargetType.Direction:
-			locator = LocatorDirection.new()
-		ETargetType.MoveDirection:
-			locator = LocatorMoveDirection.new()
 		ETargetType.Position:
-			locator = LocatorPosition.new()
+			locator = LocatorPosition.new(distance)
 	if locator:
 		locator.visible = visible
 		_owner.add_child(locator)
@@ -50,7 +47,8 @@ func init_fields():
 			"Target Type",
 			func(): return target_type_keys[target_type],
 			func(x): target_type = ETargetType.get(x),
-			CostDiscrete.init_same_values(target_type_keys.slice(1), 1.)
+			CostDiscrete.init_same_values(target_type_keys, 1.)
 		),
-		Field.Bool("visible", "Visible", func(): return visible, func(x): visible = x, CostDiscrete.init_same_values([ true, false ], 1.))
+		Field.Bool("visible", "Visible", func(): return visible, func(x): visible = x, CostDiscrete.init_same_values([ true, false ], 1.)),
+		Field.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max, CostCurve.new(.1, 20., CostCurve.EMode.Exponential)),
 	]
