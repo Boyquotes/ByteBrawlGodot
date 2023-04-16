@@ -67,8 +67,8 @@ func _init():
 
 func _ready():
 	if self.started_sequence.actions.any(func(action: Action): return action.type == Action.EType.setTarget):
-		self.released_sequence.create_action(ActionSwitchTargetMode.new())
-		self.canceled_sequence.create_action(ActionSwitchTargetMode.new())
+		self.released_sequence.create_action(ActionRemoveTarget.new())
+		self.canceled_sequence.create_action(ActionRemoveTarget.new())
 
 
 func _enter_tree():

@@ -1,10 +1,29 @@
 extends Node
 
 var actions = [
-	ActionChangeStance,
 	ActionDash,
-	ActionGenerateMateria,
-	ActionSwitchTargetMode,
 	ActionThrow,
+	ActionGenerateMateria,
 	ActionCancelInput,
+	ActionChangeStance,
+	ActionSwitchTargetDirection,
+	ActionSwitchTargetPosition,
 ]
+
+var sorted_action = {
+	"utils": [
+		ActionCancelInput,
+		ActionChangeStance,
+	],
+	"skills": [
+		ActionDash,
+		ActionThrow,
+	],
+	"magic": [
+		ActionGenerateMateria,
+	],
+	"target": [
+		ActionSwitchTargetDirection,
+		ActionSwitchTargetPosition,
+	]
+}
