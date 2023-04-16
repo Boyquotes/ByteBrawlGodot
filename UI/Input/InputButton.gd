@@ -19,3 +19,4 @@ func _pressed():
 	ui_info.selected_input_index = input_index
 	ui_info.action_list.reset()
 	ui_info.action_selector.reset()
+	ui_info.input_details_manager.reset()

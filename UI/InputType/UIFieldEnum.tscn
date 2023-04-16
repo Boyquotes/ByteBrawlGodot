@@ -16,6 +16,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Test"
 horizontal_alignment = 1

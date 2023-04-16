@@ -4,8 +4,8 @@
 [ext_resource type="Theme" uid="uid://clxd8haha2pce" path="res://UI/SliderTheme.tres" id="2_8w4pw"]
 
 [node name="FieldFloat" type="VBoxContainer"]
-offset_right = 297.0
-offset_bottom = 216.0
+offset_right = 71.0
+offset_bottom = 61.0
 size_flags_horizontal = 3
 alignment = 1
 script = ExtResource("1_idold")

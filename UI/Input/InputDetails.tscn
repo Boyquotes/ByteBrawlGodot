@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv1gev3okkay8"]
+[gd_scene load_steps=2 format=3 uid="uid://bv1gev3okkay8"]
 
 [ext_resource type="Script" path="res://UI/Input/InputDetails.gd" id="1_rntwt"]
-[ext_resource type="Texture2D" uid="uid://bq58bb3j3mjg0" path="res://Assets/MateriaIcons/icon_1.png" id="2_e7k23"]
 
 [node name="InputDetails" type="MarginContainer"]
 offset_right = 500.0
@@ -16,17 +15,11 @@ script = ExtResource("1_rntwt")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Icon" type="MenuButton" parent="HBoxContainer"]
+[node name="IconButton" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(60, 2.08165e-12)
 layout_mode = 2
-icon = ExtResource("2_e7k23")
 icon_alignment = 1
-
-[node name="IconCooldown" type="MenuButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(60, 2.08165e-12)
-layout_mode = 2
-icon = ExtResource("2_e7k23")
-icon_alignment = 1
+expand_icon = true
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
