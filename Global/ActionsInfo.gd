@@ -6,4 +6,5 @@ var actions = [
 	ActionGenerateMateria,
 	ActionSwitchTargetMode,
 	ActionThrow,
+	ActionCancelInput,
 ]
