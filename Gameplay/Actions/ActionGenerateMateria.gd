@@ -18,6 +18,7 @@ static func get_action_name(): return "GenerateMateria"
 func _init():
 	self.type = EType.generateMateria
 	self.generation_time_customer = 1
+	self.block_action = true
 	super._init()
 
 func activate():

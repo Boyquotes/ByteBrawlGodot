@@ -69,8 +69,7 @@ func _process(delta_time):
 # LOGIC
 func _activate():
 	if not _owner: return
-	if not _can_be_cast():
-		return _cancel()
+	if not _can_be_cast(): return
 	_block_action_if_needed(true)
 	_block_movement_if_needed(true)
 	activate()
@@ -84,7 +83,10 @@ func _done():
 
 func _cancel():
 	if _owner:
+		_block_action_if_needed(false)
+		_block_movement_if_needed(false)
 		cancel()
+	remove_from_parent()
 
 func _block_action_if_needed(value: bool):
 	if not self.block_action: return
@@ -97,6 +99,9 @@ func _block_movement_if_needed(value: bool):
 	var movement_node = _owner.movement
 	if movement_node:
 		movement_node.block_movement(value)
+
+func remove_all_descendants():
+	self._cancel()
 
 # INTERFACE
 func activate():

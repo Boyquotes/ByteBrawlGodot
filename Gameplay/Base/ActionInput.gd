@@ -103,8 +103,7 @@ func stop():
 	self.current_state = ESequenceState.Release
 
 func end_sequence():
-	if sequence_container.has_child():
-		sequence_container.remove_child(sequence_container.get_child(0))
+	sequence_container.remove_all_descendants()
 
 # MEMORY
 func delete():
@@ -116,6 +115,7 @@ func delete():
 
 func remove_all_descendants():
 	sequence_container.remove_all_descendants()
+	self.current_state = ESequenceState.Cooldown
 
 # UI HELPER
 func init_fields():
