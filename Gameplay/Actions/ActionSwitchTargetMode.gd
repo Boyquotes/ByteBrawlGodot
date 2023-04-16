@@ -10,6 +10,7 @@ enum ETargetType {
 }
 
 var target_type: ETargetType = ETargetType.None
+var visible: bool = true
 
 static func get_allowed_sequences(): return [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
 static func get_action_name(): return "SwitchTargetMode"
@@ -28,13 +29,17 @@ func activate():
 	spawn_target()
 
 func spawn_target():
+	var locator: Node2D
 	match target_type:
 		ETargetType.Direction:
-			_owner.add_child(LocatorDirection.new())
+			locator = LocatorDirection.new()
 		ETargetType.MoveDirection:
-			_owner.add_child(LocatorMoveDirection.new())
+			locator = LocatorMoveDirection.new()
 		ETargetType.Position:
-			_owner.add_child(LocatorPosition.new())
+			locator = LocatorPosition.new()
+	if locator:
+		locator.visible = visible
+		_owner.add_child(locator)
 
 # UI HELPER
 func init_fields():
@@ -46,5 +51,6 @@ func init_fields():
 			func(): return target_type_keys[target_type],
 			func(x): target_type = ETargetType.get(x),
 			CostDiscrete.init_same_values(target_type_keys.slice(1), 1.)
-		)
+		),
+		Field.Bool("visible", "Visible", func(): return visible, func(x): visible = x, CostDiscrete.init_same_values([ true, false ], 1.))
 	]

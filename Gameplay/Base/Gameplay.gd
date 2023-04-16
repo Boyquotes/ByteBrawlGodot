@@ -7,6 +7,8 @@ var stances: Array[Stance] = []
 var current_stance: Stance:
 	get: return get_node("stance") if has_node("stance") else null
 
+signal stance_changed
+
 func _ready():
 	var stance = self.get_stance("normal")
 	if stance:
@@ -31,6 +33,8 @@ func change_stance(selected_stance: Stance):
 		current_stance.remove_all_descendants()
 		remove_child(current_stance)
 	add_child(selected_stance)
+	stance_changed.emit()
+
 
 func active_input(index: int):
 	if not current_stance or index == -1 or current_stance.inputs[index].get_parent() == current_stance: return
@@ -51,7 +55,6 @@ func get_stance(stance_name: String) -> Stance:
 func delete():
 	for stance in stances:
 		stance.delete()
-
 
 # UI HELPER
 func to_json():

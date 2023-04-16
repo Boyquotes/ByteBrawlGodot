@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://pvcuwio6dwf7"]
+
+[ext_resource type="Script" path="res://HUD/Inputs/ActionInputHUD.gd" id="1_k8h2i"]
+
+[node name="ActionInputHUD" type="TextureProgressBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 5
+tint_progress = Color(0, 0, 0, 0.6)
+script = ExtResource("1_k8h2i")
