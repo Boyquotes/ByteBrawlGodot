@@ -15,10 +15,12 @@ var quantity_to_drain_min: int = 0.
 var quantity_to_drain: int:
 	set(x): quantity_to_drain = clampi(x, quantity_to_drain_min, quantity_to_drain_max) 
 
-func init_fields() -> Array[Field]:
+func init_fields():
+	super.init_fields()
+	
 	var materia_type_keys = Materia.EType.keys()
 	var mode_keys = EMode.keys()
-	fields = [
+	fields.append_array([
 		Field.Enum(
 			"materia_type",
 			"Materia Type",
@@ -42,5 +44,4 @@ func init_fields() -> Array[Field]:
 			quantity_to_drain_max,
 			CostCurve.new(1., 20., CostCurve.EMode.Exponential)
 		)
-	] + super.init_fields()
-	return fields
+	])

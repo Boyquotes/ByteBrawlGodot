@@ -6,6 +6,7 @@
 
 [node name="MateriaProjectile" type="Area2D"]
 script = ExtResource("1_slfq1")
+metadata/_edit_group_ = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

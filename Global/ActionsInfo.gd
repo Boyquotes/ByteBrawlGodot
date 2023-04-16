@@ -8,6 +8,7 @@ var actions = [
 	ActionChangeStance,
 	ActionSwitchTargetDirection,
 	ActionSwitchTargetPosition,
+	ActionSpellMateriaProjectile,
 ]
 
 var sorted_action = {
@@ -21,6 +22,7 @@ var sorted_action = {
 	],
 	"magic": [
 		ActionGenerateMateria,
+		ActionSpellMateriaProjectile,
 	],
 	"target": [
 		ActionSwitchTargetDirection,
