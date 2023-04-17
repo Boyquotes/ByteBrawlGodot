@@ -1,5 +1,5 @@
 extends Area2D
-class_name MateriaProjectile
+class_name Projectile
 
 var speed: Vector2
 
