@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djdkt0ca7xwml"]
+[gd_scene load_steps=7 format=3 uid="uid://7ypkjy4rdd1a"]
 
 [ext_resource type="Texture2D" uid="uid://b3tnoo5ksj8ua" path="res://Assets/NinjaAdventure/Actor/Characters/EggBoy/SeparateAnim/Idle.png" id="1_6urnu"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_of2fo"]
