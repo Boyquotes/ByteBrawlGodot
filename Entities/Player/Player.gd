@@ -1,5 +1,5 @@
 class_name Player
-extends CharacterBody2D
+extends RigidBody2D
 
 var gameplay: Gameplay:
 	get: return self.get_node("gameplay") if self.has_node("gameplay") else null
@@ -17,7 +17,6 @@ var target_locator: BaseNode2D:
 func delete():
 	self.gameplay.delete()
 	self.queue_free()
-
 
 func to_json():
 	return {
