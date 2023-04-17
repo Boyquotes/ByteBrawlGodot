@@ -3,11 +3,14 @@ class_name KinematicCharacterBody
 
 @export var mass: float = 1.
 
-var forces: Array[Vector2] = []
+var acceleration: Vector2 = Vector2.ZERO
 
-func add_force(force: Vector2):
-	forces.append(force)
+func apply_force(force: Vector2):
+	acceleration += mass * force
+
+func apply_impulse(impulse: Vector2):
+	velocity += mass * impulse
 
 func _physics_process(delta_time):
-	var acceleration = forces.reduce(func(force, acc): acc += force * mass)
 	velocity += acceleration * delta_time
+	move_and_slide()
