@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://7ypkjy4rdd1a"]
+[gd_scene load_steps=7 format=3 uid="uid://djdkt0ca7xwml"]
 
 [ext_resource type="Texture2D" uid="uid://b3tnoo5ksj8ua" path="res://Assets/NinjaAdventure/Actor/Characters/EggBoy/SeparateAnim/Idle.png" id="1_6urnu"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_of2fo"]
-[ext_resource type="Script" path="res://Gameplay/Move.gd" id="3_k7330"]
+[ext_resource type="Script" path="res://Gameplay/Player/Move.gd" id="3_wmpu3"]
 [ext_resource type="Script" path="res://Gameplay/Base/Gameplay.gd" id="4_8svt5"]
 [ext_resource type="Script" path="res://Gameplay/Magic/MateriaPool.gd" id="5_n5t1p"]
 
@@ -24,7 +24,7 @@ texture = ExtResource("1_6urnu")
 hframes = 4
 
 [node name="movement" type="Node2D" parent="."]
-script = ExtResource("3_k7330")
+script = ExtResource("3_wmpu3")
 
 [node name="gameplay" type="Node" parent="."]
 script = ExtResource("4_8svt5")
