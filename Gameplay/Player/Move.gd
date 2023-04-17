@@ -7,16 +7,18 @@ extends Node
 
 # PRIVATE
 var movement_blocked: bool = false
+var player: Player
 
+func _ready():
+	player = get_parent()
 
 # LIFECYCLE
-func _physics_process(delta_time):
+func _physics_process(delta):
 	var parent = get_parent()
 	
 	if not movement_blocked:
 		parent.velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down") * speed
 	parent.move_and_slide()
-
 
 # LOGIC
 func block_movement(value: bool = true):
