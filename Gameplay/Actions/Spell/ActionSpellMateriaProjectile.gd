@@ -1,7 +1,7 @@
 extends ActionSpell
 class_name ActionSpellMateriaProjectile
 
-var materia_projectile_to_instantiate = load("res://Entities/MateriaProjectile/MateriaProjectile.tscn")
+var materia_projectile_to_instantiate = load("res://Entities/Area/MateriaProjectile.tscn")
 
 const projectile_speed_min: float = 10.
 const projectile_speed_max: float = 500.
@@ -32,6 +32,7 @@ func activate():
 	if _owner.target_locator:
 		var materia_projectile: MateriaProjectile = materia_projectile_to_instantiate.instantiate()
 		materia_projectile.init(
+			_owner,
 			_owner.position,
 			_owner.target_locator.position.normalized() * projectile_speed,
 			projectile_travel_distance / projectile_speed,

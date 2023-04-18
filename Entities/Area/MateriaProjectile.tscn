@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://udeb2rgbf04"]
+[gd_scene load_steps=3 format=3 uid="uid://bpfx1p6kn7vm8"]
 
-[ext_resource type="Script" path="res://Entities/MateriaProjectile/MateriaProjectile.gd" id="1_slfq1"]
+[ext_resource type="Script" path="res://Entities/Area/MateriaProjectile.gd" id="1_w5vpu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5q4pp"]
 
 [node name="MateriaProjectile" type="Area2D"]
-script = ExtResource("1_slfq1")
+script = ExtResource("1_w5vpu")
 metadata/_edit_group_ = true
 
 [node name="Timer" type="Timer" parent="."]
