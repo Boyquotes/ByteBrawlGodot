@@ -5,14 +5,10 @@ class_name AreaOfEffect
 
 var sprite: AnimatedSprite2D = AnimatedSprite2D.new()
 var life_timer: Timer = Timer.new()
-var iframe_timer: Timer = Timer.new()
 
 @export_category("Logic")
 @export_group("Hit")
 @export var hit_number: float = 1
-@export var hit_iframes: float = 0.2:
-	get: return iframe_timer.wait_time
-	set(x): iframe_timer.wait_time = x
 @export_group("Life")
 @export var life_time: float = 1:
 	get: return life_timer.wait_time
@@ -41,7 +37,7 @@ signal hit(owner: Node2D, body: Node2D)
 signal on_death(owner: Node2D, position: Vector2)
 
 func _editor_ready():
-	self.iframe_timer.wait_time = 0.2
+	pass
 
 
 func _ready():
@@ -51,8 +47,6 @@ func _ready():
 
 	self.add_child(self.sprite)
 	self.add_child(self.life_timer)
-	self.add_child(self.iframe_timer)
-
 
 # IN GAME
 
@@ -61,30 +55,18 @@ func init(owner: Node2D, _position: Vector2, direction: Vector2 = Vector2.ZERO, 
 	self.velocity = direction.normalized() * speed
 	position = _position + direction.normalized() * offset
 
-
 func _game_ready():
 	self.life_timer.autostart = true
 	self.life_timer.one_shot = true
-	self.iframe_timer.one_shot = true
 	self.body_entered.connect(_hit_process)
-	self.iframe_timer.timeout.connect(self.set_hittable.bind(true))
 
-func set_hittable(hittable: bool):
-	if hittable:
-		self.call_deferred("_hit_process", null)
-	self.collision.set_deferred("disabled", not hittable)
-
-func _hit_process(_body):
-	if not self.has_overlapping_bodies() or _body == entity_owner: return
-	self.set_hittable(false)
+func _hit_process(body: Node2D):
+	if body == entity_owner: return
 	self.hit_number -= 1
-	for entity in self.get_overlapping_bodies():
-		self.hit.emit(self.entity_owner, entity)
-	if self.hit_number != 0:
-		self.iframe_timer.start()
-		return
-	self.on_death.emit(self.entity_owner, self.position)
-	self.queue_free()
+	self.hit.emit(self.entity_owner, body)
+	if self.hit_number == 0:
+		self.on_death.emit(self.entity_owner, self.position)
+		self.queue_free()
 
 func _physics_process(delta_time):
 	position += velocity * delta_time

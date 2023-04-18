@@ -26,10 +26,12 @@ func _set(property, value):
 		"Shape/shape_radius":
 			shape_radius = value
 			(collision.shape as CircleShape2D).radius = value
+			return true
 		"Shape/shape_extents":
 			shape_extents = value
 			(collision.shape as RectangleShape2D).extents = value
-	return true
+			return true
+	return false
 
 func _get(property):
 	match property:
