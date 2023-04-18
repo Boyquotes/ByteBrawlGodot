@@ -78,12 +78,10 @@ func set_hittable(hittable: bool):
 
 func _hit_process(_body):
 	print("HIT", _body, self.has_overlapping_bodies())
-	if not self.has_overlapping_bodies():
-		return
+	if not self.has_overlapping_bodies() or _body == entity_owner: return
 	self.set_hittable(false)
 	self.hit_number -= 1
 	for entity in self.get_overlapping_bodies():
-		print(entity)
 		self.hit.emit(self.entity_owner, entity)
 	if self.hit_number != 0:
 		self.iframe_timer.start()
