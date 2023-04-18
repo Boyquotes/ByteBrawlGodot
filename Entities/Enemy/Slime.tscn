@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bun1rlhlqp4b3"]
+[gd_scene load_steps=15 format=3 uid="uid://bun1rlhlqp4b3"]
 
 [ext_resource type="Script" path="res://Extensions/KinematicCharacterBody.gd" id="1_4y5eb"]
 [ext_resource type="Texture2D" uid="uid://hq5nm4pwt5dq" path="res://Assets/mysticWood/characters/slime.png" id="2_3yxxe"]
+[ext_resource type="Script" path="res://Gameplay/EntityParts/EntityStats.gd" id="3_n81m1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6brc2"]
 
@@ -91,3 +92,6 @@ shape = SubResource("CircleShape2D_6brc2")
 sprite_frames = SubResource("SpriteFrames_g3dsv")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="EntityStats" type="Node" parent="."]
+script = ExtResource("3_n81m1")
