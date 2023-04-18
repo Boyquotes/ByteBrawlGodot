@@ -1,5 +1,5 @@
 @tool
-class_name DamageEmitter
+class_name CollisionArea
 extends Area2D
 
 enum EShapeType {
@@ -10,7 +10,7 @@ enum EShapeType {
 var collision: CollisionShape2D = CollisionShape2D.new()
 
 @export_group("Shape")
-@export var shape_type = EShapeType.rectangle:
+@export var shape_type = EShapeType.circle:
 	set(x):
 		shape_type = x;
 		notify_property_list_changed();
@@ -20,6 +20,8 @@ var shape_extents = Vector2(16, 16)
 
 # EDITOR LOGIC
 func _set(property, value):
+	if not collision.shape:
+		self.switch_shape()
 	match property:
 		"Shape/shape_radius":
 			shape_radius = value
@@ -44,10 +46,6 @@ func _get_property_list() -> Array:
 			props.push_back({ name = "Shape/shape_extents", type = TYPE_VECTOR2 })
 	return props
 
-func add_child_and_show(node: Node):
-	add_child(node)
-	node.set_owner(get_tree().edited_scene_root)
-
 func switch_shape():
 	match shape_type:
 		EShapeType.circle:
@@ -57,27 +55,5 @@ func switch_shape():
 			self.collision.shape = RectangleShape2D.new()
 			self.collision.shape.extents = shape_extents
 
-
-##############
-#            #
-# GAME LOGIC #
-#            #
-##############
-
-var damage: Damage
-
-func _init():
-	pass
-
 func _ready():
-	self.collision.name = "collision"
-	self.switch_shape()
-	self.body_entered.connect(_on_collide)
 	add_child(self.collision)
-	self.queue_free()
-
-func _on_collide(body):
-	pass #EMIT DAMAGE
-
-func _process(delta):
-	pass
