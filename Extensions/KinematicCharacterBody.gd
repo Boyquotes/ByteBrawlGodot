@@ -1,11 +1,81 @@
-extends CharacterBody2D
+@tool
 class_name KinematicCharacterBody
+extends CharacterBody2D
 
 const fg_dynamic: float = 500
 const fg_static: float = 500
 
+var collision: CollisionShape2D = CollisionShape2D.new()
+var collision_area: CollisionArea = CollisionArea.new()
+
+const SIZE_DIFF: float = 1.
+
+@export_group("Logic")
 @export var mass: float = 1
 
+@export_group("Shape")
+@export var shape_type = CollisionArea.EShapeType.circle:
+	set(x):
+		shape_type = x;
+		notify_property_list_changed();
+		self.switch_shape()
+
+var shape_radius: float = 16
+var shape_extents = Vector2(16, 16)
+
+# EDITOR LOGIC
+func _set(property, value):
+	if not collision.shape:
+		self.switch_shape()
+	match property:
+		"Shape/shape_radius":
+			shape_radius = value
+			(collision.shape as CircleShape2D).radius = value
+			(collision_area.collision.shape as CircleShape2D).radius = value + SIZE_DIFF
+			return true
+		"Shape/shape_extents":
+			shape_extents = value
+			(collision.shape as RectangleShape2D).extents = value
+			(collision_area.collision.shape as RectangleShape2D).extents = value + (Vector2.ONE * SIZE_DIFF)
+			return true
+	return false
+
+func _get(property):
+	match property:
+		"Shape/shape_radius": return shape_radius
+		"Shape/shape_extents": return shape_extents
+
+@export_group("")
+func _get_property_list() -> Array:
+	var props = []
+	match shape_type:
+		collision_area.EShapeType.circle:
+			props.push_back({ name = "Shape/shape_radius", type = TYPE_INT })
+		collision_area.EShapeType.rectangle:
+			props.push_back({ name = "Shape/shape_extents", type = TYPE_VECTOR2 })
+	return props
+
+func switch_shape():
+	match shape_type:
+		collision_area.EShapeType.circle:
+			self.collision.shape = CircleShape2D.new()
+			self.collision.shape.radius = shape_radius
+			self.collision_area.collision.shape = CircleShape2D.new()
+			self.collision.shape.radius = shape_radius + SIZE_DIFF
+		collision_area.EShapeType.rectangle:
+			self.collision.shape = RectangleShape2D.new()
+			self.collision.shape.extents = shape_extents
+			self.collision_area.collision.shape = RectangleShape2D.new()
+			self.collision_area.collision.shape.extents = shape_extents + (Vector2.ONE * SIZE_DIFF)
+
+func _ready():
+	add_child(self.collision)
+	add_child(self.collision_area)
+	if not collision.shape:
+		self.switch_shape()
+
+
+# PHYSICS LOGIC
 var acceleration: Vector2 = Vector2.ZERO
 
 func apply_force(force: Vector2):
