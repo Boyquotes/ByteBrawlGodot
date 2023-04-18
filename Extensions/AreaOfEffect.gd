@@ -34,7 +34,7 @@ var entity_owner: Node2D
 var _spawn_position: Vector2
 
 signal hit(owner: Node2D, body: Node2D)
-signal on_death(owner: Node2D, position: Vector2)
+signal on_death(owner: Node2D, position: Vector2, direction: Vector2)
 
 func _editor_ready():
 	pass
@@ -53,7 +53,7 @@ func _ready():
 func init(owner: Node2D, _position: Vector2, direction: Vector2 = Vector2.ZERO, offset: float = 0):
 	self.entity_owner = owner
 	self.velocity = direction.normalized() * speed
-	position = _position + direction.normalized() * offset
+	self.position = _position + direction.normalized() * offset
 
 func _game_ready():
 	self.life_timer.autostart = true
@@ -65,7 +65,7 @@ func _hit_process(body: Node2D):
 	self.hit_number -= 1
 	self.hit.emit(self.entity_owner, body)
 	if self.hit_number == 0:
-		self.on_death.emit(self.entity_owner, self.position)
+		self.on_death.emit(self.entity_owner, self.position, self.velocity.normalized())
 		self.queue_free()
 
 func _physics_process(delta_time):

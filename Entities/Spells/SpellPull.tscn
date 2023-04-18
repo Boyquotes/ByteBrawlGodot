@@ -8,7 +8,7 @@
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_1vkpe")
 life_time = 2.0
-speed = 200.0
+speed = 300.0
 sprite_frames = ExtResource("2_rr0xv")
 sprite_animation_name = &"materias"
 sprite_animation_speed = 1.0
