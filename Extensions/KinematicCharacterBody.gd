@@ -93,7 +93,8 @@ func apply_impulse(impulse: Vector2):
 	velocity += impulse / mass
 
 func calc_new_velocity(v1: Vector2, v2: Vector2, m1: float, m2: float, e: float = 5/9):
-	return (m1 / (m1 + m2)) * (1 + e) * v1 + (m2 / (m1 + m2)) * (1 - e) * v2
+	print(v1, "/", v2)
+	return (m2 * (1 - e) * v2 + (m1 + e*m2) * v1) / (m1 + m2)
 
 func _on_body_entered(body: PhysicsBody2D):
 	if not body is KinematicCharacterBody or body == self:
@@ -103,8 +104,10 @@ func _on_body_entered(body: PhysicsBody2D):
 		return
 
 	var old_velocity: Vector2 = velocity
-	self.velocity = calc_new_velocity(velocity, body.velocity, mass, body.mass)
+	velocity = calc_new_velocity(velocity, body.velocity, mass, body.mass)
 	body.velocity = calc_new_velocity(body.velocity, old_velocity, body.mass, mass)
+	
+	print(velocity, " : ", body.velocity)
 	
 	body.bodies_calc_already_done.append(self)
 

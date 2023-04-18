@@ -23,13 +23,7 @@ func _init():
 # LOGIC
 func activate():
 	if _owner.target_locator:
-		_velocity = _owner.target_locator.position.normalized() * distance / duration
-
-func done():
-	_owner.velocity = Vector2.ZERO
-
-func cancel():
-	done()
+		_owner.apply_impulse(_owner.target_locator.position.normalized() * distance / duration)
 
 # UI HELPER
 func init_fields():
@@ -37,9 +31,6 @@ func init_fields():
 		Field.Float("distance", "Distance", func(): return distance, func(x): distance = x, distance_min, distance_max, CostCurve.new(.1, 20., CostCurve.EMode.Exponential)),
 		Field.Float("duration", "Duration", func(): return duration, func(x): duration = x, duration_min, duration_max, CostCurve.new(10., .1, CostCurve.EMode.Exponential))
 	]
-
-func _physics_process(delta_time):
-	_owner.velocity = _velocity
 
 # DEBUG
 func _to_string() -> String:
