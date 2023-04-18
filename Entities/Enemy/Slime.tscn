@@ -82,7 +82,7 @@ animations = [{
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_4y5eb")
-Shape/shape_radius = 18.0
+Shape/shape_radius = 8.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)

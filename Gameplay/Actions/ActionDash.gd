@@ -25,6 +25,9 @@ func activate():
 	if _owner.target_locator:
 		_owner.apply_impulse(_owner.target_locator.position.normalized() * distance / duration)
 
+func can_be_cast():
+	return _owner.target_locator and not _owner.target_locator.position.is_zero_approx()
+
 # UI HELPER
 func init_fields():
 	fields = [
