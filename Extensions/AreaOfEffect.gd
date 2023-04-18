@@ -68,8 +68,6 @@ func _game_ready():
 	self.iframe_timer.one_shot = true
 	self.body_entered.connect(_hit_process)
 	self.iframe_timer.timeout.connect(self.set_hittable.bind(true))
-	print(sprite.animation)
-	print(sprite.frame)
 
 func set_hittable(hittable: bool):
 	if hittable:
@@ -77,7 +75,6 @@ func set_hittable(hittable: bool):
 	self.collision.set_deferred("disabled", not hittable)
 
 func _hit_process(_body):
-	print("HIT", _body, self.has_overlapping_bodies())
 	if not self.has_overlapping_bodies() or _body == entity_owner: return
 	self.set_hittable(false)
 	self.hit_number -= 1

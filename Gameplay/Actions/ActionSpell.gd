@@ -1,47 +1,40 @@
-extends Action
 class_name ActionSpell
+extends Action
 
-enum EMode {
-	OneTime,
-	Repeat,
-	DrainAll
-}
+var _spell
+var spell_name: String:
+	set(x):
+		_spell = load(Spells.scene_path[x])
+		spell_name = x
 
-var materia_type: Materia.EType
-var drain_mode: EMode
+static func get_allowed_sequences(): return [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
+static func get_action_name(): return "Spell"
 
-var quantity_to_drain_max: int = 50.
-var quantity_to_drain_min: int = 0.
-var quantity_to_drain: int:
-	set(x): quantity_to_drain = clampi(x, quantity_to_drain_min, quantity_to_drain_max) 
+func _init():
+	self.duration = .1
+	self.block_action = true
+	self.type = EType.cast
+	super._init()
 
+# LOGIC
+func activate():
+	if _owner.target_locator:
+		var new_spell = _spell.instantiate()
+		get_node("/root").add_child(new_spell)
+		new_spell.init(_owner, _owner.position, _owner.target_locator.position.normalized(), 20)
+
+# UI HELPER
 func init_fields():
-	super.init_fields()
-	
-	var materia_type_keys = Materia.EType.keys()
-	var mode_keys = EMode.keys()
-	fields.append_array([
+	fields = [
 		Field.Enum(
-			"materia_type",
-			"Materia Type",
-			func(): return materia_type_keys[materia_type],
-			func(x): materia_type = Materia.EType.get(x),
-			CostDiscrete.init_same_values(materia_type_keys, 1.)
-		),
-		Field.Enum(
-			"drain_mode",
-			"Drain Mode",
-			func(): return mode_keys[drain_mode],
-			func(x): drain_mode = EMode.get(x),
-			CostDiscrete.new({"OneTime": 1., "Repeat": 10., "DrainAll": 5.})
-		),
-		Field.Int(
-			"quantity_to_drain",
-			"Quantity to Drain",
-			func(): return quantity_to_drain,
-			func(x): quantity_to_drain = x,
-			quantity_to_drain_min,
-			quantity_to_drain_max,
-			CostCurve.new(1., 20., CostCurve.EMode.Exponential)
+			"spell",
+			"Spell",
+			func(): return spell_name,
+			func(x): spell_name = x,
+			CostDiscrete.init_same_values(Spells.scene_path.keys(), 1.)
 		)
-	])
+	]
+
+# DEBUG
+func _to_string() -> String:
+	return """Spell | spell : %s""" % _spell

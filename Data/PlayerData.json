@@ -27,14 +27,9 @@
 										}
 									},
 									{
-										"name": "Materia Projectile",
+										"name": "Spell",
 										"values": {
-											"drain_mode": "OneTime",
-											"materia_type": "Ice",
-											"projectile_size": 0.5,
-											"projectile_speed": 500,
-											"projectile_travel_distance": 414.25,
-											"quantity_to_drain": 0
+											"spell": "Pull"
 										}
 									}
 								]
