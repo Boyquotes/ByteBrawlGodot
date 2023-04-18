@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8h8a4jo61k6w"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="TileSet" uid="uid://7o3f7p2v2nkb" path="res://Scenes/Map.tres" id="1_e7or5"]
 [ext_resource type="Script" path="res://Scenes/Play.gd" id="1_oxjtw"]
 [ext_resource type="PackedScene" uid="uid://b2ojkepnm8vij" path="res://HUD/HUD.tscn" id="3_0gnnd"]
-[ext_resource type="PackedScene" uid="uid://bun1rlhlqp4b3" path="res://Entities/Enemy/Slime.tscn" id="4_f1r3w"]
+[ext_resource type="PackedScene" uid="uid://bun1rlhlqp4b3" path="res://Entities/Enemy/Slime2.tscn" id="4_f1r3w"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_oxjtw")
