@@ -7,10 +7,10 @@ enum EShapeType {
 	rectangle,
 }
 
-@onready var collision: CollisionShape2D = CollisionShape2D.new()
+var collision: CollisionShape2D = CollisionShape2D.new()
 
 @export_group("Shape")
-@export var shape_type = EShapeType.rectangle:
+@export var shape_type = EShapeType.circle:
 	set(x):
 		shape_type = x;
 		notify_property_list_changed();
@@ -20,6 +20,8 @@ var shape_extents = Vector2(16, 16)
 
 # EDITOR LOGIC
 func _set(property, value):
+	if not collision.shape:
+		self.switch_shape()
 	match property:
 		"Shape/shape_radius":
 			shape_radius = value
@@ -54,5 +56,4 @@ func switch_shape():
 			self.collision.shape.extents = shape_extents
 
 func _ready():
-	self.switch_shape()
 	add_child(self.collision)

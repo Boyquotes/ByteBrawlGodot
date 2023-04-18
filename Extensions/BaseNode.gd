@@ -12,4 +12,5 @@ func remove_all_descendants():
 	for child in self.get_children():
 		if child.has_method("remove_all_descendants"):
 			child.remove_all_descendants()
-		remove_child(child)
+		if child.get_parent() == self:
+			remove_child(child)
