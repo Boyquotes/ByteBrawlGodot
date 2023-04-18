@@ -5,8 +5,8 @@
 [ext_resource type="SpriteFrames" uid="uid://ctejf02tvom53" path="res://Assets/Icons/icons.tres" id="2_rr0xv"]
 
 [node name="SpellPull" type="Area2D"]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_1vkpe")
-hit_iframes = 0.05
 life_time = 2.0
 speed = 200.0
 sprite_frames = ExtResource("2_rr0xv")
