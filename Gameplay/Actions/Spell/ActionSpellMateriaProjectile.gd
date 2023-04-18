@@ -1,7 +1,6 @@
 extends ActionSpell
 class_name ActionSpellMateriaProjectile
 
-#var materia_projectile_to_instantiate = load("res://Entities/Area/MateriaProjectile.tscn")
 var SpellPull = load("res://Entities/Spells/SpellPull.tscn")
 
 const projectile_speed_min: float = 10.
@@ -31,18 +30,6 @@ func _init():
 # LOGIC
 func activate():
 	if _owner.target_locator:
-#		var materia_projectile: MateriaProjectile = materia_projectile_to_instantiate.instantiate()
-#		materia_projectile.init(
-#			_owner,
-#			_owner.position,
-#			_owner.target_locator.position.normalized() * projectile_speed,
-#			projectile_travel_distance / projectile_speed,
-#			projectile_size,
-#			MateriaList.get_icon_texture(materia_type)
-#		)
-#		materia_projectile.add_child(EjectProjectile.new())
-		
-#		get_node("/root").add_child(materia_projectile)
 		var spell: AreaOfEffect = SpellPull.instantiate()
 		get_node("/root").add_child(spell)
 		spell.init(_owner, _owner.position, _owner.target_locator.position.normalized(), 20)
