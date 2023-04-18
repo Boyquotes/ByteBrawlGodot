@@ -1,93 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://bun1rlhlqp4b3"]
+[gd_scene load_steps=3 format=3 uid="uid://bun1rlhlqp4b3"]
 
-[ext_resource type="Script" path="res://Extensions/KinematicCharacterBody.gd" id="1_f3d0l"]
-[ext_resource type="Texture2D" uid="uid://hq5nm4pwt5dq" path="res://Assets/mysticWood/characters/slime.png" id="2_6lmhl"]
+[ext_resource type="Script" path="res://Extensions/AreaOfEffect.gd" id="1_y7v0d"]
+[ext_resource type="SpriteFrames" uid="uid://ctejf02tvom53" path="res://Assets/Icons/icons.tres" id="2_v5xvt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6brc2"]
+[node name="Slime" type="Node2D"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dvby6"]
-atlas = ExtResource("2_6lmhl")
-region = Rect2(0, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4tyoe"]
-atlas = ExtResource("2_6lmhl")
-region = Rect2(32, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v4f6w"]
-atlas = ExtResource("2_6lmhl")
-region = Rect2(64, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s51k2"]
-atlas = ExtResource("2_6lmhl")
-region = Rect2(96, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nk8fw"]
-atlas = ExtResource("2_6lmhl")
-region = Rect2(128, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tcvin"]
-atlas = ExtResource("2_6lmhl")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ao7tf"]
-atlas = ExtResource("2_6lmhl")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j2oxg"]
-atlas = ExtResource("2_6lmhl")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3p01"]
-atlas = ExtResource("2_6lmhl")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g3dsv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dvby6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4tyoe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v4f6w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s51k2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nk8fw")
-}],
-"loop": false,
-"name": &"death",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tcvin")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ao7tf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j2oxg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t3p01")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[node name="Slime" type="CharacterBody2D"]
-script = ExtResource("1_f3d0l")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_6brc2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_g3dsv")
-animation = &"idle"
-autoplay = "idle"
+[node name="AreaOfEffect" type="Area2D" parent="."]
+script = ExtResource("1_y7v0d")
+hit_number = 20.0
+life_time = 10000.0
+sprite_frames = ExtResource("2_v5xvt")
+sprite_animation_name = &"inputs"
+sprite_animation_frame = 5.0
+sprite_animation_speed = 1.0
+Shape/shape_radius = 16.0

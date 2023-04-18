@@ -35,6 +35,7 @@ var iframe_timer: Timer = Timer.new()
 
 var velocity: Vector2
 var entity_owner: Node2D
+var _spawn_position: Vector2
 
 signal hit(owner: Node2D, body: Node2D)
 signal on_death(owner: Node2D, position: Vector2)
@@ -55,10 +56,10 @@ func _ready():
 
 # IN GAME
 
-func init(owner: Node2D, position: Vector2, direction: Vector2 = Vector2.ZERO, offset: float = 0):
+func init(owner: Node2D, _position: Vector2, direction: Vector2 = Vector2.ZERO, offset: float = 0):
 	self.entity_owner = owner
-	self.position = position + direction.normalized() * offset
 	self.velocity = direction.normalized() * speed
+	position = _position + direction.normalized() * offset
 
 
 func _game_ready():
@@ -71,14 +72,18 @@ func _game_ready():
 	print(sprite.frame)
 
 func set_hittable(hittable: bool):
-	self.collision.set_deferred("disabled", not hittable)
 	if hittable:
 		self.call_deferred("_hit_process", null)
+	self.collision.set_deferred("disabled", not hittable)
 
 func _hit_process(_body):
+	print("HIT", _body, self.has_overlapping_bodies())
+	if not self.has_overlapping_bodies():
+		return
 	self.set_hittable(false)
 	self.hit_number -= 1
 	for entity in self.get_overlapping_bodies():
+		print(entity)
 		self.hit.emit(self.entity_owner, entity)
 	if self.hit_number != 0:
 		self.iframe_timer.start()
