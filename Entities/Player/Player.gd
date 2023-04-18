@@ -1,5 +1,5 @@
 class_name Player
-extends RigidBody2D
+extends KinematicCharacterBody
 
 var gameplay: Gameplay:
 	get: return self.get_node("gameplay") if self.has_node("gameplay") else null

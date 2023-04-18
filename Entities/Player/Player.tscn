@@ -8,8 +8,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3hgx"]
 
-[node name="player" type="RigidBody2D"]
-lock_rotation = true
+[node name="player" type="CharacterBody2D"]
 script = ExtResource("1_of2fo")
 metadata/_edit_group_ = true
 

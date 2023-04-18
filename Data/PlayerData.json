@@ -1,1 +1,373 @@
-{"gameplay":{"stances":[{"inputs":[{"cooldown":0.5,"icon_index":2320,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[{"name":"SwitchTargetDirection","values":{"target_type":"Direction","visible":false}},{"name":"Materia Projectile","values":{"drain_mode":"OneTime","materia_type":"Ice","projectile_lifetime":1,"projectile_size":0.5,"projectile_speed":500,"quantity_to_drain":0}}]}}},{"cooldown":1,"icon_index":32,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":10,"materia_type":"Fire"}},{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":10,"materia_type":"Wind"}},{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":10,"materia_type":"Water"}},{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":9.902,"materia_type":"Earth"}},{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":9.902,"materia_type":"Lightning"}},{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":9.804,"materia_type":"Ice"}},{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":9.706,"materia_type":"Wood"}},{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":10,"materia_type":"Metal"}},{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":10,"materia_type":"Momentum"}},{"name":"GenerateMateria","values":{"generation_time_customer":0.2,"materia_life_time":10,"materia_type":"Spacium"}}]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[{"name":"CancelInput","values":{}},{"name":"SwitchTargetPosition","values":{"distance":500,"target_type":"Position","visible":true}}]}}},{"cooldown":1,"icon_index":0,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[{"name":"ChangeStance","values":{"stance":"stance_2"}}]},"started_sequence":{"actions":[]}}},{"cooldown":1,"icon_index":0,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[]}}},{"cooldown":1,"icon_index":0,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[]}}},{"cooldown":1,"icon_index":0,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[]}}}],"name":"normal"},{"inputs":[{"cooldown":1,"icon_index":3,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[]}}},{"cooldown":1,"icon_index":0,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[]}}},{"cooldown":1,"icon_index":64,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[{"name":"ChangeStance","values":{"stance":"normal"}}]},"started_sequence":{"actions":[]}}},{"cooldown":1,"icon_index":0,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[]}}},{"cooldown":1,"icon_index":0,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[]}}},{"cooldown":1,"icon_index":0,"sequence":{"canceled_sequence":{"actions":[]},"pressed_sequence":{"actions":[]},"released_sequence":{"actions":[]},"started_sequence":{"actions":[]}}}],"name":"stance_2"}]}}
+{
+	"gameplay": {
+		"stances": [
+			{
+				"inputs": [
+					{
+						"cooldown": 0.5,
+						"icon_cooldown_index": 0,
+						"icon_index": 2320,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": [
+									{
+										"name": "SwitchTargetDirection",
+										"values": {
+											"target_type": "Direction",
+											"visible": false
+										}
+									},
+									{
+										"name": "Materia Projectile",
+										"values": {
+											"drain_mode": "OneTime",
+											"materia_type": "Ice",
+											"projectile_size": 0.5,
+											"projectile_speed": 500,
+											"projectile_travel_distance": 414.25,
+											"quantity_to_drain": 0
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 32,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": [
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 10,
+											"materia_type": "Fire"
+										}
+									},
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 10,
+											"materia_type": "Wind"
+										}
+									},
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 10,
+											"materia_type": "Water"
+										}
+									},
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 9.902,
+											"materia_type": "Earth"
+										}
+									},
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 9.902,
+											"materia_type": "Lightning"
+										}
+									},
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 9.804,
+											"materia_type": "Ice"
+										}
+									},
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 9.706,
+											"materia_type": "Wood"
+										}
+									},
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 10,
+											"materia_type": "Metal"
+										}
+									},
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 10,
+											"materia_type": "Momentum"
+										}
+									},
+									{
+										"name": "GenerateMateria",
+										"values": {
+											"generation_time_customer": 0.2,
+											"materia_life_time": 10,
+											"materia_type": "Spacium"
+										}
+									}
+								]
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": [
+									{
+										"name": "CancelInput",
+										"values": {
+
+										}
+									},
+									{
+										"name": "SwitchTargetPosition",
+										"values": {
+											"distance": 500,
+											"target_type": "Position",
+											"visible": true
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 0,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": [
+									{
+										"name": "ChangeStance",
+										"values": {
+											"stance": "stance_2"
+										}
+									}
+								]
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 0,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 0,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 0,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					}
+				],
+				"name": "normal"
+			},
+			{
+				"inputs": [
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 3,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 0,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 64,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": [
+									{
+										"name": "ChangeStance",
+										"values": {
+											"stance": "normal"
+										}
+									}
+								]
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 0,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 0,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					},
+					{
+						"cooldown": 1,
+						"icon_cooldown_index": 0,
+						"icon_index": 0,
+						"sequence": {
+							"canceled_sequence": {
+								"actions": []
+							},
+							"pressed_sequence": {
+								"actions": []
+							},
+							"released_sequence": {
+								"actions": []
+							},
+							"started_sequence": {
+								"actions": []
+							}
+						}
+					}
+				],
+				"name": "stance_2"
+			}
+		]
+	}
+}
