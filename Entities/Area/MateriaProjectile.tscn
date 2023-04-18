@@ -17,4 +17,5 @@ shape = SubResource("CircleShape2D_5q4pp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
+[connection signal="body_entered" from="." to="." method="_on_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

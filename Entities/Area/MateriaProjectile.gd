@@ -4,6 +4,8 @@ class_name MateriaProjectile
 var speed: Vector2
 var _owner: KinematicCharacterBody
 
+signal on_hit(body: PhysicsBody2D)
+
 func init(owner: KinematicCharacterBody, position: Vector2, speed: Vector2, life_time: float, size: float, texture: Texture):
 	self._owner = owner
 	self.position = position
@@ -23,3 +25,9 @@ func _physics_process(delta_time):
 
 func _on_timer_timeout():
 	queue_free()
+
+func _on_hit(body: PhysicsBody2D):
+	if body == _owner:
+		return
+	
+	on_hit.emit(body)

@@ -8,8 +8,8 @@ enum EType {
 }
 
 @onready var area: MateriaProjectile = get_parent()
-@export var impulse: float
-@export var type: EType
+@export var impulse: float = 100.
+@export var type: EType = EType.Pull
 
 func _ready():
 	area.on_hit.connect(_on_hit)

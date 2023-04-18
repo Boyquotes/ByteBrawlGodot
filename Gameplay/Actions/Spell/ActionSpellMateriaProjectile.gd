@@ -39,6 +39,7 @@ func activate():
 			projectile_size,
 			MateriaList.get_icon_texture(materia_type)
 		)
+		materia_projectile.add_child(EjectProjectile.new())
 		
 		get_node("/root").add_child(materia_projectile)
 

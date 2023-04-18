@@ -1,47 +1,44 @@
-[gd_scene load_steps=14 format=3 uid="uid://bun1rlhlqp4b3"]
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://cdj4pck343rj3"]
 
-[ext_resource type="Script" path="res://Extensions/KinematicCharacterBody.gd" id="1_f3d0l"]
-[ext_resource type="Texture2D" uid="uid://hq5nm4pwt5dq" path="res://Assets/mysticWood/characters/slime.png" id="2_6lmhl"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6brc2"]
+[ext_resource type="Texture2D" uid="uid://hq5nm4pwt5dq" path="res://Assets/mysticWood/characters/slime.png" id="1_dxtl3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvby6"]
-atlas = ExtResource("2_6lmhl")
+atlas = ExtResource("1_dxtl3")
 region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4tyoe"]
-atlas = ExtResource("2_6lmhl")
+atlas = ExtResource("1_dxtl3")
 region = Rect2(32, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4f6w"]
-atlas = ExtResource("2_6lmhl")
+atlas = ExtResource("1_dxtl3")
 region = Rect2(64, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s51k2"]
-atlas = ExtResource("2_6lmhl")
+atlas = ExtResource("1_dxtl3")
 region = Rect2(96, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nk8fw"]
-atlas = ExtResource("2_6lmhl")
+atlas = ExtResource("1_dxtl3")
 region = Rect2(128, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcvin"]
-atlas = ExtResource("2_6lmhl")
+atlas = ExtResource("1_dxtl3")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ao7tf"]
-atlas = ExtResource("2_6lmhl")
+atlas = ExtResource("1_dxtl3")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2oxg"]
-atlas = ExtResource("2_6lmhl")
+atlas = ExtResource("1_dxtl3")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t3p01"]
-atlas = ExtResource("2_6lmhl")
+atlas = ExtResource("1_dxtl3")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_g3dsv"]
+[resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -59,7 +56,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nk8fw")
 }],
-"loop": false,
+"loop": true,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -77,17 +74,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_t3p01")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 5.0
 }]
-
-[node name="Slime" type="CharacterBody2D"]
-script = ExtResource("1_f3d0l")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_6brc2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_g3dsv")
-animation = &"idle"
-autoplay = "idle"
