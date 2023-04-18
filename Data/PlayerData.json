@@ -23,13 +23,14 @@
 										"name": "SwitchTargetDirection",
 										"values": {
 											"target_type": "Direction",
-											"visible": false
+											"visible": true
 										}
 									},
 									{
-										"name": "Spell",
+										"name": "Dash",
 										"values": {
-											"spell": "Pull"
+											"distance": 500,
+											"duration": 2
 										}
 									}
 								]

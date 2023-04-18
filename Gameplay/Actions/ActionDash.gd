@@ -9,6 +9,8 @@ var distance: float = distance_min:
 static func get_allowed_sequences(): return [Sequence.EType.started_sequence, Sequence.EType.released_sequence]
 static func get_action_name(): return "Dash"
 
+var _velocity: Vector2
+
 func _init():
 	self.duration_min = 0.1
 	self.duration_max = 2.0
@@ -21,7 +23,7 @@ func _init():
 # LOGIC
 func activate():
 	if _owner.target_locator:
-		_owner.velocity = _owner.target_locator.position.normalized() * distance / duration
+		_velocity = _owner.target_locator.position.normalized() * distance / duration
 
 func done():
 	_owner.velocity = Vector2.ZERO
@@ -36,6 +38,8 @@ func init_fields():
 		Field.Float("duration", "Duration", func(): return duration, func(x): duration = x, duration_min, duration_max, CostCurve.new(10., .1, CostCurve.EMode.Exponential))
 	]
 
+func _physics_process(delta_time):
+	_owner.velocity = _velocity
 
 # DEBUG
 func _to_string() -> String:
