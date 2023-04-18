@@ -146,7 +146,6 @@ func to_json():
 
 func from_json(data: Dictionary):
 	self.icon_index = data.icon_index
-	self.icon_cooldown_index = data.icon_cooldown_index
 	self.cooldown_timer.wait_time = data.cooldown
 	for sequence_name in data.sequence.keys():
 		self[sequence_name].from_json(data.sequence[sequence_name])

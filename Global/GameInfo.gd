@@ -25,5 +25,5 @@ func reload_player():
 
 func save_player():
 	var file = FileAccess.open(PLAYER_DATA_PATH, FileAccess.WRITE)
-	file.store_string(JSON.stringify(self.player.to_json()))
+	file.store_string(JSON.stringify(self.player.to_json(), "\t"))
 	file.close()
