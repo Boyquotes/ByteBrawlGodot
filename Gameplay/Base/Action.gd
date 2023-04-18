@@ -70,7 +70,9 @@ func _process(delta_time):
 # LOGIC
 func _activate():
 	if not _owner: return
-	if not _can_be_cast(): return
+	if not _can_be_cast():
+		self.call_deferred("_cancel")
+		return
 	_block_action_if_needed(true)
 	_block_movement_if_needed(true)
 	activate()

@@ -18,11 +18,8 @@ static func get_action_name(): return "SwitchTargetPosition"
 
 func _init():
 	self.type = EType.setTarget
+	self.duration = .2
 	super._init()
-
-func _process(delta_time):
-	if _owner.target_locator and not _owner.target_locator.position.is_zero_approx():
-		_done()
 
 func activate():
 	if _owner.target_locator:

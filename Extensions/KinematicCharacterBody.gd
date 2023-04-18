@@ -8,7 +8,7 @@ const fg_static: float = 500
 var collision: CollisionShape2D = CollisionShape2D.new()
 var collision_area: CollisionArea = CollisionArea.new()
 
-const SIZE_DIFF: float = 1.
+const SIZE_DIFF: float = 2
 
 @export_group("Logic")
 @export var mass: float = 1
