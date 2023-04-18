@@ -15,13 +15,13 @@ func _ready():
 	else:
 		pass
 
-func _on_death(owner: Node2D, position: Vector2):
+func _on_death(owner: Node2D, position: Vector2, direction: Vector2):
 	if [EMode.ON_DEATH, EMode.EVERYTIME].has(self.mode):
-		self.spawn_area(owner, position)
+		self.spawn_area(owner, position, direction)
 
 func _on_hit(owner: Node2D, _body: Node2D):
 	if [EMode.ON_HIT, EMode.EVERYTIME].has(self.mode):
-		self.spawn_area(owner, parent.position)
+		self.spawn_area(owner, parent.position, parent.direction)
 
-func spawn_area(owner: Node2D, position: Vector2):
+func spawn_area(owner: Node2D, position: Vector2, direction: Vector2):
 	pass

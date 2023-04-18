@@ -11,5 +11,5 @@ func _ready():
 func _on_hit(owner: Node2D, body: Node2D):
 	pass
 
-func _on_death(owner: Node2D, position: Vector2):
+func _on_death(owner: Node2D, position: Vector2, direction: Vector2):
 	pass
