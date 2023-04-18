@@ -84,7 +84,7 @@ var acceleration: Vector2 = Vector2.ZERO
 var bodies_calc_already_done: Array[PhysicsBody2D] = []
 
 func _game_ready():
-	collision_area.on_body_entered.connect(_on_body_entered)
+	collision_area.body_entered.connect(_on_body_entered)
 
 func apply_force(force: Vector2):
 	self.acceleration += force / mass
@@ -96,20 +96,19 @@ func calc_new_velocity(v1: Vector2, v2: Vector2, m1: float, m2: float, e: float 
 	return (m1 / (m1 + m2)) * (1 + e) * v1 + (m2 / (m1 + m2)) * (1 - e) * v2
 
 func _on_body_entered(body: PhysicsBody2D):
-	if not body is KinematicCharacterBody:
+	if not body is KinematicCharacterBody or body == self:
 		return
-	
 	if body in bodies_calc_already_done:
 		bodies_calc_already_done.erase(body)
 		return
-	
+
 	var old_velocity: Vector2 = velocity
-	velocity = calc_new_velocity(velocity, body.velocity, mass, body.mass)
+	self.velocity = calc_new_velocity(velocity, body.velocity, mass, body.mass)
 	body.velocity = calc_new_velocity(body.velocity, old_velocity, body.mass, mass)
 	
 	body.bodies_calc_already_done.append(self)
 
-func movement(delta_time):
+func set_movement(delta_time):
 	var is_in_movement: bool = not velocity.is_zero_approx()
 	var fg: float = fg_dynamic if is_in_movement else fg_static
 	var new_acceleration: Vector2 = Vector2.ZERO
@@ -125,6 +124,5 @@ func movement(delta_time):
 		velocity = new_velocity
 
 func _physics_process(delta_time):
-	movement(delta_time)
-	
+	set_movement(delta_time)
 	move_and_slide()
