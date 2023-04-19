@@ -15,13 +15,7 @@ func _ready():
 # LIFECYCLE
 func _physics_process(delta_time):
 	if not movement_blocked:
-		var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		if player.velocity.length_squared() < speed**2:
-			player.apply_impulse(acceleration_force * delta_time * direction)
-			
-			var velocity: float = player.velocity.length()
-			if velocity > speed:
-				player.velocity = speed * player.velocity / velocity
+		player.direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 # LOGIC
 func block_movement(value: bool = true):

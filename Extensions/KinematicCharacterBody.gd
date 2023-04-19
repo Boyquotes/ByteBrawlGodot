@@ -1,17 +1,15 @@
 @tool
 class_name KinematicCharacterBody
-extends CharacterBody2D
+extends RigidBody2D
 
-const fg_dynamic: float = 500
-const fg_static: float = 500
+const fg: float = 500.
 
 var collision: CollisionShape2D = CollisionShape2D.new()
-var collision_area: CollisionArea = CollisionArea.new()
 
-const SIZE_DIFF: float = 2
+@export_group("Physic")
 
-@export_group("Logic")
-@export var mass: float = 1
+@export var max_speed: float = 100.
+@export var movement_force: float = 1000.
 
 @export_group("Shape")
 @export var shape_type = CollisionArea.EShapeType.circle:
@@ -31,12 +29,10 @@ func _set(property, value):
 		"Shape/shape_radius":
 			shape_radius = value
 			(collision.shape as CircleShape2D).radius = value
-			(collision_area.collision.shape as CircleShape2D).radius = value + SIZE_DIFF
 			return true
 		"Shape/shape_extents":
 			shape_extents = value
 			(collision.shape as RectangleShape2D).extents = value
-			(collision_area.collision.shape as RectangleShape2D).extents = value + (Vector2.ONE * SIZE_DIFF)
 			return true
 	return false
 
@@ -49,83 +45,57 @@ func _get(property):
 func _get_property_list() -> Array:
 	var props = []
 	match shape_type:
-		collision_area.EShapeType.circle:
+		CollisionArea.EShapeType.circle:
 			props.push_back({ name = "Shape/shape_radius", type = TYPE_INT })
-		collision_area.EShapeType.rectangle:
+		CollisionArea.EShapeType.rectangle:
 			props.push_back({ name = "Shape/shape_extents", type = TYPE_VECTOR2 })
 	return props
 
 func switch_shape():
 	match shape_type:
-		collision_area.EShapeType.circle:
+		CollisionArea.EShapeType.circle:
 			self.collision.shape = CircleShape2D.new()
 			self.collision.shape.radius = shape_radius
-			self.collision_area.collision.shape = CircleShape2D.new()
-			self.collision.shape.radius = shape_radius + SIZE_DIFF
-		collision_area.EShapeType.rectangle:
+		CollisionArea.EShapeType.rectangle:
 			self.collision.shape = RectangleShape2D.new()
 			self.collision.shape.extents = shape_extents
-			self.collision_area.collision.shape = RectangleShape2D.new()
-			self.collision_area.collision.shape.extents = shape_extents + (Vector2.ONE * SIZE_DIFF)
 
 func _editor_ready():
+	lock_rotation = true
+
+func _editor_physic_process(delta_time):
 	pass
 
 func _ready():
 	add_child(self.collision)
-	add_child(self.collision_area)
 	if not collision.shape:
 		self.switch_shape()
 	if Engine.is_editor_hint(): _editor_ready()
 	else: _game_ready()
 
+func _physics_process(delta_time):
+	if Engine.is_editor_hint(): _editor_physic_process(delta_time)
+	else: _game_physic_process(delta_time)
+
 # PHYSICS LOGIC
-var acceleration: Vector2 = Vector2.ZERO
+var direction: Vector2 = Vector2.ZERO
 var bodies_calc_already_done: Array[PhysicsBody2D] = []
 
 func _game_ready():
-	collision_area.body_entered.connect(_on_body_entered)
+	pass
 
-func apply_force(force: Vector2):
-	self.acceleration += force / mass
-
-func apply_impulse(impulse: Vector2):
-	velocity += impulse / mass
-
-func calc_new_velocity(v1: Vector2, v2: Vector2, m1: float, m2: float, e: float = 5/9):
-	print(v1, "/", v2)
-	return (m2 * (1 - e) * v2 + (m1 + e*m2) * v1) / (m1 + m2)
-
-func _on_body_entered(body: PhysicsBody2D):
-	if not body is KinematicCharacterBody or body == self:
-		return
-	if body in bodies_calc_already_done:
-		bodies_calc_already_done.erase(body)
-		return
-
-	var old_velocity: Vector2 = velocity
-	velocity = calc_new_velocity(velocity, body.velocity, mass, body.mass)
-	body.velocity = calc_new_velocity(body.velocity, old_velocity, body.mass, mass)
+func _game_physic_process(delta_time):
+	var force: Vector2 = movement_force * (Vector2.ZERO if direction.is_zero_approx() else direction.normalized())
+	var new_velocity: Vector2 = linear_velocity + delta_time / mass * force
 	
-	print(velocity, " : ", body.velocity)
-	
-	body.bodies_calc_already_done.append(self)
+	if new_velocity.length_squared() <= max_speed**2:
+		apply_central_force(force)
 
-func set_movement(delta_time):
-	var is_in_movement: bool = not velocity.is_zero_approx()
-	var fg: float = fg_dynamic if is_in_movement else fg_static
-	var new_acceleration: Vector2 = Vector2.ZERO
+func _integrate_forces(state):
+	var current_direction: Vector2 = linear_velocity.normalized()
 	
-	if not acceleration.is_zero_approx() and (is_in_movement or acceleration.length_squared() >= (fg * mass)**2):
-		new_acceleration = acceleration
-	
-	var new_velocity: Vector2 = velocity + (new_acceleration - fg*velocity.normalized()) * delta_time
-	
-	if new_velocity.dot(velocity) < 0:
-		velocity = Vector2.ZERO
+	var new_velocity = linear_velocity - fg*current_direction*state.step*state.inverse_mass
+	if linear_velocity.dot(new_velocity) >= 0:
+		linear_velocity = new_velocity
 	else:
-		velocity = new_velocity
-
-func _physics_process(delta_time):
-	set_movement(delta_time)
-	move_and_slide()
+		linear_velocity = Vector2.ZERO

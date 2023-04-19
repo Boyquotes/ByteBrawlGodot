@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bun1rlhlqp4b3"]
+[gd_scene load_steps=15 format=3 uid="uid://bun1rlhlqp4b3"]
 
-[ext_resource type="Script" path="res://Extensions/KinematicCharacterBody.gd" id="1_4y5eb"]
+[ext_resource type="Script" path="res://Extensions/KinematicCharacterBody.gd" id="1_h682e"]
 [ext_resource type="Texture2D" uid="uid://hq5nm4pwt5dq" path="res://Assets/mysticWood/characters/slime.png" id="2_3yxxe"]
 [ext_resource type="Script" path="res://Gameplay/EntityParts/EntityStats.gd" id="3_n81m1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fgomm"]
+bounce = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvby6"]
 atlas = ExtResource("2_3yxxe")
@@ -80,8 +83,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Slime" type="CharacterBody2D"]
-script = ExtResource("1_4y5eb")
+[node name="Slime" type="RigidBody2D"]
+mass = 0.11
+physics_material_override = SubResource("PhysicsMaterial_fgomm")
+lock_rotation = true
+script = ExtResource("1_h682e")
 Shape/shape_radius = 8.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

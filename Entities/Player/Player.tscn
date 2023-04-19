@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://7ypkjy4rdd1a"]
+[gd_scene load_steps=7 format=3 uid="uid://7ypkjy4rdd1a"]
 
 [ext_resource type="Texture2D" uid="uid://b3tnoo5ksj8ua" path="res://Assets/NinjaAdventure/Actor/Characters/EggBoy/SeparateAnim/Idle.png" id="1_6urnu"]
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_of2fo"]
@@ -6,7 +6,12 @@
 [ext_resource type="Script" path="res://Gameplay/Base/Gameplay.gd" id="4_8svt5"]
 [ext_resource type="Script" path="res://Gameplay/Magic/MateriaPool.gd" id="5_n5t1p"]
 
-[node name="player" type="CharacterBody2D"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gritr"]
+bounce = 0.5
+
+[node name="player" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_gritr")
+lock_rotation = true
 script = ExtResource("1_of2fo")
 Shape/shape_radius = 10.0
 metadata/_edit_group_ = true
