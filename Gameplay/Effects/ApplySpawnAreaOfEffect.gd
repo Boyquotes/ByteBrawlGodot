@@ -27,5 +27,5 @@ func _on_hit(owner: Node2D, _body: Node2D):
 
 func spawn_area(owner: Node2D, position: Vector2, direction: Vector2, last: bool):
 	var new_entity: AreaOfEffect = entity.instantiate()
-	new_entity.init(owner, position, Vector2.from_angle(direction.angle() + angle))
+	new_entity.init(owner, position, Vector2.from_angle(direction.angle() + (angle / 180) * PI))
 	get_node("/root").add_child(new_entity)
