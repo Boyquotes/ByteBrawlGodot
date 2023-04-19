@@ -69,7 +69,6 @@ func _hit_process(body: Node2D):
 		self._on_death()
 
 func _on_death():
-	print("ONDEATH")
 	self.on_death.emit(self.entity_owner, self.position, self.velocity.normalized())
 	self.queue_free()
 

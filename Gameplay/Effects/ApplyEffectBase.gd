@@ -9,9 +9,7 @@ func _ready():
 	parent.on_death.connect(_on_death)
 
 func _on_hit(owner: Node2D, body: Node2D):
-	print("ON HIT", owner, body)
 	pass
 
 func _on_death(owner: Node2D, position: Vector2, direction: Vector2):
-	print("ON DEATH", owner, position, direction)
 	pass

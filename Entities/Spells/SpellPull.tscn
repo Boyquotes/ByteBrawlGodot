@@ -22,14 +22,5 @@ script = ExtResource("2_1dx5v")
 [node name="ApplySpawnAreaOfEffect" type="Node" parent="."]
 script = ExtResource("3_gt8k2")
 mode = 2
-
-[node name="AreaOfEffect" type="Area2D" parent="ApplySpawnAreaOfEffect"]
-script = ExtResource("1_1vkpe")
-hit_number = 2.08165e-12
-sprite_frames = ExtResource("2_rr0xv")
-sprite_animation_name = &"inputs"
-sprite_animation_speed = 1.0
-Shape/shape_radius = 16.0
-
-[node name="ApplyEffectMove" type="Node" parent="ApplySpawnAreaOfEffect/AreaOfEffect"]
-script = ExtResource("2_1dx5v")
+entity_to_spawn = "/Users/mconti/perso/ByteBrawlGodot/Entities/Spells/SpellFireBall.tscn"
+angle = 90.0
