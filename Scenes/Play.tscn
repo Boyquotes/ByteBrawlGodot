@@ -10,7 +10,6 @@ script = ExtResource("1_oxjtw")
 
 [node name="Slime" parent="." instance=ExtResource("4_f1r3w")]
 position = Vector2(2, -164)
-lock_rotation = true
 movement_force = 100.0
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -24,5 +23,4 @@ layer_0/tile_data = PackedInt32Array(-589835, 0, 0, -589834, 0, 0, -524298, 0, 0
 
 [node name="Slime" parent="." instance=ExtResource("4_f1r3w")]
 position = Vector2(-112, -91)
-lock_rotation = true
 movement_force = 100.0

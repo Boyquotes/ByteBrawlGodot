@@ -1,19 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://bup6fajoxfoon"]
+[gd_scene load_steps=5 format=3 uid="uid://bup6fajoxfoon"]
 
 [ext_resource type="Script" path="res://Extensions/AreaOfEffect.gd" id="1_1vkpe"]
 [ext_resource type="Script" path="res://Gameplay/Effects/ApplyEffectMove.gd" id="2_1dx5v"]
 [ext_resource type="SpriteFrames" uid="uid://ctejf02tvom53" path="res://Assets/Icons/icons.tres" id="2_rr0xv"]
+[ext_resource type="Script" path="res://Gameplay/Effects/ApplySpawnAreaOfEffect.gd" id="3_gt8k2"]
 
 [node name="SpellPull" type="Area2D"]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_1vkpe")
-life_time = 2.0
-speed = 300.0
+hit_number = 2.0
+speed = 100.0
 sprite_frames = ExtResource("2_rr0xv")
 sprite_animation_name = &"materias"
+sprite_animation_frame = 10.0
 sprite_animation_speed = 1.0
-Shape/shape_radius = 13.0
+Shape/shape_radius = 16.0
 
 [node name="ApplyEffectMove" type="Node" parent="."]
 script = ExtResource("2_1dx5v")
-impulse = 300.0
+
+[node name="ApplySpawnAreaOfEffect" type="Node" parent="."]
+script = ExtResource("3_gt8k2")
+mode = 2
+
+[node name="AreaOfEffect" type="Area2D" parent="ApplySpawnAreaOfEffect"]
+script = ExtResource("1_1vkpe")
+hit_number = 2.08165e-12
+sprite_frames = ExtResource("2_rr0xv")
+sprite_animation_name = &"inputs"
+sprite_animation_speed = 1.0
+Shape/shape_radius = 16.0
+
+[node name="ApplyEffectMove" type="Node" parent="ApplySpawnAreaOfEffect/AreaOfEffect"]
+script = ExtResource("2_1dx5v")
