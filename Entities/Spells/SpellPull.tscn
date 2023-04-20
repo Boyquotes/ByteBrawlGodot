@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bup6fajoxfoon"]
+[gd_scene load_steps=4 format=3 uid="uid://bup6fajoxfoon"]
 
 [ext_resource type="Script" path="res://Extensions/AreaOfEffect.gd" id="1_1vkpe"]
 [ext_resource type="Script" path="res://Gameplay/Effects/ApplyEffectMove.gd" id="2_1dx5v"]
 [ext_resource type="SpriteFrames" uid="uid://ctejf02tvom53" path="res://Assets/Icons/icons.tres" id="2_rr0xv"]
-[ext_resource type="Script" path="res://Gameplay/Effects/ApplySpawnAreaOfEffect.gd" id="3_gt8k2"]
 
 [node name="SpellPull" type="Area2D"]
 scale = Vector2(0.3, 0.3)
@@ -18,9 +17,3 @@ Shape/shape_radius = 16.0
 
 [node name="ApplyEffectMove" type="Node" parent="."]
 script = ExtResource("2_1dx5v")
-
-[node name="ApplySpawnAreaOfEffect" type="Node" parent="."]
-script = ExtResource("3_gt8k2")
-mode = 2
-entity_to_spawn = "/Users/mconti/perso/ByteBrawlGodot/Entities/Spells/SpellFireBall.tscn"
-angle = 90.0
