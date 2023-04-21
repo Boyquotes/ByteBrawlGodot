@@ -58,6 +58,7 @@ func init(owner: Node2D, _position: Vector2, direction: Vector2 = Vector2.ZERO, 
 func _game_ready():
 	self.life_timer.autostart = true
 	self.life_timer.one_shot = true
+	self.life_timer.timeout.connect(_on_death)
 	self.body_entered.connect(_hit_process)
 
 func _hit_process(body: Node2D):
@@ -65,8 +66,11 @@ func _hit_process(body: Node2D):
 	self.hit_number -= 1
 	self.hit.emit(self.entity_owner, body)
 	if self.hit_number == 0:
-		self.on_death.emit(self.entity_owner, self.position, self.velocity.normalized())
-		self.queue_free()
+		self._on_death()
+
+func _on_death():
+	self.on_death.emit(self.entity_owner, self.position, self.velocity.normalized())
+	self.queue_free()
 
 func _physics_process(delta_time):
 	position += velocity * delta_time
