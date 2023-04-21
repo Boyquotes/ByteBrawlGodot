@@ -8,7 +8,7 @@ enum EMode {
 }
 
 @export var mode: EMode = EMode.ON_DEATH
-@export_global_file("*.tscn") var entity_to_spawn: String
+@export_file("*.tscn") var entity_to_spawn: String
 @onready var entity = load(entity_to_spawn)
 @export_range(-180, 180) var angle: float = 0.0
 

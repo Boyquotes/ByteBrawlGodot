@@ -6,7 +6,6 @@
 
 [node name="SpellExploseFireBall" type="Area2D"]
 script = ExtResource("1_omo27")
-hit_number = 100.0
 speed = 100.0
 sprite_frames = ExtResource("2_6smhp")
 sprite_animation_name = &"materias"
@@ -16,39 +15,39 @@ Shape/shape_radius = 16.0
 
 [node name="ApplySpawnAreaOfEffect" type="Node" parent="."]
 script = ExtResource("3_g0kpp")
-entity_to_spawn = "F:/Projects/Godot/ByteBrawl/Entities/Spells/SpellFireBall.tscn"
+entity_to_spawn = "res://Entities/Spells/SpellFireBall.tscn"
 angle = -180.0
 
 [node name="ApplySpawnAreaOfEffect2" type="Node" parent="."]
 script = ExtResource("3_g0kpp")
-entity_to_spawn = "F:/Projects/Godot/ByteBrawl/Entities/Spells/SpellFireBall.tscn"
+entity_to_spawn = "res://Entities/Spells/SpellFireBall.tscn"
 angle = -135.0
 
 [node name="ApplySpawnAreaOfEffect3" type="Node" parent="."]
 script = ExtResource("3_g0kpp")
-entity_to_spawn = "F:/Projects/Godot/ByteBrawl/Entities/Spells/SpellFireBall.tscn"
+entity_to_spawn = "res://Entities/Spells/SpellFireBall.tscn"
 angle = -90.0
 
 [node name="ApplySpawnAreaOfEffect4" type="Node" parent="."]
 script = ExtResource("3_g0kpp")
-entity_to_spawn = "F:/Projects/Godot/ByteBrawl/Entities/Spells/SpellFireBall.tscn"
+entity_to_spawn = "res://Entities/Spells/SpellFireBall.tscn"
 angle = -45.0
 
 [node name="ApplySpawnAreaOfEffect5" type="Node" parent="."]
 script = ExtResource("3_g0kpp")
-entity_to_spawn = "F:/Projects/Godot/ByteBrawl/Entities/Spells/SpellFireBall.tscn"
+entity_to_spawn = "res://Entities/Spells/SpellFireBall.tscn"
 
 [node name="ApplySpawnAreaOfEffect6" type="Node" parent="."]
 script = ExtResource("3_g0kpp")
-entity_to_spawn = "F:/Projects/Godot/ByteBrawl/Entities/Spells/SpellFireBall.tscn"
+entity_to_spawn = "res://Entities/Spells/SpellFireBall.tscn"
 angle = 45.0
 
 [node name="ApplySpawnAreaOfEffect7" type="Node" parent="."]
 script = ExtResource("3_g0kpp")
-entity_to_spawn = "F:/Projects/Godot/ByteBrawl/Entities/Spells/SpellFireBall.tscn"
+entity_to_spawn = "res://Entities/Spells/SpellFireBall.tscn"
 angle = 90.0
 
 [node name="ApplySpawnAreaOfEffect8" type="Node" parent="."]
 script = ExtResource("3_g0kpp")
-entity_to_spawn = "F:/Projects/Godot/ByteBrawl/Entities/Spells/SpellFireBall.tscn"
+entity_to_spawn = "res://Entities/Spells/SpellFireBall.tscn"
 angle = 135.0
