@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bun1rlhlqp4b3"]
+[gd_scene load_steps=16 format=3 uid="uid://bun1rlhlqp4b3"]
 
 [ext_resource type="Script" path="res://Extensions/KinematicCharacterBody.gd" id="1_h682e"]
 [ext_resource type="Texture2D" uid="uid://hq5nm4pwt5dq" path="res://Assets/mysticWood/characters/slime.png" id="2_3yxxe"]
 [ext_resource type="Script" path="res://Gameplay/EntityParts/EntityStats.gd" id="3_n81m1"]
+[ext_resource type="Script" path="res://Entities/Enemy/PathFinding.gd" id="4_c3buv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fgomm"]
 bounce = 0.5
@@ -98,3 +99,9 @@ autoplay = "idle"
 
 [node name="EntityStats" type="Node" parent="."]
 script = ExtResource("3_n81m1")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 3
+avoidance_enabled = true
+debug_enabled = true
+script = ExtResource("4_c3buv")

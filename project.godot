@@ -74,6 +74,11 @@ input_primary_2={
 ]
 }
 
+[layer_names]
+
+2d_navigation/layer_1="ground"
+2d_navigation/layer_2="walls"
+
 [physics]
 
 2d/default_gravity=2.08165e-12
